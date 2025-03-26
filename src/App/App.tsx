@@ -3,14 +3,18 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 import React from 'react'
+import CatalogPage from './pages'
+import Header from './components/Header'
 
 function App() {
  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      Hello
-    </>
+    <div>
+      <Header/>
+      <div><CatalogPage />
+        </div>
+    </div>
   )
 }
 
