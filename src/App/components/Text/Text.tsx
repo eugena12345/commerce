@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './Text.css'
-import { number } from 'prop-types';
+//import { number } from 'prop-types';
 
 export type TextProps = {
     /** Дополнительный класс */
