@@ -8,6 +8,7 @@ import SearchProducts from "./components/SearchProducts";
 import axios from 'axios';
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.css';
+import qs from 'qs';
 
 type Image = {
     alternativeText: null | string,
@@ -58,18 +59,22 @@ type ProductType = {
 }
 
 const CatalogPage = () => {
-    const [items, setItems] = useState<ProductType[]>([    ]);
+    const [items, setItems] = useState<ProductType[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
 
-    //const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-    //const STRAPI_URL = `${STRAPI_BASE_URL}/api`;
-
+    const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
+    const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
+    const params = {
+        populate: ['images', 'productCategory']
+    };
+    const queryString = qs.stringify(params);
+    console.log(queryString);
+    const url = `${STRAPI_URL}${queryString}`;
 
     useEffect(() => {
         console.log('hello');
         axios.get(
-            // `${STRAPI_URL}/products`,
-            `https://front-school-strapi.ktsdev.ru/api/products?populate[0]=images&populate[1]=productCategory`,
+            url,
             {
                 headers: {
                     // API_TOKEN нужно получить в боте при выборе проекта
@@ -89,7 +94,7 @@ const CatalogPage = () => {
     return (
         <div className={styles.container}>
             <ProductsInfo />
-            <SearchProducts totalItems={totalItems}/>
+            <SearchProducts totalItems={totalItems} />
             <div className={styles.products}>
                 {items.length > 0 &&
                     items.map((item) => <div key={item.id}>
