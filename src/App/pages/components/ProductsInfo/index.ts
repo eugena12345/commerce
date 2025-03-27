@@ -1,1 +1,1 @@
-export {default} from './ProductsUnfo';
+export {default} from './ProductsInfo';
