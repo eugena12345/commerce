@@ -1,0 +1,16 @@
+.primary svg path:first-child{
+    /* stroke: #000000; */
+    fill: #000000;
+}
+
+.secondary svg path:first-child{
+    /* stroke: #AFADB5; */
+
+    fill: #AFADB5;
+}
+
+.accent svg path:first-child{
+    /* stroke: #518581; */
+
+    fill: var(--color-brand);
+}

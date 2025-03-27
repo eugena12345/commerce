@@ -1,0 +1,29 @@
+.container {
+    background-color: #FAFAFA;
+    margin-top: 50px;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: var(--spaceXL);
+}
+
+.grow {
+    flex-grow: 1;
+    margin-right: var(--spaceXL);
+}
+
+.filter {
+    width: 300px;
+    /* margin-bottom: 48px; */
+
+}
+
+.result {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spaceXL);
+}
