@@ -3,7 +3,7 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 //import React from 'react'
-import CatalogPage from './pages'
+import CatalogPage from './pages/CatalogPage'
 import Header from '../components/Header'
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
   return (
     <div>
       <Header/>
-      <div><CatalogPage />
-        </div>
+     <CatalogPage />
+        
     </div>
   )
 }

@@ -2,9 +2,9 @@ const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 
 import { useEffect, useState } from "react";
-import InfoCard from "./components/InfoCard";
-import ProductsInfo from "./components/ProductsInfo";
-import SearchProducts from "./components/SearchProducts";
+import InfoCard from "../components/InfoCard";
+import ProductsInfo from "../components/ProductsInfo";
+import SearchProducts from "../components/SearchProducts";
 import axios from 'axios';
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.css';
