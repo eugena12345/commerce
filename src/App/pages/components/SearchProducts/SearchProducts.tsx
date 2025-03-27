@@ -5,7 +5,11 @@ import Button from "components/Button/Button";
 import MultiDropdown from "../MultiDropdown/MultiDropdown";
 import Text from "components/Text/Text";
 
-const SearchProducts = () => {
+interface SearchProductsProps {
+    totalItems: number;
+  }
+
+const SearchProducts = ({totalItems}: SearchProductsProps) => {
     const handleChange = () => {
         console.log('i want to be changed');
     }
@@ -23,7 +27,7 @@ const SearchProducts = () => {
             
             <div className={styles.result}>
                 <Text tag='h2' color='primary'>Total products</Text>
-                <Text view='p-20' color='accent' weight='bold'>184</Text>
+                <Text view='p-20' color='accent' weight='bold'>{totalItems}</Text>
             </div>
 
         </div>

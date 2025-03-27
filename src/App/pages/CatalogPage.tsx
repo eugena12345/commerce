@@ -58,8 +58,8 @@ type ProductType = {
 }
 
 const CatalogPage = () => {
-    const [items, setItems] = useState<ProductType[]>([
-    ]);
+    const [items, setItems] = useState<ProductType[]>([    ]);
+    const [totalItems, setTotalItems] = useState<number>(0);
 
     //const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
     //const STRAPI_URL = `${STRAPI_BASE_URL}/api`;
@@ -77,10 +77,11 @@ const CatalogPage = () => {
                 },
             },
         ).then((response) => {
-            console.log(response.data.data);
+            console.log(response.data);
             setItems(
                 [...response.data.data]
-            )
+            );
+            setTotalItems(response.data.meta.pagination.total)
         });
 
 
@@ -88,7 +89,7 @@ const CatalogPage = () => {
     return (
         <div className={styles.container}>
             <ProductsInfo />
-            <SearchProducts />
+            <SearchProducts totalItems={totalItems}/>
             <div className={styles.products}>
                 {items.length > 0 &&
                     items.map((item) => <div key={item.id}>
