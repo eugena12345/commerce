@@ -19,7 +19,7 @@
 .card {
     display: flex;
     flex-direction: column;
-     width: 30vw; 
+     width: 23vw; 
     /* height: 622px; */
     font-family: Roboto;
 }

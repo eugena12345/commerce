@@ -86,10 +86,10 @@ const CatalogPage = () => {
 
     }, []);
     return (
-        <div>
+        <div className={styles.container}>
             <ProductsInfo />
             <SearchProducts />
-            <div className={styles.produts}>
+            <div className={styles.products}>
                 {items.length > 0 &&
                     items.map((item) => <div key={item.id}>
                         <InfoCard image={item.images[0].url}
