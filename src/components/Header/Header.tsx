@@ -1,9 +1,9 @@
-import React from "react";
+//import React from "react";
 import styles from './Header.module.css';
-import logo from './Frame.svg';
-import lalasiaLogo from './Lalasia.svg';
-import bag from './bag-2.svg';
-import userSvg from './user.svg';
+import logo from 'assets/images/Frame.svg';
+import lalasiaLogo from 'assets/images/Lalasia.svg';
+import bag from 'assets/images/bag-2.svg';
+import userSvg from 'assets/images/user.svg';
 
 const Header = () => {
     return (
@@ -14,9 +14,9 @@ const Header = () => {
             </div>
             <nav className={styles.headerNav}>
                 <ul>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/categories">Categories</a></li>
-                    <li><a href="/about">About us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About us</a></li>
                 </ul>
             </nav>
 

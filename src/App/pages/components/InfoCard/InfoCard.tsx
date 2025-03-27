@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import Text from '../../../../components/Text/Text';
+import Text from 'components/Text/Text';
 
 export type CardProps = {
     /** Дополнительный classname */

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path';
 
-import tsconfig from './tsconfig.json';
+import tsconfig from './tsconfig.app.json';
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 
@@ -21,11 +21,6 @@ const parseTsConfigPaths = (paths: Record<string, string[]>): Record<string, str
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-    //parseTsConfigPaths(tsconfig.compilerOptions.paths),
-    '@': path.resolve(__dirname, './src'), // Алиас для корня src
-    '@components': path.resolve(__dirname, './src/components'), // Алиас для папки components
-    '@utils': path.resolve(__dirname, './src/utils'), }// Алиас для папки utils
-
+    alias: parseTsConfigPaths(tsconfig.compilerOptions.paths),
   },
 })

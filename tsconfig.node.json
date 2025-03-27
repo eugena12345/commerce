@@ -6,19 +6,19 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    
+
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
 
-    
+
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts", "tsconfig.json"]
+  "include": ["vite.config.ts", "tsconfig.json", "tsconfig.app.json"]
 }

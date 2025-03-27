@@ -1,9 +1,9 @@
-import React from "react";
+//import React from "react";
 import styles from './SearchProducts.module.css';
 import Input from "../Input/Input";
-import Button from "../../../../components/Button/Button";
+import Button from "components/Button/Button";
 import MultiDropdown from "../MultiDropdown/MultiDropdown";
-import Text from "../../../../components/Text/Text";
+import Text from "components/Text/Text";
 
 const SearchProducts = () => {
     const handleChange = () => {

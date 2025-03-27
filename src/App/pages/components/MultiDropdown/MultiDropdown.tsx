@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Input from '../Input/Input';
-import ArrowDownIcon from '../../../../components/icons/ArrowDownIcon';
+import ArrowDownIcon from 'components/icons/ArrowDownIcon';
 import './MultiDropdown.css';
 
 export type Option = {
