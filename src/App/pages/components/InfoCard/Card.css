@@ -1,0 +1,81 @@
+@font-face {
+    font-weight: normal;
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Regular.woff2");
+  }
+  
+  @font-face {
+    font-weight: bold; /* Соответствует значению bold */
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Bold.woff2");
+  }
+  
+  @font-face {
+    font-weight: medium;
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Medium.woff2");
+  }
+
+.card {
+    display: flex;
+    flex-direction: column;
+     width: 30vw; 
+    /* height: 622px; */
+    font-family: Roboto;
+}
+
+.card:hover {
+    box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.25);
+
+    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    background-color: #D9D9D9;
+    
+}
+
+.info {
+    padding-top: var(--spaceXL);
+
+    padding-bottom: var(--spaceXL);
+    background-color: white;
+
+}
+
+.description {
+    padding-bottom: var(--spaceL);
+    padding-left: var(--spaceXS);
+    padding-right: var(--spaceXS);
+
+}
+
+.pb-8 {
+    margin-bottom: var(--spaceXXS);
+}
+.captionSlot{
+    font-size: var(--spaceS);
+    color: #AFADB5;
+    font-weight: 'medium';
+
+}
+
+.buyInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: var(--spaceXS);
+    padding-right: var(--spaceXS);
+
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 'bold';
+    color: #000000;
+
+}

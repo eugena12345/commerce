@@ -1,0 +1,81 @@
+@font-face {
+    font-weight: normal;
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Regular.woff2");
+  }
+  
+  @font-face {
+    font-weight: bold; /* Соответствует значению bold */
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Bold.woff2");
+  }
+  
+  @font-face {
+    font-weight: medium;
+    font-family: Roboto;
+    src: url("../../styles/Roboto/Roboto-Medium.woff2");
+  }
+
+.title {
+    font-size: 44px;
+}
+
+.button {
+    font-size: 18px;
+}
+
+.p-20 {
+    font-size: var(--spaceL);
+}
+
+.p-18 {
+    font-size: 18px;
+
+}
+
+.p-16 {
+    font-size: var(--spaceM);
+
+}
+
+.p-14 {
+    font-size: var(--spaceS);
+
+}
+
+.normal {
+    font-weight: normal;
+}
+
+.medium {
+    font-weight: medium;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.primary {
+    color: #000000;
+}
+
+.secondary {
+    color: #AFADB5;
+}
+
+.accent {
+    color: var(--color-brand);
+}
+
+/* .maxLines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    box-orient: vertical;
+
+} */
