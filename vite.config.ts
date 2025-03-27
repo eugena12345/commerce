@@ -18,11 +18,14 @@ const parseTsConfigPaths = (paths: Record<string, string[]>): Record<string, str
   return webpackConfigAliases;
 };
 
-
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: parseTsConfigPaths(tsconfig.compilerOptions.paths),
+    alias: {
+    //parseTsConfigPaths(tsconfig.compilerOptions.paths),
+    '@': path.resolve(__dirname, './src'), // Алиас для корня src
+    '@components': path.resolve(__dirname, './src/components'), // Алиас для папки components
+    '@utils': path.resolve(__dirname, './src/utils'), }// Алиас для папки utils
+
   },
 })

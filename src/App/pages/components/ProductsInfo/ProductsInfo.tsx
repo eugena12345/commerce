@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './ProductsInfo.module.css';
-import Text from "../../../components/Text/Text";
+import Text from "../../../../components/Text/Text";
 
 const ProductsInfo = () => {
     return (

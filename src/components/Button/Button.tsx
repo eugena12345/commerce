@@ -1,6 +1,8 @@
 // import { string } from 'prop-types';
 import React from 'react';
 import Loader from './../Loader';
+//'@components/Loader';
+//'./../Loader';
 import './Button.css';
 import classNames from 'classnames-ts';
 
