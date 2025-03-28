@@ -1,0 +1,52 @@
+.container {
+    background-color: lightblue;
+
+    /* padding: 100px; */
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-around;
+    /* width: 100vw; */
+    margin: 60px 100px 32px 100px;
+
+}
+
+.itemCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemCard > img{
+    /* padding-left: 48px; */
+    width: 35vw;
+    height: 35vw;
+}
+
+.descriptionItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.relatedTitle {
+    margin-top: 48px;
+    margin-bottom: 32px;
+
+}
+
+.relatedItems {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 146px;
+}
+
+.itemCard && .arrow > img  {
+    width: 40px;
+}

@@ -4,8 +4,21 @@ import './index.css'
 import App from './App';
 import React from 'react';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+
+import { routesConfig } from "./config/routes";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router";
+
+const router = createBrowserRouter(routesConfig);
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLDivElement
+);
+
+root.render(<RouterProvider router={router} />);
+
+// createRoot(document.getElementById('root')!).render(
+//   <StrictMode>
+//     <App />
+//   </StrictMode>,
+// )

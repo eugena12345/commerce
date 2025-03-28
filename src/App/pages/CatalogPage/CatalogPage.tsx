@@ -9,8 +9,9 @@ import axios from 'axios';
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.css';
 import qs from 'qs';
+import { Link } from "react-router";
 
-type Image = {
+export type Image = {
     alternativeText: null | string,
     caption: null | string,
     createdAt: string,
@@ -33,7 +34,7 @@ type Image = {
     width: number,
 }
 
-type ProductCategory = {
+export type ProductCategory = {
     createdAt: string,
     documentId: string,
     id: number,
@@ -42,7 +43,7 @@ type ProductCategory = {
     updatedAt: string,
 }
 
-type ProductType = {
+export type ProductType = {
     createdAt: string,
     description: string,
     discountPercent: number,
@@ -91,20 +92,29 @@ const CatalogPage = () => {
 
 
     }, []);
+
+    const handlerClick = (): void => {
+
+    }
+
     return (
         <div className={styles.container}>
             <ProductsInfo />
             <SearchProducts totalItems={totalItems} />
             <div className={styles.products}>
                 {items.length > 0 &&
-                    items.map((item) => <div key={item.id}>
-                        <InfoCard image={item.images[0].url}
-                            captionSlot={item.productCategory.title}
-                            title={item.title}
-                            subtitle={item.description}
-                            contentSlot={item.price}
-                            actionSlot={<Button>Add to Cart</Button>}
-                        /> </div>)}
+                    items.map((item) => <div key={item.id} onClick={handlerClick}>
+                        <Link to='/products/1'>
+                            {/* item.id */}
+                            <InfoCard image={item.images[0].url}
+                                captionSlot={item.productCategory.title}
+                                title={item.title}
+                                subtitle={item.description}
+                                contentSlot={item.price}
+                                actionSlot={<Button>Add to Cart</Button>}
+                            />
+                        </Link>
+                    </div>)}
             </div>
 
 
