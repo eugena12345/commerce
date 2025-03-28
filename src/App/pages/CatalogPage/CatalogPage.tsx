@@ -10,6 +10,7 @@ import Button from "components/Button/Button";
 import styles from './CatalogPage.module.css';
 import qs from 'qs';
 import { Link } from "react-router";
+import { routes } from "config/routes.config";
 
 export type Image = {
     alternativeText: null | string,
@@ -104,7 +105,7 @@ const CatalogPage = () => {
             <div className={styles.products}>
                 {items.length > 0 &&
                     items.map((item) => <div key={item.id} onClick={handlerClick}>
-                        <Link to={`/products/${item.documentId}`}>
+                        <Link to={routes.product.create(item.documentId)}>
                         {/* item.id */}
                             <InfoCard image={item.images[0].url}
                                 captionSlot={item.productCategory.title}

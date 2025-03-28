@@ -4,6 +4,7 @@ import logo from 'assets/images/Frame.svg';
 import lalasiaLogo from 'assets/images/Lalasia.svg';
 import bag from 'assets/images/bag-2.svg';
 import userSvg from 'assets/images/user.svg';
+import { routes } from 'config/routes.config';   
 import { Link } from 'react-router';
 
 const Header = () => {
@@ -15,9 +16,9 @@ const Header = () => {
             </div>
             <nav className={styles.headerNav}>
                 <ul>
-                    <li><Link to="/products">Products</Link></li>
-                    <li><Link to="/products">Categories</Link></li>
-                    <li><Link to="/products">About us</Link></li>
+                    <li><Link to={routes.products.create()}>Products</Link></li>
+                    <li><Link to={routes.products.create()}>Categories</Link></li>
+                    <li><Link to={routes.products.create()}>About us</Link></li>
                 </ul>
             </nav>
 
