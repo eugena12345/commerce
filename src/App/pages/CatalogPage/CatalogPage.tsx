@@ -104,8 +104,8 @@ const CatalogPage = () => {
             <div className={styles.products}>
                 {items.length > 0 &&
                     items.map((item) => <div key={item.id} onClick={handlerClick}>
-                        <Link to='/products/1'>
-                            {/* item.id */}
+                        <Link to={`/products/${item.documentId}`}>
+                        {/* item.id */}
                             <InfoCard image={item.images[0].url}
                                 captionSlot={item.productCategory.title}
                                 title={item.title}

@@ -10,6 +10,7 @@ import qs from 'qs';
 import Button from 'components/Button/Button';
 import InfoCard from 'App/pages/components/InfoCard/InfoCard';
 import arrowBack from 'assets/images/ArrowBack.svg';
+import { useParams } from 'react-router';
 
 
 const ProductPage = () => {
@@ -21,7 +22,9 @@ const ProductPage = () => {
     const params = {
         populate: ['images', 'productCategory']
     };
-    const documentId = "ynvrpepgr8vlyb4op8370h82";
+    const {id} = useParams();
+    //в следующей строке возможно лучше поменять на реаальный id, а по id получить item и documentId
+    const documentId = id;
     const queryString = qs.stringify(params);
     console.log(queryString);
     const url = `${STRAPI_URL}${documentId}?${queryString}`;
