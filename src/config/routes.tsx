@@ -1,4 +1,4 @@
-import { RouteObject } from "react-router";
+import { Navigate, RouteObject } from "react-router";
 import App from "../App";
 import CatalogPage from "App/pages/CatalogPage/CatalogPage";
 import ProductPage from "App/pages/ProductPage/ProductPage";
@@ -17,5 +17,9 @@ export const routesConfig: RouteObject[] = [
           element: <ProductPage />
         }
       ]
-  }
+  },
+  {
+    path: "*",
+    element: <Navigate to="/products" replace />,
+  },
 ];
