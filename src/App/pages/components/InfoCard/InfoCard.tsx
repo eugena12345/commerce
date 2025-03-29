@@ -30,7 +30,9 @@ const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, s
             <div className={styles.info}>
                 <div className={styles.description}>
                     {captionSlot && <p className={styles.captionSlot}>{captionSlot}</p>}
+                    <div className={styles.titleDescroption}>
                     <Text className="pb-8" view={'p-20'} weight='medium' maxLines={2} color='primary'>{title}</Text>
+                    </div>
                     <Text className="pb-8" view={'p-16'} weight='normal' maxLines={3} color='secondary'>{subtitle}</Text>
                 </div>
 

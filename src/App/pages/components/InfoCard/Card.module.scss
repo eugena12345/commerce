@@ -29,6 +29,7 @@ $spaceXXS: 4px;
     font-family: 'Roboto';
     background-color: white;
     height: 100%;
+    align-items: stretch;
 
     &:hover {
         box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.25);
@@ -36,26 +37,41 @@ $spaceXXS: 4px;
 
     img {
         width: 100%;
-        height: 100%;
         background-color: #d9d9d9;
+        flex-grow: 0;
     }
 
     .info {
         padding-top: $spaceXL;
         padding-bottom: $spaceXL;
         background-color: white;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+            align-items: stretch;
 
         .description {
             padding-bottom: $spaceL;
             padding-left: $spaceXS;
             padding-right: $spaceXS;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: stretch;
+            flex-grow: 1;
 
             .captionSlot {
                 margin-bottom: $spaceXXS;
-
                 font-size: $spaceS;
                 color: #afadb5;
                 font-weight: medium;
+                flex-grow: 0;
+            }
+
+            .titleDescroption {
+                display: flex;
+                flex-grow: 1;
             }
         }
 
@@ -65,6 +81,7 @@ $spaceXXS: 4px;
             justify-content: space-between;
             padding-left: $spaceXS;
             padding-right: $spaceXS;
+            flex-grow: 0;
 
             .price {
                 display: flex;
