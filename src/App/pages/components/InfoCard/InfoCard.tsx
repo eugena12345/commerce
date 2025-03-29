@@ -27,15 +27,15 @@ const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, s
     return (
         <div className={actualClassName} onClick={onClick}>
             <img src={image} alt='картинка' />
-            <div className="info">
-                <div className="description">
-                    {captionSlot && <p className="pb-8 captionSlot" >{captionSlot}</p>}
+            <div className={styles.info}>
+                <div className={styles.description}>
+                    {captionSlot && <p className={styles.captionSlot}>{captionSlot}</p>}
                     <Text className="pb-8" view={'p-20'} weight='medium' maxLines={2} color='primary'>{title}</Text>
                     <Text className="pb-8" view={'p-16'} weight='normal' maxLines={3} color='secondary'>{subtitle}</Text>
                 </div>
 
-                <div className="buyInfo">
-                    <div className='price'>
+                <div className={styles.buyInfo}>
+                    <div className={styles.price}>
                         ${contentSlot}
                     </div>
                     <div>{actionSlot}</div>

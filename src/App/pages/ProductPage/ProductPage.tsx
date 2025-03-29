@@ -1,5 +1,5 @@
 
-const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+// const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 import styles from './ProductPage.module.scss';
 import Text from 'components/Text/Text';
@@ -9,9 +9,12 @@ import axios from 'axios';
 import qs from 'qs';
 import Button from 'components/Button/Button';
 import InfoCard from 'App/pages/components/InfoCard/InfoCard';
-import arrowBack from 'assets/images/ArrowBack.svg';
-import { useParams } from 'react-router';
+//import arrowBack from 'assets/images/ArrowBack.svg';
+import { useNavigate, useParams } from 'react-router';
+import arrowRight from 'assets/images/arrow-right.svg'
+import { routes } from 'config/routes.config';
 
+const API_TOKEN = 'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3c51739cdaf3a28a4fdf8b83231163075ef6a8435a774867d035af53717fecd37bca814c6b7938f02d2893643e2c1b6a2f79b3ca715222895e8ee9374c0403d44081e135cda1f811fe7cfec6454746a5657ba070ec8456462f8ca0e881232335d1ef'
 
 const ProductPage = () => {
     const [item, setItem] = useState<ProductType | null>(null);
@@ -22,7 +25,7 @@ const ProductPage = () => {
     const params = {
         populate: ['images', 'productCategory']
     };
-    const {id} = useParams();
+    const { id } = useParams();
     //в следующей строке возможно лучше поменять на реаальный id, а по id получить item и documentId
     const documentId = id;
     const queryString = qs.stringify(params);
@@ -35,7 +38,6 @@ const ProductPage = () => {
             url,
             {
                 headers: {
-                    // API_TOKEN нужно получить в боте при выборе проекта
                     Authorization: `Bearer ${API_TOKEN}`,
                 },
             },
@@ -47,20 +49,23 @@ const ProductPage = () => {
 
     }, []);
 
+    const navigate = useNavigate();
+
+
     return (
         <div className={styles.container}>
-            <div className={styles.back}>
-            <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
+            <div className={styles.back} onClick={() => navigate(routes.products.create())}>
+                <img src={arrowRight} alt='' />
+                <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
 
             </div>
             <div className={styles.itemCard}>
                 {item &&
                     <>
                         <img src={item.images[0].url} alt="картинка" />
-                        <div  className={styles.arrow}>
-                        <img src={arrowBack} alt="" />
-
-                        </div>
+                        {/* <div className={styles.arrow}>
+                            <img src={arrowBack} alt="" />
+                        </div> */}
                         <div className={styles.descriptionItem}>
 
                             <Text view='title'>{item.title}</Text>
@@ -77,14 +82,10 @@ const ProductPage = () => {
             <Text className={styles.relatedTitle} view='p-20' color='primary' weight='bold'>Related Items</Text>
             <div className={styles.relatedItems}>
                 {item &&
-                
-                // <div>one</div>
-                
-
                     <>
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>}/>
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>}/>
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>}/>
+                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
+                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
+                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
                     </>
                 }
             </div>

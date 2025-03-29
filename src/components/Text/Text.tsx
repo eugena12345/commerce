@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Text.module.css';
+import styles from './Text.module.scss';
 //import { number } from 'prop-types';
 
 export type TextProps = {

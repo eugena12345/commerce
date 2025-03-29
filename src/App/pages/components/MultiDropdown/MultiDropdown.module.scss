@@ -1,47 +1,25 @@
-@font-face {
-    font-weight: 400;
-    font-family: Roboto;
-    src: url("../../styles/Roboto/Roboto-Regular.woff2");
-  }
-  
-  @font-face {
-    font-weight: 700; /* Соответствует значению bold */
-    font-family: Roboto;
-    src: url("../../styles/Roboto/Roboto-Bold.woff2");
-  }
-  
-  @font-face {
-    font-weight: 300;
-    font-family: Roboto;
-    src: url("../../styles/Roboto/Roboto-Medium.woff2");
-  }
-
 .options {
-    background-color: white;
-    margin-top: var(--spaceXXS);
-    box-shadow: 0px 4px 10px 0 #00000030;
-    font-size: var(--spaceM);
-    font-weight: normal;
+  background-color: white;
+  margin-top: var(--spaceXXS);
+  box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.18);
+  font-size: var(--spaceM);
+  font-weight: normal;
 
-}
-
-.option {
+  .option {
     padding: var(--spaceS) var(--spaceXS);
     color: #000000;
-}
 
-.option:hover {
-    color: var(--color-optionHover);;
-}
+    &:hover {
+      color: var(--color-optionHover);
+    }
+  }
 
-.selected {
+  .selected {
     padding: var(--spaceS) var(--spaceXS);
     color: var(--color-brand);
 
-}
-
-.selected:hover {
-    padding: var(--spaceS) var(--spaceXS);
-    color: var(--color-brand);
-
+    &:hover {
+      color: var(--color-brand);
+    }
+  }
 }

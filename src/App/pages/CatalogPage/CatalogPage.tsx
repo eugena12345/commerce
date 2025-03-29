@@ -1,5 +1,4 @@
-const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-
+// const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 import { useEffect, useState } from "react";
 import InfoCard from "../components/InfoCard";
@@ -9,7 +8,7 @@ import axios from 'axios';
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.scss';
 import qs from 'qs';
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import { routes } from "config/routes.config";
 
 export type Image = {
@@ -18,8 +17,6 @@ export type Image = {
     createdAt: string,
     documentId: string,
     ext: string,
-    // formats: 
-    // {large: {…}, small: {…}, medium: {…}, thumbnail: {…}}
     hash: string,
     height: number,
     id: number,
@@ -60,6 +57,9 @@ export type ProductType = {
     productCategory: ProductCategory,
 }
 
+
+const API_TOKEN = 'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3c51739cdaf3a28a4fdf8b83231163075ef6a8435a774867d035af53717fecd37bca814c6b7938f02d2893643e2c1b6a2f79b3ca715222895e8ee9374c0403d44081e135cda1f811fe7cfec6454746a5657ba070ec8456462f8ca0e881232335d1ef'
+
 const CatalogPage = () => {
     const [items, setItems] = useState<ProductType[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
@@ -79,7 +79,6 @@ const CatalogPage = () => {
             url,
             {
                 headers: {
-                    // API_TOKEN нужно получить в боте при выборе проекта
                     Authorization: `Bearer ${API_TOKEN}`,
                 },
             },
@@ -93,20 +92,17 @@ const CatalogPage = () => {
 
 
     }, []);
-
-    const handlerClick = (): void => {
-
-    }
+    
+    const navigate = useNavigate();
 
     return (
         <div className={styles.container}>
-            <ProductsInfo />
-            <SearchProducts totalItems={totalItems} />
-            <div className={styles.products}>
-                {items.length > 0 &&
-                    items.map((item) => <div key={item.id} onClick={handlerClick}>
-                        <Link to={routes.product.create(item.documentId)}>
-                        {/* item.id */}
+            <div className={styles.containerMaxWidth}>
+                <ProductsInfo />
+                <SearchProducts totalItems={totalItems} />
+                <div className={styles.products}>
+                    {items.length > 0 &&
+                        items.map((item) => <div className={styles.routesDiv} key={item.id} onClick={() => navigate(routes.product.create(item.documentId))}>
                             <InfoCard image={item.images[0].url}
                                 captionSlot={item.productCategory.title}
                                 title={item.title}
@@ -114,10 +110,9 @@ const CatalogPage = () => {
                                 contentSlot={item.price}
                                 actionSlot={<Button>Add to Cart</Button>}
                             />
-                        </Link>
-                    </div>)}
+                        </div>)}
+                </div>
             </div>
-
 
         </div>
     );

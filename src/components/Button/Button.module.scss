@@ -10,26 +10,28 @@
     font-size: 18px;
     height: 54px;
     border-radius: 0;
+
+    &:hover {
+        background-color: var(--color-brand-hover);
+    }
+
+    &:active {
+        background-color: var(--color-brand-active);
+    }
 }
 
-.original:hover {
-    background-color: var(--color-brand-hover);
-}
-
-.original:active {
-    background-color: var(--color-brand-active);
-}
-
-.loading, .loading:hover{
+.loading,
+.loading:hover {
     color: white;
     background-color: var(--color-brand);
 }
 
-.loading .disabled{
+.loading .disabled {
     color: white;
     background-color: var(--color-brand);
 }
 
-.disabled, .disabled:hover {
+.disabled,
+.disabled:hover {
     background-color: #D9D9D9;
 }

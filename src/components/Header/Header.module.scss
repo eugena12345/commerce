@@ -1,67 +1,109 @@
+$color-brand: var(--color-brand);
+$white: rgb(255, 255, 255);
+
 .container {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+  padding-left: 100px;
+  padding-right: 100px;
+  box-sizing: border-box; 
+
+
+  .containerMaxWidth {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    /* потом убрать тень */
-    /* box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.25); */
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: $white;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
 
+    .logo {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logoLala {
+      width: 76px;
+      height: 19px;
+    }
+
+    img {
+      background-color: $white;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        display: flex;
+        gap: 20px;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        height: 100%;
+
+
+        li {
+          list-style-type: none;
+
+          a {
+            color: black;
+            position: relative;
+
+            &:hover {
+              color: $color-brand;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              right: 0;
+              bottom: -37px;
+              height: 2px;
+              background-color: $color-brand;
+              transform: scaleX(0);
+              transition: transform 0.3s ease;
+            }
+
+            &:hover::after {
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+    }
+
+    .userInfo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .logoContainer,
+    .userInfoContainer {
+      height: 90px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .userInfoContainer {
+      gap: 24px;
+    }
+  }
 }
-
-.logo{
-    width: 42px;
-    height: 42px;
-}
-
-img{
-    background-color: white;
-}
-
-.headerNav > ul{
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-  }
-  ul {
-    padding: 0;
-  }
-
-  li {
-    list-style-type:  none;
-  }
-  a {
-    color: black;
-    position: relative;
-  }
-  a:hover {
-    color: var(--color-brand);
-  }
-
-   a::after {
-    content: ''; /* Создаем псевдоэлемент */
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -37px; /* Смещаем линию вниз, за пределы блока */
-    height: 2px; /* Толщина линии */
-    background-color: var(--color-brand); /* Цвет линии */
-    transform: scaleX(0); /* Начальное состояние: линия невидима */
-    transition: transform 0.3s ease; /* Плавная анимация */
-  }
-
-   a:hover::after {
-    transform: scaleX(1); /* Линия растягивается до полной ширины */
-  }
-  .userInfo {
-    width: 30px;
-    height: 30px;
-  }
-
-  .logoContainer, .userInfoContainer {
-height: 90px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-  }

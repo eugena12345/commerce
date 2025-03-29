@@ -1,44 +1,47 @@
-$lightblue: lightblue;
 $gap-button-group: 24px;
 
 .container {
-    background-color: $lightblue;
-
-    // padding: 100px; 
-
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: start;
     justify-content: space-around;
-    // width: 100vw; 
-    margin: 60px 100px 32px 100px;
+    margin: 150px 100px 32px 100px;
+
+    .back {
+        display: flex;
+        flex-direction: row;
+        p {
+            margin: 0;
+        }
+    }
 }
 
 .itemCard {
     display: flex;
     flex-direction: row;
+    margin-top: 24px;
 
-    > img {
-        // padding-left: 48px; 
+    >img {
         width: 35vw;
         height: 35vw;
     }
 
-    &.arrow > img {
+    &.arrow>img {
         width: 40px;
     }
-}
 
-.descriptionItem {
-    display: flex;
-    flex-direction: column;
-}
+    .descriptionItem {
+        display: flex;
+        flex-direction: column;
+        margin-left: 48px;
 
-.buttonGroup {
-    display: flex;
-    flex-direction: row;
-    gap: $gap-button-group;
+        .buttonGroup {
+            display: flex;
+            flex-direction: row;
+            gap: $gap-button-group;
+        }
+    }
 }
 
 .relatedTitle {
