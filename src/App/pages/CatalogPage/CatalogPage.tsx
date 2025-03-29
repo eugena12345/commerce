@@ -7,7 +7,7 @@ import ProductsInfo from "../components/ProductsInfo";
 import SearchProducts from "../components/SearchProducts";
 import axios from 'axios';
 import Button from "components/Button/Button";
-import styles from './CatalogPage.module.css';
+import styles from './CatalogPage.module.scss';
 import qs from 'qs';
 import { Link } from "react-router";
 import { routes } from "config/routes.config";

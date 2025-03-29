@@ -1,7 +1,7 @@
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
-import styles from './ProductPage.module.css';
+import styles from './ProductPage.module.scss';
 import Text from 'components/Text/Text';
 import { ProductType } from 'App/pages/CatalogPage/CatalogPage';
 import { useEffect, useState } from 'react';
@@ -77,6 +77,10 @@ const ProductPage = () => {
             <Text className={styles.relatedTitle} view='p-20' color='primary' weight='bold'>Related Items</Text>
             <div className={styles.relatedItems}>
                 {item &&
+                
+                // <div>one</div>
+                
+
                     <>
                         <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>}/>
                         <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>}/>
