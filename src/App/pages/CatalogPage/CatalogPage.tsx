@@ -10,6 +10,7 @@ import styles from './CatalogPage.module.scss';
 import qs from 'qs';
 import { useNavigate } from "react-router";
 import { routes } from "config/routes.config";
+import Pagination from "App/pages/components/Pagination/Pagination";
 
 export type Image = {
     alternativeText: null | string,
@@ -112,6 +113,7 @@ const CatalogPage = () => {
                             />
                         </div>)}
                 </div>
+                <Pagination/>
             </div>
 
         </div>
