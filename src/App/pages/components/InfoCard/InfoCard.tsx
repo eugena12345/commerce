@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css';
+import styles from './Card.module.scss';
 import Text from 'components/Text/Text';
 
 export type CardProps = {
@@ -23,7 +23,7 @@ export type CardProps = {
 
 const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, subtitle, contentSlot, onClick, actionSlot,  }) => {
     //...rest
-    const actualClassName = `card ${className}`
+    const actualClassName = `${styles.card} ${className}`
     return (
         <div className={actualClassName} onClick={onClick}>
             <img src={image} alt='картинка' />

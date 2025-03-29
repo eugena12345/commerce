@@ -1,5 +1,5 @@
 import React from 'react';
-import './Input.css';
+import styles from './Input.module.scss';
 import classNames from 'classnames-ts';
 
 export type InputProps = Omit<
@@ -19,9 +19,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value);
     };
-    const styles = classNames('customInp', rest.className )
+    const actualStyles = classNames(styles.customInp, rest.className )
     return (
-      <div className={styles}>
+      <div className={actualStyles}>
         <input type="text" placeholder='Text' value={value} onChange={handleChange} {...rest} />
         {afterSlot && afterSlot}
       </div>

@@ -1,5 +1,5 @@
 //import React from "react";
-import styles from './ProductsInfo.module.css';
+import styles from './ProductsInfo.module.scss';
 import Text from "components/Text/Text";
 
 const ProductsInfo = () => {

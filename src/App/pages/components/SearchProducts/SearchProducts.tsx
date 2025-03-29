@@ -1,5 +1,5 @@
 //import React from "react";
-import styles from './SearchProducts.module.css';
+import styles from './SearchProducts.module.scss';
 import Input from "../Input/Input";
 import Button from "components/Button/Button";
 import MultiDropdown from "../MultiDropdown/MultiDropdown";

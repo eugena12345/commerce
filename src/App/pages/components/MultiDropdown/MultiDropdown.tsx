@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Input from '../Input/Input';
 import ArrowDownIcon from 'components/icons/ArrowDownIcon';
-import './MultiDropdown.css';
+import styles from'./MultiDropdown.module.scss';
 
 export type Option = {
   /** Ключ варианта, используется для отправки на бек/использования в коде */
@@ -93,10 +93,10 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
     <>
       <Input className={className} onChange={handleUpdateInputValue} afterSlot={<ArrowDownIcon />} disabled={disabled} onClick={openOptions} {...args}
       />
-      <div ref={dropdownRef} className="options">
+      <div ref={dropdownRef} className={styles.options}>
         {isOptionsOpen && !disabled &&
           filteredOptions.map((item) => {
-            const className = value.includes(item) ? 'selected' : 'option'
+            const className = value.includes(item) ? styles.selected : styles.options
             return <div key={item.key} onClick={() => handleClick(item)} className={className}>{item.value}</div>
           })
         }
