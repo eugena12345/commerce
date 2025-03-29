@@ -6,16 +6,18 @@
 
 import { Outlet } from 'react-router';
 
-import './App.css';
+//import './App.css';
 
-import CatalogPage from './pages/CatalogPage'
+//import CatalogPage from './pages/CatalogPage'
 import Header from '../components/Header'
-import ProductPage from 'App/pages/ProductPage/ProductPage';
+//import ProductPage from 'App/pages/ProductPage/ProductPage';
+
+import styles from './App.module.scss';
 
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <Header/>
       <Outlet />
     </div>
