@@ -1,5 +1,5 @@
 //import React from "react";
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import logo from 'assets/images/Frame.svg';
 import lalasiaLogo from 'assets/images/Lalasia.svg';
 import bag from 'assets/images/bag-2.svg';

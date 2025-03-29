@@ -1,5 +1,5 @@
-import * as React from 'react'
-import './Text.css'
+import * as React from 'react';
+import styles from './Text.module.css';
 //import { number } from 'prop-types';
 
 export type TextProps = {
@@ -28,13 +28,13 @@ const Text: React.FC<TextProps> = ({
             resultClassNames.push(className);
         }
         if (view) {
-            resultClassNames.push(view);
+            resultClassNames.push(styles[view]);
         }
         if (weight) {
-            resultClassNames.push(weight);
+            resultClassNames.push(styles[weight]);
         }
         if (color) {
-            resultClassNames.push(color);
+            resultClassNames.push(styles[color]);
         }
         return resultClassNames.join(' ')
     }

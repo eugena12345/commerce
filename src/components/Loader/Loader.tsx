@@ -1,6 +1,6 @@
 import React from 'react';
 // import myImg from './Size=l.svg'
-import './Loader.css';
+//import styles from './Loader.module.scss';
 
 export type LoaderProps = {
     /** Размер */

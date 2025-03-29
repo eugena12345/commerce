@@ -3,7 +3,7 @@ import React from 'react';
 import Loader from 'components/Loader';
 //'@components/Loader';
 //'./../Loader';
-import styles from './Button.module.css';
+import styles from './Button.module.scss';
 import classNames from 'classnames-ts';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {

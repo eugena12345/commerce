@@ -7,23 +7,23 @@ export type IconProps = React.SVGAttributes<SVGElement> & {
     'data-testid'?: string;
 };
 
-const Icon: React.FC<React.PropsWithChildren<IconProps>> = ({ className, color, children, width = '24px', height='24px' }) => {
-    const getClassNames = () => {
-        const resultClassnames: string[] = [];
-        if (className) {
-            resultClassnames.push(className);
-        }
-        if (color) {
-            resultClassnames.push(color);
-        }
-        return resultClassnames.join(' ');
-    }
+// const Icon: React.FC<React.PropsWithChildren<IconProps>> = ({ className, color, children, width = '24px', height='24px' }) => {
+//     const getClassNames = () => {
+//         const resultClassnames: string[] = [];
+//         if (className) {
+//             resultClassnames.push(className);
+//         }
+//         if (color) {
+//             resultClassnames.push(color);
+//         }
+//         return resultClassnames.join(' ');
+//     }
 
-    return (
-        <div className={getClassNames()} style={{width: width, height: height}}>
-            {children}
-        </div>
-    )
-}
+//     return (
+//         <div className={getClassNames()} style={{width: width, height: height}}>
+//             {children}
+//         </div>
+//     )
+// }
 
-export default Icon;
+// export default Icon;
