@@ -11,52 +11,8 @@ import qs from 'qs';
 import { useNavigate } from "react-router";
 import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
+import { ProductType} from './type';
 
-export type Image = {
-    alternativeText: null | string,
-    caption: null | string,
-    createdAt: string,
-    documentId: string,
-    ext: string,
-    hash: string,
-    height: number,
-    id: number,
-    mime: string,
-    name: string,
-    previewUrl: null | string,
-    provider: string,
-    provider_metadata: null,
-    publishedAt: string,
-    size: number,
-    updatedAt: string,
-    url: string,
-    width: number,
-}
-
-export type ProductCategory = {
-    createdAt: string,
-    documentId: string,
-    id: number,
-    publishedAt: string,
-    title: string,
-    updatedAt: string,
-}
-
-export type ProductType = {
-    createdAt: string,
-    description: string,
-    discountPercent: number,
-    documentId: string,
-    id: number,
-    isInStock: boolean,
-    price: number,
-    publishedAt: string,
-    rating: number,
-    title: string,
-    updatedAt: string,
-    images: Image[],
-    productCategory: ProductCategory,
-}
 
 
 const API_TOKEN = 'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3c51739cdaf3a28a4fdf8b83231163075ef6a8435a774867d035af53717fecd37bca814c6b7938f02d2893643e2c1b6a2f79b3ca715222895e8ee9374c0403d44081e135cda1f811fe7cfec6454746a5657ba070ec8456462f8ca0e881232335d1ef'

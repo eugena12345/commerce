@@ -1,0 +1,45 @@
+export type Image = {
+    alternativeText: null | string,
+    caption: null | string,
+    createdAt: string,
+    documentId: string,
+    ext: string,
+    hash: string,
+    height: number,
+    id: number,
+    mime: string,
+    name: string,
+    previewUrl: null | string,
+    provider: string,
+    provider_metadata: null,
+    publishedAt: string,
+    size: number,
+    updatedAt: string,
+    url: string,
+    width: number,
+}
+
+export type ProductCategory = {
+    createdAt: string,
+    documentId: string,
+    id: number,
+    publishedAt: string,
+    title: string,
+    updatedAt: string,
+}
+
+export type ProductType = {
+    createdAt: string,
+    description: string,
+    discountPercent: number,
+    documentId: string,
+    id: number,
+    isInStock: boolean,
+    price: number,
+    publishedAt: string,
+    rating: number,
+    title: string,
+    updatedAt: string,
+    images: Image[],
+    productCategory: ProductCategory,
+}
