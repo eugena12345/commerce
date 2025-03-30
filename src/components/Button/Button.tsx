@@ -1,5 +1,5 @@
 // import { string } from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import Loader from 'components/Loader';
 //'@components/Loader';
 //'./../Loader';
@@ -40,4 +40,4 @@ const Button: React.FC<ButtonProps> = (props) => {
   )
 };
 
-export default Button;
+export default memo(Button);

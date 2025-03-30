@@ -1,4 +1,5 @@
 //import React from "react";
+import { memo } from 'react';
 import styles from './ProductsInfo.module.scss';
 import Text from "components/Text/Text";
 
@@ -12,4 +13,4 @@ const ProductsInfo = () => {
     )
 }
 
-export default ProductsInfo;
+export default memo(ProductsInfo);

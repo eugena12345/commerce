@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import Input from '../Input/Input';
 import ArrowDownIcon from 'components/icons/ArrowDownIcon';
 import styles from'./MultiDropdown.module.scss';
@@ -105,4 +105,4 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
   )
 };
 
-export default MultiDropdown;
+export default memo(MultiDropdown);

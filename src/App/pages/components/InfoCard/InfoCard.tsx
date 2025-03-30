@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './Card.module.scss';
 import Text from 'components/Text/Text';
 
@@ -49,4 +49,4 @@ const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, s
     )
 };
 
-export default InfoCard;
+export default memo(InfoCard) ;
