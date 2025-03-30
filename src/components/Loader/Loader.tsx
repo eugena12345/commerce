@@ -4,12 +4,13 @@ export type LoaderProps = {
     className?: string;
 };
 
+const loaderSize = {
+    s: '24px',
+    m: '48px',
+    l: '60px',
+};
+
 const Loader: React.FC<LoaderProps> = ({ size = 'l', className }) => {
-    const loaderSize = {
-        s: '24px',
-        m: '48px',
-        l: '60px',
-    }
     return (
         <div className={className} style={{ width: loaderSize[size], height: loaderSize[size] }}>
 <svg width={loaderSize[size]} height={loaderSize[size]} viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
