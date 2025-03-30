@@ -11,7 +11,7 @@ import qs from 'qs';
 import { useNavigate } from "react-router";
 import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
-import { ProductType} from './type';
+import { ProductType } from './type';
 
 
 
@@ -46,29 +46,34 @@ const CatalogPage = () => {
 
 
     }, [url]);
-    
+
     const navigate = useNavigate();
+    const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
 
     return (
         <div className={styles.container}>
-            <div className={styles.containerMaxWidth}>
+            <div className={styles[`container--maxWidth`]}>
                 <ProductsInfo />
                 <SearchProducts totalItems={totalItems} />
-                <div className={styles.products}>
+                <div className={styles[`container__products`]}>
                     {items.length > 0 &&
-                        items.map((item) => <div className={styles.routesDiv} key={item.id} onClick={() => navigate(routes.product.create(item.documentId))}>
-                            <InfoCard image={item.images[0].url}
-                                captionSlot={item.productCategory.title}
-                                title={item.title}
-                                subtitle={item.description}
-                                contentSlot={item.price}
-                                actionSlot={<Button>Add to Cart</Button>}
-                            />
-                        </div>)}
+                        items.map((item) => {
+                            return (
+                                <InfoCard image={item.images[0].url}
+                                    captionSlot={item.productCategory.title}
+                                    title={item.title}
+                                    subtitle={item.description}
+                                    contentSlot={item.price}
+                                    actionSlot={<Button>Add to Cart</Button>}
+                                    key={item.id}
+                                    onClick={() => navigaveToProductPage(item.documentId)}
+                                />
+                            )
+                        })
+                    }
                 </div>
-                <Pagination/>
+                <Pagination />
             </div>
-
         </div>
     );
 }
