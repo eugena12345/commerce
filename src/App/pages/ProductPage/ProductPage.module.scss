@@ -1,6 +1,6 @@
 $gap-button-group: 24px;
 
-.container {
+.productpage {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -8,39 +8,42 @@ $gap-button-group: 24px;
     justify-content: space-around;
     margin: 150px 100px 32px 100px;
 
-    .back {
+    &__back {
         display: flex;
         flex-direction: row;
+
         p {
             margin: 0;
         }
     }
-}
 
-.itemCard {
-    display: flex;
-    flex-direction: row;
-    margin-top: 24px;
-
-    >img {
-        width: 35vw;
-        height: 35vw;
-    }
-
-    &.arrow>img {
-        width: 40px;
-    }
-
-    .descriptionItem {
+    .card {
         display: flex;
-        flex-direction: column;
-        margin-left: 48px;
+        flex-direction: row;
+        margin-top: 24px;
 
-        .buttonGroup {
+        >img {
+            width: 35vw;
+            height: 35vw;
+        }
+
+        &.arrow>img {
+            width: 40px;
+        }
+
+        &__description {
             display: flex;
-            flex-direction: row;
-            gap: $gap-button-group;
+            flex-direction: column;
+            margin-left: 48px;
+
+
         }
     }
+
 }
 
+.buttongroup {
+    display: flex;
+    flex-direction: row;
+    gap: $gap-button-group;
+}

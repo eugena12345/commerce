@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value);
     };
-    const actualStyles = classNames(styles.customInp, rest.className )
+    const actualStyles = classNames(styles.container, rest.className ? rest.className : '')
     return (
       <div className={actualStyles}>
         <input type="text" placeholder='Text' value={value} onChange={handleChange} {...rest} />

@@ -88,7 +88,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
       <div ref={dropdownRef} className={styles.options}>
         {isOptionsOpen && !disabled &&
           filteredOptions.map((item) => {
-            const className = value.includes(item) ? styles.selected : styles.options
+            const className = value.includes(item) ? styles['options__option--selected'] : styles['options__option'];
             return <div key={item.key} onClick={() => handleClick(item)} className={className}>{item.value}</div>
           })
         }

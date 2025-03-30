@@ -16,14 +16,14 @@ const SearchProducts = ({totalItems}: SearchProductsProps) => {
     }
     return (
         <div className={styles.container}>
-            <div className={styles.search}>
-                <Input placeholder="Search product" onChange={handleChange} value='' className={styles.grow}/>
+            <div className={styles['container__search']}>
+                <Input placeholder="Search product" onChange={handleChange} value='' className={styles['container__search--grow']}/>
                 <Button>Find now</Button>
             </div>
            
-                <MultiDropdown options={[]} value={[]} onChange={handleChange} getTitle={getTitle} className={styles.filter}/>
+                <MultiDropdown options={[]} value={[]} onChange={handleChange} getTitle={getTitle} className={styles['container__filter']}/>
             
-            <div className={styles.result}>
+            <div className={styles['container__result']}>
                 <Text tag='h2' color='primary'>Total products</Text>
                 <Text view='p-20' color='accent' weight='bold'>{totalItems}</Text>
             </div>

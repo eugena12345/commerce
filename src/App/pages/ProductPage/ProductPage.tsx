@@ -46,13 +46,13 @@ const ProductPage = () => {
 
     const navigate = useNavigate();
     return (
-        <div className={styles.container}>
-            <div className={styles.back} onClick={() => navigate(routes.main.create())}>
+        <div className={styles.productpage}>
+            <div className={styles['productpage__back']} onClick={() => navigate(routes.main.create())}>
                 <img src={arrowRight} alt='' />
                 <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
 
             </div>
-            <div className={styles.itemCard}>
+            <div className={styles.card}>
                 {item &&
                     <>
                         <img src={item.images[0].url} alt="картинка" />
@@ -60,12 +60,12 @@ const ProductPage = () => {
                         <div className={styles.arrow}>
                             <img src={arrowBack} alt="" />
                         </div> */}
-                        <div className={styles.descriptionItem}>
+                        <div className={styles['card__description']}>
 
                             <Text view='title' color='primary'>{item.title}</Text>
                             <Text view='p-16' color='secondary'>{item.description}</Text>
                             <Text view='title' color='primary'>${item.price}</Text>
-                            <div className={styles.buttonGroup}>
+                            <div className={styles.buttongroup}>
                                 <Button>Buy Now</Button>
                                 <Button>Add to Cart</Button>
                             </div>
