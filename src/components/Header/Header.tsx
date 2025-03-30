@@ -1,11 +1,9 @@
-//import React from "react";
 import styles from './Header.module.scss';
 import logo from 'assets/images/Frame.svg';
 import lalasiaLogo from 'assets/images/Lalasia.svg';
 import bag from 'assets/images/bag-2.svg';
 import userSvg from 'assets/images/user.svg';
-import { routes } from 'config/routes.config';
-import { Link } from 'react-router';
+import HeaderNav from 'components/HeaderNav/HeaderNav';
 
 const Header = () => {
     return (
@@ -15,13 +13,8 @@ const Header = () => {
                     <img src={logo} alt='logo' className={styles.logo} />
                     <img src={lalasiaLogo} alt='Lalasia' className={styles.logoLala} />
                 </div>
-                <nav className={styles.headerNav}>
-                    <ul>
-                        <li><Link to={routes.products.create()}>Products</Link></li>
-                        <li><Link to={routes.products.create()}>Categories</Link></li>
-                        <li><Link to={routes.products.create()}>About us</Link></li>
-                    </ul>
-                </nav>
+                
+                <HeaderNav />
 
                 <div className={styles.userInfoContainer}>
                     <img src={bag} alt='bag' className={styles.userInfo} />

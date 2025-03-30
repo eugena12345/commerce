@@ -12,7 +12,7 @@ $white: rgb(255, 255, 255);
   background-color: $white;
   padding-left: 100px;
   padding-right: 100px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
 
   .containerMaxWidth {
@@ -37,55 +37,6 @@ $white: rgb(255, 255, 255);
 
     img {
       background-color: $white;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      height: 100%;
-
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
-        align-items: center;
-        padding: 0;
-        height: 100%;
-
-
-        li {
-          list-style-type: none;
-
-          a {
-            color: black;
-            position: relative;
-
-            &:hover {
-              color: $color-brand;
-            }
-
-            &::after {
-              content: '';
-              position: absolute;
-              left: 0;
-              right: 0;
-              bottom: -37px;
-              height: 2px;
-              background-color: $color-brand;
-              transform: scaleX(0);
-              transition: transform 0.3s ease;
-            }
-
-            &:hover::after {
-              transform: scaleX(1);
-            }
-          }
-        }
-      }
     }
 
     .userInfo {
