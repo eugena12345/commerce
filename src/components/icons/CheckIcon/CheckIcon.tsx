@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IconProps } from '../Icon';
-// import style from './CheckIcon.module.scss';
 
 const CheckIcon: React.FC<IconProps> = (props) => {
     const getClassNames = () => {

@@ -3,26 +3,17 @@ import styles from './Card.module.scss';
 import Text from 'components/Text/Text';
 
 export type CardProps = {
-    /** Дополнительный classname */
     className?: string,
-    /** URL изображения */
     image: string;
-    /** Слот над заголовком */
     captionSlot?: React.ReactNode;
-    /** Заголовок карточки */
     title: React.ReactNode;
-    /** Описание карточки */
     subtitle: React.ReactNode;
-    /** Содержимое карточки (футер/боковая часть), может быть пустым */
     contentSlot?: React.ReactNode;
-    /** Клик на карточку */
     onClick?: React.MouseEventHandler;
-    /** Слот для действия */
     actionSlot?: React.ReactNode;
 };
 
 const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, subtitle, contentSlot, onClick, actionSlot,  }) => {
-    //...rest
     const actualClassName = `${styles.card} ${className}`
     return (
         <div className={actualClassName} onClick={onClick}>

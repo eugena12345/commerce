@@ -27,11 +27,9 @@ const CatalogPage = () => {
         populate: ['images', 'productCategory']
     };
     const queryString = qs.stringify(params);
-    console.log(queryString);
     const url = `${STRAPI_URL}${queryString}`;
 
     useEffect(() => {
-        console.log('hello');
         axios.get(
             url,
             {
@@ -40,7 +38,6 @@ const CatalogPage = () => {
                 },
             },
         ).then((response) => {
-            console.log(response.data);
             setItems(
                 [...response.data.data]
             );

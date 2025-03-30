@@ -1,4 +1,4 @@
-
+// todo
 // const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 import styles from './ProductPage.module.scss';
@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
 import Button from 'components/Button/Button';
-import InfoCard from 'App/pages/components/InfoCard/InfoCard';
+// todo: add image galery
 //import arrowBack from 'assets/images/ArrowBack.svg';
 import { useNavigate, useParams } from 'react-router';
 import arrowRight from 'assets/images/arrow-right.svg'
@@ -19,22 +19,18 @@ const API_TOKEN = 'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3
 
 const ProductPage = () => {
     const [item, setItem] = useState<ProductType | null>(null);
-    //https://front-school-strapi.ktsdev.ru/api/products/{documentId}?populate[0]=images&populate[1]=productCategory
-
     const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
     const STRAPI_URL = `${STRAPI_BASE_URL}/api/products/`;
     const params = {
         populate: ['images', 'productCategory']
     };
     const { id } = useParams();
-    //в следующей строке возможно лучше поменять на реаальный id, а по id получить item и documentId
+    //todo: в следующей строке возможно лучше поменять на реаальный id, а по id получить item и documentId
     const documentId = id;
     const queryString = qs.stringify(params);
-    console.log(queryString);
     const url = `${STRAPI_URL}${documentId}?${queryString}`;
 
     useEffect(() => {
-        console.log('Single Item');
         axios.get(
             url,
             {
@@ -43,16 +39,12 @@ const ProductPage = () => {
                 },
             },
         ).then((response) => {
-            console.log(response.data.data);
             setItem(response.data.data);
         });
-
 
     }, [url]);
 
     const navigate = useNavigate();
-
-
     return (
         <div className={styles.container}>
             <div className={styles.back} onClick={() => navigate(routes.main.create())}>
@@ -64,12 +56,13 @@ const ProductPage = () => {
                 {item &&
                     <>
                         <img src={item.images[0].url} alt="картинка" />
-                        {/* <div className={styles.arrow}>
+                        {/* TODO
+                        <div className={styles.arrow}>
                             <img src={arrowBack} alt="" />
                         </div> */}
                         <div className={styles.descriptionItem}>
 
-                            <Text view='title'>{item.title}</Text>
+                            <Text view='title' color='primary'>{item.title}</Text>
                             <Text view='p-16' color='secondary'>{item.description}</Text>
                             <Text view='title' color='primary'>${item.price}</Text>
                             <div className={styles.buttonGroup}>
@@ -80,7 +73,7 @@ const ProductPage = () => {
                     </>
                 }
             </div>
-            <Recomendation item={item}/>
+            <Recomendation item={item} />
         </div>
     )
 };

@@ -1,4 +1,3 @@
-//import React from "react";
 import styles from './SearchProducts.module.scss';
 import Input from "../Input/Input";
 import Button from "components/Button/Button";
@@ -11,7 +10,6 @@ interface SearchProductsProps {
 
 const SearchProducts = ({totalItems}: SearchProductsProps) => {
     const handleChange = () => {
-        console.log('i want to be changed');
     }
     const getTitle = () => {
         return ''

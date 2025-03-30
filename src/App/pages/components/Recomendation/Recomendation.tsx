@@ -9,7 +9,6 @@ type RecomendationProps = {
 }
 
 const Recomendation: React.FC<RecomendationProps> = ({item}) => {
-    console.log(item)
     return (
         <>
             <Text className={styles.relatedTitle} view='p-20' color='primary' weight='bold'>Related Items</Text>

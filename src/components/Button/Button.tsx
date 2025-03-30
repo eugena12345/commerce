@@ -1,15 +1,10 @@
-// import { string } from 'prop-types';
 import React, { memo } from 'react';
 import Loader from 'components/Loader';
-//'@components/Loader';
-//'./../Loader';
 import styles from './Button.module.scss';
 import classNames from 'classnames-ts';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  /** Состояние загрузки */
   loading?: boolean;
-  /** Текст кнопки */
   children: React.ReactNode;
   'data-testid'?: string;
 };
