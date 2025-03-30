@@ -48,7 +48,7 @@ const CatalogPage = () => {
         });
 
 
-    }, []);
+    }, [url]);
     
     const navigate = useNavigate();
 
