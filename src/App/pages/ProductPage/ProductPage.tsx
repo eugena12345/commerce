@@ -47,7 +47,7 @@ const ProductPage = () => {
         });
 
 
-    }, []);
+    }, [url]);
 
     const navigate = useNavigate();
 
