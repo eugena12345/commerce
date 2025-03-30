@@ -55,7 +55,7 @@ const ProductPage = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.back} onClick={() => navigate(routes.products.create())}>
+            <div className={styles.back} onClick={() => navigate(routes.main.create())}>
                 <img src={arrowRight} alt='' />
                 <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
 

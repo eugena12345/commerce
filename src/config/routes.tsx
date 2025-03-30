@@ -10,8 +10,8 @@ export const routesConfig: RouteObject[] = [
     element: <App />,
     children: [
         {
-          path: routes.products.mask,
-          element: <CatalogPage />
+          element: <CatalogPage />,
+          index: true
         },
         {
           path: routes.product.mask,
@@ -21,6 +21,6 @@ export const routesConfig: RouteObject[] = [
   },
   {
     path: "*",
-    element: <Navigate to={routes.products.mask} replace />,
+    element: <Navigate to={routes.main.create()} replace />,
   },
 ];
