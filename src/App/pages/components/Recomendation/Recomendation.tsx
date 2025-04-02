@@ -5,7 +5,7 @@ import { ProductType } from 'App/pages/CatalogPage/type';
 import Button from 'components/Button/Button';
 
 type RecomendationProps = {
-    item: ProductType
+    item: ProductType | null;
 }
 
 const Recomendation: React.FC<RecomendationProps> = ({item}) => {
