@@ -3,7 +3,7 @@
 
 import styles from './ProductPage.module.scss';
 import Text from 'components/Text/Text';
-import { ProductType } from 'App/pages/CatalogPage/CatalogPage';
+import { ProductType } from 'App/pages/CatalogPage/type';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
