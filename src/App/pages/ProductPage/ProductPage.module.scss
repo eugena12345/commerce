@@ -1,0 +1,49 @@
+$gap-button-group: 24px;
+
+.productpage {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-around;
+    margin: 150px 100px 32px 100px;
+
+    &__back {
+        display: flex;
+        flex-direction: row;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .card {
+        display: flex;
+        flex-direction: row;
+        margin-top: 24px;
+
+        >img {
+            width: 35vw;
+            height: 35vw;
+        }
+
+        &.arrow>img {
+            width: 40px;
+        }
+
+        &__description {
+            display: flex;
+            flex-direction: column;
+            margin-left: 48px;
+
+
+        }
+    }
+
+}
+
+.buttongroup {
+    display: flex;
+    flex-direction: row;
+    gap: $gap-button-group;
+}

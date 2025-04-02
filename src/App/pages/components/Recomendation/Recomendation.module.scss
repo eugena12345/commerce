@@ -1,0 +1,15 @@
+$gap-button-group: 24px;
+
+.relatedTitle {
+    margin-top: 48px;
+    margin-bottom: 32px;
+}
+
+.relatedItems {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 146px;
+    gap: min($gap-button-group, 1%);
+}

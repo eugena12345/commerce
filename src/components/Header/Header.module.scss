@@ -1,0 +1,60 @@
+$color-brand: var(--color-brand);
+$white: rgb(255, 255, 255);
+
+.container {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+  padding-left: 100px;
+  padding-right: 100px;
+  box-sizing: border-box;
+
+
+  .containerMaxWidth {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: $white;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+
+    .logo {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logoLala {
+      width: 76px;
+      height: 19px;
+    }
+
+    img {
+      background-color: $white;
+    }
+
+    .userInfo {
+      width: 30px;
+      height: 30px;
+    }
+
+    .logoContainer,
+    .userInfoContainer {
+      height: 90px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .userInfoContainer {
+      gap: 24px;
+    }
+  }
+}

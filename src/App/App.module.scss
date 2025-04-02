@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: normal;
+  src: url('./../styles/Roboto/Roboto-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: bold;
+  src: url('./../styles/Roboto/Roboto-Bold.woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: medium;
+  src: url('./../styles/Roboto/Roboto-Medium.woff2');
+}
+
+#root {
+  margin: 0 auto;
+
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
