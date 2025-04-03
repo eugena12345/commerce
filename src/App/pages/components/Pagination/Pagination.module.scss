@@ -10,10 +10,15 @@
         align-items: center;
         font-size: 18px;
 
+        &--active {
+            background-color: var(--color-brand);
+        }
+
         &:hover {
             background-color: var(--color-brand);
             cursor: pointer;
         }
+
     }
 
     &__arrow {

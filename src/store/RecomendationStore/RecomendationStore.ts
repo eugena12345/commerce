@@ -18,7 +18,7 @@ const params = {
         }
       
        };
-       console.log(params)
+       //console.log(params)
 // const queryString = qs.stringify(params);
 
 const initialMeta = {
