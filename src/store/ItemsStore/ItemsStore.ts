@@ -44,7 +44,7 @@ export default class ItemsStore  { //implements implements ApiStore
         documentId: string
        // params: GetOrganizationItem
     ): Promise<void> {
-        console.log('i try to getItemInfo')
+        //console.log('i try to getItemInfo')
         //this._meta = Meta.loading;
         this.itemInfo = null;
 
@@ -70,7 +70,7 @@ export default class ItemsStore  { //implements implements ApiStore
             // data: ReqT,
         });
 
-        console.log('response from  getItemInfo',response)
+        //console.log('response from  getItemInfo',response)
 
         if (response.success) {
             // this._meta = Meta.success;

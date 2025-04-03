@@ -55,7 +55,9 @@ const ProductPage = observer(() => {
                     </>
                 }
             </div>
-            <Recomendation item={productsStore.itemInfo} />
+            {productsStore.itemInfo &&
+                <Recomendation item={productsStore.itemInfo} />
+            }
         </div>
     )
 }

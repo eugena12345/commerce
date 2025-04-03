@@ -1,15 +1,25 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { action, makeAutoObservable, observable, toJS } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
-import { MetaInfo} from './types';
+import { MetaInfo} from '../CatalogStore/types';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
+const STRAPI_URL = `${STRAPI_BASE_URL}/api/product-categories/`;
 const params = {
-    populate: ['images', 'productCategory']
-};
-const queryString = qs.stringify(params);
+    
+        populate: ['images', 'productCategory'],
+        filters: {
+          productCategory: {
+            id: {
+              $eq: 1,
+            }
+          }
+        }
+      
+       };
+       console.log(params)
+// const queryString = qs.stringify(params);
 
 const initialMeta = {
     pagination: {
@@ -18,33 +28,35 @@ const initialMeta = {
         pageSize: 1,
         total: 0
     } 
-
 }
 
-export default class CatalogStore  { //implements implements ApiStore
+export default class RecomendationStore  { //implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     items: ProductType[] = [];
     metaInfo: MetaInfo = initialMeta;
+    //categoryId = ''
 
     constructor() {
         makeAutoObservable(this, {
             items: observable,
-            getProducts: action,
+            getCategoryItems: action,
         })
     }
 
-    async getProducts(
+    async getCategoryItems(
+        categoryId: string
     ): Promise<void> {
-        //console.log('i try to getProducts')
+        //console.log('i try to get products in our Categories')
         //this._meta = Meta.loading;
         this.items = [];
+        //console.log('categoryId is here ', categoryId)
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: `${queryString}`,
+            endpoint: `${categoryId}`, //`${queryString}`
             //headers: Record<string, string>,
             // data: ReqT,
         });
-        //console.log('response in CatalogStore', response)
+        console.log('response in RecomendationStore from getCategoryItems', toJS(response) )
 
         if (response.success) {
             // this._meta = Meta.success;

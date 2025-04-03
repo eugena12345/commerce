@@ -1,15 +1,15 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { action, makeAutoObservable, observable, toJS } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
-import { MetaInfo} from './types';
+import { MetaInfo} from '../CatalogStore/types';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
-const params = {
-    populate: ['images', 'productCategory']
-};
-const queryString = qs.stringify(params);
+const STRAPI_URL = `${STRAPI_BASE_URL}/api/product-categories?`;
+// const params = {
+//     populate: ['images', 'productCategory']
+// };
+// const queryString = qs.stringify(params);
 
 const initialMeta = {
     pagination: {
@@ -18,10 +18,9 @@ const initialMeta = {
         pageSize: 1,
         total: 0
     } 
-
 }
 
-export default class CatalogStore  { //implements implements ApiStore
+export default class CategoryStore  { //implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     items: ProductType[] = [];
     metaInfo: MetaInfo = initialMeta;
@@ -29,22 +28,22 @@ export default class CatalogStore  { //implements implements ApiStore
     constructor() {
         makeAutoObservable(this, {
             items: observable,
-            getProducts: action,
+            getCategories: action,
         })
     }
 
-    async getProducts(
+    async getCategories(
     ): Promise<void> {
-        //console.log('i try to getProducts')
+        //console.log('i try to getCategories')
         //this._meta = Meta.loading;
         this.items = [];
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: `${queryString}`,
+            endpoint: ``, //`${queryString}`
             //headers: Record<string, string>,
             // data: ReqT,
         });
-        //console.log('response in CatalogStore', response)
+        //console.log('response in RecomendationStore', toJS(response) )
 
         if (response.success) {
             // this._meta = Meta.success;
