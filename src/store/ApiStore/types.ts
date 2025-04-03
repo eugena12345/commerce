@@ -4,6 +4,9 @@
 //     GET = 'GET',
 //     POST = 'POST',
 //   }
+
+import { MetaInfo } from "./../CatalogStore/types";
+
   
   // Параметры запроса
   export type RequestParams<ReqT> = {
@@ -37,16 +40,21 @@
     | {
         success: true;
         data: SuccessT;
+        metaInfo: MetaInfo;
        // status: StatusHTTP;
       }
     | {
         success: false;
         data: ErrorT;
+        metaInfo: MetaInfo;
+
        // status: StatusHTTP;
       }
     | {
         success: false;
         data: null;
+        metaInfo: null;
+
        // status: StatusHTTP;
       };
   

@@ -1,4 +1,4 @@
-//import { stringify } from 'qs';
+// const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 import {
   ApiResponse,
@@ -55,8 +55,7 @@ export default class ApiStore implements IApiStore {
             },
         )
         const data = (await response).data;//.data;
-        console.log(data)
-        return {success: true, data: data.data}; //в примере по другому
+        return {success: true, data: data.data, metaInfo: data.meta}; //в примере по другому
 
         // return {
         //     success: response.ok,
@@ -73,6 +72,7 @@ export default class ApiStore implements IApiStore {
         return {
             success: false,
             data: null,
+            metaInfo: null
         }
     }
   }
