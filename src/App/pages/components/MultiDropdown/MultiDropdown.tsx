@@ -4,7 +4,7 @@ import ArrowDownIcon from 'components/icons/ArrowDownIcon';
 import styles from'./MultiDropdown.module.scss';
 
 export type Option = {
-  key: string;
+  key: number;
   value: string;
 };
 
@@ -15,9 +15,13 @@ export type MultiDropdownProps = {
   onChange: (value: Option[]) => void;
   disabled?: boolean;
   getTitle: (value: Option[]) => string;
+  //my add V
+  onChoice: (categoryId: number) => void;
 };
 
-const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value, onChange, disabled, getTitle }) => {
+const MultiDropdown: React.FC<MultiDropdownProps> = ({ 
+  className, options, value, onChange, disabled, getTitle, onChoice 
+}) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [inputValue, setInputValue] = React.useState('');
   const filteredOptions = options.filter((option) =>
@@ -66,7 +70,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
     args.value = getTitle(value);
   }
 
-  const handleClick = (item: Option) => {
+  const handleClick = (item: Option):void => {
     const itemKey = item.key;
 
     if (value.some((selectedItem) => selectedItem.key === itemKey)) {
@@ -76,6 +80,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ className, options, value
       const newValue = [...value, item];
       onChange(newValue);
     }
+
+    onChoice(item.key);
   }
 
   const handleUpdateInputValue = (stringValue: string): void => {

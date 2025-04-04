@@ -23,14 +23,24 @@ const CatalogPage = observer(() => {
     const navigate = useNavigate();
     const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
 
+    const getProductByCategory = (categoryId: number): void => {
+        catalogStore.getOneCategoryProducts(categoryId);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles[`container--maxWidth`]}>
                 <ProductsInfo />
                 {catalogStore.items.length > 0 &&
-                    <SearchProducts totalItems={catalogStore.metaInfo.pagination.total} callbackOnSearch={catalogStore.getFilteredProducts} />
+                    <SearchProducts 
+                    totalItems={catalogStore.metaInfo.pagination.total} 
+                    callbackOnSearch={catalogStore.getFilteredProducts} 
+                    callbackOnFilter={getProductByCategory}
+                    //getCategory={}
+                    />
                 }
                 <Button onClick={() => catalogStore.getProducts()} >Reset filter</Button>
+
 
             <div className={styles[`container__products`]}>
                 {catalogStore.items.length > 0 &&
