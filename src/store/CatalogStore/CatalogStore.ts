@@ -62,6 +62,27 @@ const getQsParams = (string: string) => {
     return queryParams;
 }
 
+const getQsFilterParams = (categoryId: number) => {
+    const params = {
+        populate: ['images', 'productCategory'],
+        filters: {
+          productCategory: {
+            id: {
+              $eq: categoryId,
+            }
+          }
+        }
+        
+    
+    };
+    const queryParams = qs.stringify(params);
+
+    return queryParams;
+}
+
+    
+  
+
 
 
 export default class CatalogStore { //implements implements ApiStore
@@ -115,6 +136,7 @@ export default class CatalogStore { //implements implements ApiStore
         this.metaInfo = initialMeta;
 
         const qsFiltered = getQsParams(stringForSearch);
+        console.log('строка по содержанию в инпуте', qsFiltered)
 
         const response = await this._apiStore.request<ProductType[]>({
             endpoint: `${qsFiltered}`, //queryStringWithFilter
@@ -132,6 +154,36 @@ export default class CatalogStore { //implements implements ApiStore
 
         //this._meta = Meta.error;
     }
+
+    getOneCategoryProducts = async (
+        categoryId: number
+    ): Promise<void> => {
+        //console.log('i try to getFilteredProducts')
+        //this._meta = Meta.loading;
+        this.items = [];
+        this.metaInfo = initialMeta;
+
+        const qsFilteredCategory = getQsFilterParams(categoryId);
+        console.log('qsFilteredCategory', qsFilteredCategory)
+
+        const response = await this._apiStore.request<ProductType[]>({
+            endpoint: `${qsFilteredCategory}`, //queryStringWithFilter
+            //headers: Record<string, string>,
+            // data: ReqT,
+        });
+        //console.log('response in CatalogStore getFilteredProducts', response)
+
+        if (response.success) {
+            // this._meta = Meta.success;
+            this.items = [...response.data];
+            this.metaInfo = response.metaInfo;
+            return;
+        }
+
+        //this._meta = Meta.error;
+    }
+
+
 
 
     reset(): void {
