@@ -15,7 +15,7 @@ export type ParamsFromQuery = {
 
 export type ParamsForApi = {
     populate: string[],
-    pagination?: {
+    pagination: {
         page?: number,
         pageSize?: number,
 
@@ -26,7 +26,7 @@ export type ParamsForApi = {
                 $eq: number,
             }
         },
-        title: {
+        title?: {
             $containsi: string,
         },
 
