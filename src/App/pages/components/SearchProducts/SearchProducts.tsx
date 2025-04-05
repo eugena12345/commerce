@@ -7,19 +7,23 @@ import { useEffect, useState } from 'react';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import CategoryStore from '../../../../store/CategoryStore/CategoryStore';
 import { ProductCategory } from 'App/pages/CatalogPage/type';
+import QueryStore from '../../../../store/QueryStore/QueryStore';
+import { useSearchParams } from 'react-router';
+import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
 
 interface SearchProductsProps {
     totalItems: number;
-    callbackOnSearch: (searchQuery: string) => void;
-    callbackOnFilter: (filterId: number) => void;
+    callbackOnFilter: (params: ParamsFromQuery) => void;
+    queryStore: QueryStore
 }
 
 const SearchProducts = observer((
     {
-        totalItems, callbackOnSearch, callbackOnFilter
+        totalItems, callbackOnFilter, queryStore
     }: SearchProductsProps) => {
 
     const [searchQuery, setSearchQuery] = useState("");
+    const [, setSearchParams] = useSearchParams();
 
     const categoryStore = useLocalStore(() => new CategoryStore());
 
@@ -30,7 +34,7 @@ const SearchProducts = observer((
     const handleInputChange = (searchQuery: string) => {
         setSearchQuery(searchQuery);
     };
-
+//TODO  работа с мультидропом
     const handleChange = () => {
     }
     const getTitle = () => {
@@ -43,7 +47,46 @@ const SearchProducts = observer((
         })
     }
 
-    const handleSearch = async () => await callbackOnSearch(searchQuery);
+    const handleSearch = async () => {
+        const newFilter = {
+            title: {
+              $containsi: searchQuery,
+            },
+          };
+        queryStore.setPage(1);
+        queryStore.setFilters({
+            ...queryStore.filters, 
+            ...newFilter,          
+        }); 
+        queryStore.updateUrl((queryString: string) => {
+            setSearchParams(queryString); 
+        });
+
+        await callbackOnFilter(queryStore.getQueryParams())
+    };
+
+    const handleChoise = async (categoryId: number) => { 
+        const newFilter = {
+            productCategory: {
+                id: {
+                  $eq: categoryId,
+                }
+              }
+      };
+        queryStore.setPage(1);
+        queryStore.setFilters({
+            ...queryStore.filters, 
+            ...newFilter,          
+        }); 
+        queryStore.updateUrl((queryString: string) => {
+            setSearchParams(queryString); 
+        });
+
+        await callbackOnFilter(queryStore.getQueryParams());
+    };
+
+
+
     return (
         <div className={styles.container}>
             <div className={styles['container__search']}>
@@ -57,7 +100,7 @@ const SearchProducts = observer((
                 onChange={handleChange}
                 getTitle={getTitle}
                 className={styles['container__filter']}
-                onChoice={callbackOnFilter}
+                onChoice={handleChoise}
             />
 
             <div className={styles['container__result']}>

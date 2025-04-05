@@ -1,15 +1,10 @@
-import { action, makeAutoObservable, observable, toJS } from "mobx";
-import qs from 'qs';
+import { action, makeAutoObservable, observable } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
 const STRAPI_URL = `${STRAPI_BASE_URL}/api/product-categories?`;
-// const params = {
-//     populate: ['images', 'productCategory']
-// };
-// const queryString = qs.stringify(params);
 
 const initialMeta = {
     pagination: {
@@ -34,7 +29,6 @@ export default class CategoryStore  { //implements implements ApiStore
 
     async getCategories(
     ): Promise<void> {
-        //console.log('i try to getCategories')
         //this._meta = Meta.loading;
         this.items = [];
 
@@ -43,7 +37,6 @@ export default class CategoryStore  { //implements implements ApiStore
             //headers: Record<string, string>,
             // data: ReqT,
         });
-        //console.log('response in RecomendationStore', toJS(response) )
 
         if (response.success) {
             // this._meta = Meta.success;

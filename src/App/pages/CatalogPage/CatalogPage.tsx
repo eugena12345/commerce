@@ -4,27 +4,45 @@ import ProductsInfo from "../components/ProductsInfo";
 import SearchProducts from "../components/SearchProducts";
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.scss';
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
 import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
-//import { toJS } from "mobx";
+import QueryStore from "../../../store/QueryStore/QueryStore"; //  TODO добавить алиас
+import qs from "qs";
+import { ParamsFromQuery } from '../../../store/CatalogStore/types';
 
 const CatalogPage = observer(() => {
 
     const catalogStore = useLocalStore(() => new CatalogStore());
+    const queryStore = useLocalStore(() => new QueryStore());
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        catalogStore.getProducts();
-    }, [catalogStore]);
-    //console.log('metaInfo.pagination', toJS(catalogStore.metaInfo.pagination));
+        const parsedParams = qs.parse(searchParams.toString(), { decode: true });
+
+        if (parsedParams.page) queryStore.setPage(Number(parsedParams.page));
+        // TODO if (parsedParams.sort) queryStore.setSort(parsedParams.sort as string);
+        if (parsedParams.filters) queryStore.setFilters(parsedParams.filters as Record<string, any>);//TODO записать правильную типизацию
+        catalogStore.getProducts(queryStore.getQueryParams()); 
+    }, [catalogStore, queryStore, searchParams]);
 
     const navigate = useNavigate();
     const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
 
-    const getProductByCategory = (categoryId: number): void => {
-        catalogStore.getOneCategoryProducts(categoryId);
+    const getProductByCategory = (params: ParamsFromQuery): void => {
+            catalogStore.getProducts(params);
+    }
+
+    const resetFilter = ():void => {
+        queryStore.setPage(1);
+        queryStore.setFilters({});
+        queryStore.updateUrl((queryString: string) => {
+            setSearchParams(queryString); 
+        });
+
+        catalogStore.getProducts(queryStore.getQueryParams());
     }
 
     return (
@@ -34,13 +52,11 @@ const CatalogPage = observer(() => {
                 {catalogStore.items.length > 0 &&
                     <SearchProducts 
                     totalItems={catalogStore.metaInfo.pagination.total} 
-                    callbackOnSearch={catalogStore.getFilteredProducts} 
                     callbackOnFilter={getProductByCategory}
-                    //getCategory={}
+                    queryStore={queryStore}
                     />
                 }
-                <Button onClick={() => catalogStore.getProducts()} >Reset filter</Button>
-
+                <Button onClick={resetFilter} >Reset filter</Button> 
 
             <div className={styles[`container__products`]}>
                 {catalogStore.items.length > 0 &&
@@ -64,6 +80,7 @@ const CatalogPage = observer(() => {
                  <Pagination pageCount={catalogStore.metaInfo.pagination.pageCount}
                     actualPage={catalogStore.metaInfo.pagination.page}
                  onClick={catalogStore.getProducts}
+                 queryStore={queryStore}
 />
             }
            

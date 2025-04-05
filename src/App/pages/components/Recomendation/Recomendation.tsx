@@ -7,7 +7,6 @@ import { observer, useLocalStore } from 'mobx-react-lite';
 import RecomendationStore from './../../../../store/RecomendationStore/RecomendationStore';
 import { useEffect } from 'react';
 import CategoryStore from './../../../../store/CategoryStore/CategoryStore';
-import { toJS } from 'mobx';
 
 type RecomendationProps = {
     item: ProductType;
@@ -15,7 +14,6 @@ type RecomendationProps = {
 
 const Recomendation: React.FC<RecomendationProps> = observer(({ item }) => {
 
-    //console.log(toJS(item))
     const categoryStore = useLocalStore(() => new CategoryStore());
 
     const recomendationStore = useLocalStore(() => new RecomendationStore());
@@ -24,8 +22,7 @@ const Recomendation: React.FC<RecomendationProps> = observer(({ item }) => {
     useEffect(() => {
         categoryStore.getCategories();
         recomendationStore.getCategoryItems(categoryDocumentId);
-    }, [categoryStore, recomendationStore]) //
-    //console.log('from component recomendationStoreAAAAAAAAAAAAAAAAAAAAAAA', recomendationStore);
+    }, [categoryDocumentId, categoryStore, recomendationStore]) 
 
     return (
         <>

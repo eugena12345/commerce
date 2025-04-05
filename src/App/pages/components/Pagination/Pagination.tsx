@@ -1,11 +1,15 @@
 import styles from './Pagination.module.scss';
 import arrowBackIcon from 'assets/images/arrow-right.svg'
 import arrowForwardIcon from 'assets/images/arrow-rightSingle.svg'
+import QueryStore from '../../../../store/QueryStore/QueryStore';
+import { useSearchParams } from 'react-router';
+import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
 
 interface PaginationProps {
     pageCount: number;
     actualPage: number;
-    onClick: (newActualPage?: number) => void
+    onClick:  (params: ParamsFromQuery) => void;
+    queryStore: QueryStore
 }
 
 const getNumberCountArr = (pageCount: number): number[] => {
@@ -13,20 +17,27 @@ const getNumberCountArr = (pageCount: number): number[] => {
     for (let i = 1; i <= pageCount; i += 1) {
         result.push(i);
     }
-
     return result
-
 }
 
-const Pagination = ({ pageCount, actualPage, onClick }: PaginationProps) => {
+const Pagination = ({ pageCount, actualPage, onClick, queryStore }: PaginationProps) => {
+    const [, setSearchParams] = useSearchParams();
+    
     const numberCountArr = getNumberCountArr(pageCount);
-    const handleClick = (newActualPage: number) => onClick(newActualPage);
-    console.log('pageCount', pageCount);
+    const handleClick = async (newActualPage: number) => {
+        queryStore.setPage(newActualPage); 
+        queryStore.updateUrl((queryString: string) => {
+          setSearchParams(queryString); 
+        });
+        await onClick(queryStore.getQueryParams());
+
+    
+    };
     return (
         <div className={styles.pagination}>
             <div className={styles['pagination__arrow']}
                 onClick={() => handleClick(actualPage > 1 ? actualPage - 1 : 1)}
-            //disabled={actualPage === 1}
+            // todo: add disabled
             >
                 <img src={arrowBackIcon} alt='back' />
             </div>
