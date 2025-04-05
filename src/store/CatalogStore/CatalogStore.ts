@@ -6,12 +6,13 @@ import { MetaInfo, ParamsForApi, ParamsFromQuery } from './types';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
 const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
+const pageSize = 6;
 
 const initialMeta = {
     pagination: {
         page: 1,
         pageCount: 0,
-        pageSize: 6,
+        pageSize: pageSize,
         total: 0
     }
 }
@@ -21,7 +22,7 @@ const createParamsForApi = (params: ParamsFromQuery): ParamsForApi => {
         populate: ['images', 'productCategory'],
         pagination: {
             page: 1,
-            pageSize: 6,
+            pageSize: pageSize,
         }
     };
     if (params.page) paramsForApi.pagination.page = params.page;
