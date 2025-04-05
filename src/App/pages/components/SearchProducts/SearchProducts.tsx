@@ -10,6 +10,7 @@ import { ProductCategory } from 'App/pages/CatalogPage/type';
 import QueryStore from '../../../../store/QueryStore/QueryStore';
 import { useSearchParams } from 'react-router';
 import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
+import qs from 'qs';
 
 interface SearchProductsProps {
     totalItems: number;
@@ -23,13 +24,18 @@ const SearchProducts = observer((
     }: SearchProductsProps) => {
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const categoryStore = useLocalStore(() => new CategoryStore());
 
     useEffect(() => {
         categoryStore.getCategories();
-    }, [categoryStore]);
+
+        const parsedParams = qs.parse(searchParams.toString(), { decode: true });
+        if (parsedParams.filters?.title) {
+            setSearchQuery(parsedParams.filters.title.$containsi)
+        } 
+    }, [categoryStore, searchParams]);
 
     const handleInputChange = (searchQuery: string) => {
         setSearchQuery(searchQuery);
