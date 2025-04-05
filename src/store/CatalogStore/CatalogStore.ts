@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { action, computed, makeAutoObservable, observable, runInAction } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
@@ -30,26 +30,38 @@ const createParamsForApi = (params: ParamsFromQuery): ParamsForApi => {
     return paramsForApi;
 };
 
+type PrivateFields = '_items' | '_metaInfo';
+
 export default class CatalogStore { //TODO разобраться implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
-    items: ProductType[] = [];
-    metaInfo: MetaInfo = initialMeta;
-    
+    private _items: ProductType[] = [];
+    private _metaInfo: MetaInfo = initialMeta;
+
 
     constructor() {
-        makeAutoObservable(this, {
-            items: observable,
-            metaInfo: observable,
+        makeAutoObservable<CatalogStore, PrivateFields>(this, {
+            _items: observable,
+            _metaInfo: observable,
+            items: computed,
+            metaInfo: computed,
             getProducts: action,
         })
     }
 
-    getProducts =async (
+    get items() {
+        return this._items;
+    }
+
+    get metaInfo() {
+        return this._metaInfo;
+    }
+
+    getProducts = async (
         params: ParamsFromQuery
     ): Promise<void> => {
         //this._meta = Meta.loading;
-        this.items = [];
-        this.metaInfo = initialMeta;
+        this._items = [];
+        this._metaInfo = initialMeta;
 
         const queryString = qs.stringify(createParamsForApi(params));
 
@@ -60,9 +72,11 @@ export default class CatalogStore { //TODO разобраться implements imp
         });
 
         if (response.success) {
-            // this._meta = Meta.success;
-            this.items = [...response.data];
-            this.metaInfo = response.metaInfo;
+            runInAction(() => {
+                // this._meta = Meta.success;
+                this._items = response.data; // Изменение observable внутри action
+                this._metaInfo = response.metaInfo;
+            });
             return;
         }
 
@@ -70,7 +84,7 @@ export default class CatalogStore { //TODO разобраться implements imp
     }
 
     reset(): void {
-        this.items = [];
+        this._items = [];
         //this._meta = Meta.initial;
     }
 
