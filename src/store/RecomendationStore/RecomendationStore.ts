@@ -1,5 +1,4 @@
 import { action, makeAutoObservable, observable } from "mobx";
-//import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
@@ -35,9 +34,7 @@ export default class RecomendationStore  { //implements implements ApiStore
         this.items = [];
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: `${categoryId}`, //`${queryString}`
-            //headers: Record<string, string>,
-            // data: ReqT,
+            endpoint: `${categoryId}`,
         });
 
         if (response.success) {

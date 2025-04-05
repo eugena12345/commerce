@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import qs from "qs";
 
 export default class QueryStore {
@@ -8,6 +8,7 @@ export default class QueryStore {
 
   constructor() {
     makeAutoObservable(this, {
+      //разобраться нужно или нет
       // page: observable,
       // sort: observable,
       // filters: observable,

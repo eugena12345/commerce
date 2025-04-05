@@ -1,11 +1,7 @@
-// const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-
 import {
   ApiResponse,
   IApiStore,
   RequestParams,
-  //HTTPMethod,
-  //StatusHTTP,
 } from './types';
 import axios from 'axios';
 
@@ -19,26 +15,9 @@ export default class ApiStore implements IApiStore {
     this.baseUrl = baseUrl;
   }
 
-  private _getRequestData<ReqT>(params: RequestParams<ReqT>): string { //[RequestInfo, RequestInit]
-    const endpoint: string = `${this.baseUrl}${params.endpoint}`; //RequestInfo
-    // const options: RequestInit = {
-    //   //method: params.method,
-    //   headers: { ...params.headers },
-    // };
-
-    // if (params.method === HTTPMethod.GET) {
-    //   endpoint = `${endpoint}?${stringify(params.data)}`;
-    // }
-
-    // if (params.method === HTTPMethod.POST) {
-    //   options.headers = {
-    //     ...options.headers,
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   };
-    //   options.body = JSON.stringify(params.data);
-    // }
-
-    return endpoint; //, options
+  private _getRequestData<ReqT>(params: RequestParams<ReqT>): string {
+    const endpoint: string = `${this.baseUrl}${params.endpoint}`;
+    return endpoint;
   }
 
   async request<SuccessT, ErrorT = any, ReqT = {}>(
@@ -46,34 +25,24 @@ export default class ApiStore implements IApiStore {
   ): Promise<ApiResponse<SuccessT, ErrorT>> {
 
     try {
-        const response =  axios.get(
-            this._getRequestData(params),
-            {
-                headers: {
-                    Authorization: `Bearer ${API_TOKEN}`,
-                },
-            },
-        )
-        const data = (await response).data;//.data;
-        return {success: true, data: data.data, metaInfo: data.meta}; //в примере по другому
+      const response = axios.get(
+        this._getRequestData(params),
+        {
+          headers: {
+            Authorization: `Bearer ${API_TOKEN}`,
+          },
+        },
+      )
+      const data = (await response).data;
+      return { success: true, data: data.data, metaInfo: data.meta }; 
 
-        // return {
-        //     success: response.ok,
-        //     data,
-        //     status: response.status,
-        // };
     } catch (e) {
-        // return {
-        //     success: false,
-        //     data: null,
-        //     status: StatusHTTP.UNEXPECTED_ERROR,
-        // };
-        console.log(e);
-        return {
-            success: false,
-            data: null,
-            metaInfo: null
-        }
+      console.log(e);
+      return {
+        success: false,
+        data: null,
+        metaInfo: null
+      }
     }
   }
 }

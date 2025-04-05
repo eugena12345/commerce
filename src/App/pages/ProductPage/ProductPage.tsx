@@ -1,16 +1,10 @@
-// todo
-// const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-
 import styles from './ProductPage.module.scss';
 import Text from 'components/Text/Text';
-//import { ProductType } from 'App/pages/CatalogPage/type';
-import { useEffect } from 'react'; //, useState
-//import axios from 'axios';
-//import qs from 'qs';
+import { useEffect } from 'react';
 import Button from 'components/Button/Button';
 // todo: add image galery
-//import arrowBack from 'assets/images/ArrowBack.svg';
-import { useNavigate, useParams } from 'react-router'; //useParams
+// todo: import arrowBack from 'assets/images/ArrowBack.svg';
+import { useNavigate, useParams } from 'react-router';
 import arrowRight from 'assets/images/arrow-right.svg'
 import { routes } from 'config/routes.config';
 import Recomendation from 'App/pages/components/Recomendation/Recomendation';

@@ -33,9 +33,7 @@ export default class CategoryStore  { //implements implements ApiStore
         this.items = [];
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: ``, //`${queryString}`
-            //headers: Record<string, string>,
-            // data: ReqT,
+            endpoint: ``, 
         });
 
         if (response.success) {
