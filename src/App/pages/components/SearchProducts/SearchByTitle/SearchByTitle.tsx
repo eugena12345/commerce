@@ -3,7 +3,7 @@ import Button from "components/Button/Button";
 import styles from './SearchByTitle.module.scss';
 import { ParamsFromQuery } from '../../../../../store/CatalogStore/types';
 import QueryStore from '../../../../../store/QueryStore/QueryStore';
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { observer } from "mobx-react-lite";
@@ -31,7 +31,7 @@ const SearchByTitle = observer(({callbackOnFilter, queryStore}:SearchProductsPro
         setSearchQuery(searchQuery);
     };
 
-    const handleSearch = async () => {
+    const handleSearch = useCallback(() => {
         const newFilter = {
             title: {
               $containsi: searchQuery,
@@ -46,8 +46,9 @@ const SearchByTitle = observer(({callbackOnFilter, queryStore}:SearchProductsPro
             setSearchParams(queryString); 
         });
 
-        await callbackOnFilter(queryStore.getQueryParams())
-    };
+        callbackOnFilter(queryStore.getQueryParams())
+    }, [callbackOnFilter, queryStore, searchQuery, setSearchParams]
+)
 
 
     return (
