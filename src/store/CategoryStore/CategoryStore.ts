@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
@@ -21,7 +21,7 @@ export default class CategoryStore  { //implements implements ApiStore
     metaInfo: MetaInfo = initialMeta;
 
     constructor() {
-        makeAutoObservable(this, {
+        makeObservable(this, {
             items: observable,
             getCategories: action,
         })

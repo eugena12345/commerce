@@ -1,4 +1,4 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
@@ -15,7 +15,7 @@ export default class ItemsStore  { //implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     itemInfo: null | ProductType = null;
     constructor() {
-        makeAutoObservable(this, {
+        makeObservable(this, {
             itemInfo: observable,
             getItemInfo: action,
         })

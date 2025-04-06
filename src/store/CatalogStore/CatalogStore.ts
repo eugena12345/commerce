@@ -1,4 +1,4 @@
-import { action, computed, makeAutoObservable, observable, runInAction } from "mobx";
+import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
@@ -27,7 +27,7 @@ export default class CatalogStore { //TODO разобраться implements imp
 
 
     constructor() {
-        makeAutoObservable<CatalogStore, PrivateFields>(this, {
+        makeObservable<CatalogStore, PrivateFields>(this, {
             _items: observable,
             _metaInfo: observable,
             items: computed,
