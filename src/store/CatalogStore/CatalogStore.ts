@@ -2,11 +2,12 @@ import { action, computed, makeAutoObservable, observable, runInAction } from "m
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
-import { MetaInfo, ParamsForApi, ParamsFromQuery } from './types';
+import { MetaInfo, ParamsFromQuery } from './types';
+import {createParamsForApi} from '../../utils/api';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
 const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
-const pageSize = 6;
+export const pageSize = 6;
 
 const initialMeta = {
     pagination: {
@@ -16,19 +17,6 @@ const initialMeta = {
         total: 0
     }
 }
-
-const createParamsForApi = (params: ParamsFromQuery): ParamsForApi => {
-    const paramsForApi: ParamsForApi = {
-        populate: ['images', 'productCategory'],
-        pagination: {
-            page: 1,
-            pageSize: pageSize,
-        }
-    };
-    if (params.page) paramsForApi.pagination.page = params.page;
-    if (params.filters) paramsForApi.filters = params.filters;
-    return paramsForApi;
-};
 
 type PrivateFields = '_items' | '_metaInfo';
 
