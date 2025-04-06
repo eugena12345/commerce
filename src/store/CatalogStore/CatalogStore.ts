@@ -1,9 +1,10 @@
-import { action, computed, makeObservable, observable, runInAction } from "mobx";
+import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo, ParamsFromQuery } from './types';
-import {createParamsForApi} from '../../utils/api';
+import { createParamsForApi } from '../../utils/api';
+import rootStore from "../RootStore/instance";
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
 const STRAPI_URL = `${STRAPI_BASE_URL}/api/products?`;
@@ -62,12 +63,11 @@ export default class CatalogStore { //TODO разобраться implements imp
         if (response.success) {
             runInAction(() => {
                 // this._meta = Meta.success;
-                this._items = response.data; // Изменение observable внутри action
+                this._items = response.data;
                 this._metaInfo = response.metaInfo;
             });
             return;
         }
-
         //this._meta = Meta.error;
     }
 
@@ -78,5 +78,22 @@ export default class CatalogStore { //TODO разобраться implements imp
 
     destroy(): void {
         this.reset();
+        this._qpReaction();
+        this._qpReaction2()
     }
+
+    private readonly _qpReaction: IReactionDisposer = reaction(
+        () => rootStore.query.getParam('filters'),
+        ( ) => {
+            this.getProducts(rootStore.query.getQueryParams())
+        }
+    );
+
+    private readonly _qpReaction2: IReactionDisposer = reaction(
+        () => rootStore.query.getParam('page'),
+        ( ) => {
+            this.getProducts(rootStore.query.getQueryParams())
+        }
+    );
+
 }

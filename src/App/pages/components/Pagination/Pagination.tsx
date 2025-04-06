@@ -1,33 +1,30 @@
 import styles from './Pagination.module.scss';
 import arrowBackIcon from 'assets/images/arrow-right.svg'
 import arrowForwardIcon from 'assets/images/arrow-rightSingle.svg'
-import QueryStore from '../../../../store/QueryStore/QueryStore';
 import { useSearchParams } from 'react-router';
-import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
-import {getNumberCountArr} from '../../../../utils/helpers';
+//import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
+import { getNumberCountArr } from '../../../../utils/helpers';
 import { useCallback } from 'react';
+import { useStoreContext } from 'App/App';
 
 interface PaginationProps {
     pageCount: number;
     actualPage: number;
-    onClick:  (params: ParamsFromQuery) => void;
-    queryStore: QueryStore
 }
 
-const Pagination = ({ pageCount, actualPage, onClick, queryStore }: PaginationProps) => {
+const Pagination = ({ pageCount, actualPage }: PaginationProps) => {
     const [, setSearchParams] = useSearchParams();
-    
+    const queryStore = useStoreContext();
     const numberCountArr = getNumberCountArr(pageCount);
     const handleClick = useCallback(async (newActualPage: number) => {
-        queryStore.setPage(newActualPage); 
-        queryStore.updateUrl((queryString: string) => {
-          setSearchParams(queryString); 
+        queryStore.query.setPage(newActualPage);
+        queryStore.query.updateUrl((queryString: string) => {
+            setSearchParams(queryString);
         });
-        onClick(queryStore.getQueryParams());
-
+        //onClick(queryStore.query.getQueryParams());
+    }, [queryStore, setSearchParams]
+    );
     
-    }, [onClick, queryStore, setSearchParams]
-);
     return (
         <div className={styles.pagination}>
             <div className={styles['pagination__arrow']}

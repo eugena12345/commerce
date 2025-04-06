@@ -2,15 +2,23 @@ import { Outlet } from 'react-router';
 import Header from '../components/Header'
 import styles from './App.module.scss';
 import { useQueryParamsStoreInit } from '../store/RootStore/hooks/useQueryParamsStoreInit';
+import React, { useContext } from 'react';
+import RootStore from '../store/RootStore/RootStore';
+import rootStore from '../store/RootStore/instance';
+
+const RootStoreContext = React.createContext<RootStore>(rootStore);
+export const useStoreContext = () => useContext(RootStoreContext);
 
 function App() {
   useQueryParamsStoreInit();
 
   return (
+    <RootStoreContext.Provider value={rootStore}>
     <div className={styles.app}>
       <Header/>
       <Outlet />
     </div>
+    </RootStoreContext.Provider>
   );
 }
 

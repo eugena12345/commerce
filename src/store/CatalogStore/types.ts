@@ -8,7 +8,7 @@ export type MetaInfo = {
 }
 
 export type ParamsFromQuery = {
-    page?: number,
+    page?: number | string,
     filters?: {},
     sort?: {},
 }
@@ -16,7 +16,7 @@ export type ParamsFromQuery = {
 export type ParamsForApi = {
     populate: string[],
     pagination: {
-        page?: number,
+        page?: number| string,
         pageSize?: number,
 
     }

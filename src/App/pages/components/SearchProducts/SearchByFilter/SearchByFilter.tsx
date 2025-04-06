@@ -1,30 +1,21 @@
 import { ProductCategory } from 'App/pages/CatalogPage/type';
 import MultiDropdown from "App/pages/components/MultiDropdown/MultiDropdown";
 import styles from './SearchByFilter.module.scss';
-import { ParamsFromQuery } from '../../../../../store/CatalogStore/types';
-import QueryStore from '../../../../../store/QueryStore/QueryStore';
 import { useSearchParams } from 'react-router';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import CategoryStore from  '../../../../../store/CategoryStore/CategoryStore';
+import CategoryStore from '../../../../../store/CategoryStore/CategoryStore';
 import { useCallback, useEffect } from 'react';
+import { useStoreContext } from 'App/App';
 
-
-interface SearchProductsProps {
-    callbackOnFilter: (params: ParamsFromQuery) => void;
-    queryStore: QueryStore;
-    
-}
-
-const SearchByFilter = observer(({callbackOnFilter, queryStore}: SearchProductsProps) => {
+const SearchByFilter = observer(() => {
 
     const [, setSearchParams] = useSearchParams();
     const categoryStore = useLocalStore(() => new CategoryStore());
+    const queryStore = useStoreContext();
 
     useEffect(() => {
         categoryStore.getCategories();
-
     }, [categoryStore]);
-
 
     const getOptionsFromcategories = (categories: ProductCategory[]) => {
         return categories.map((item: ProductCategory) => {
@@ -38,36 +29,33 @@ const SearchByFilter = observer(({callbackOnFilter, queryStore}: SearchProductsP
         return ''
     }
 
-    const handleChoise = useCallback((categoryId: number) => { 
+    const handleChoise = useCallback((categoryId: number) => {
         const newFilter = {
             productCategory: {
                 id: {
-                  $eq: categoryId,
+                    $eq: categoryId,
                 }
-              }
-      };
-        queryStore.setPage(1);
-        queryStore.setFilters({
-            ...queryStore.filters, 
-            ...newFilter,          
-        }); 
-        queryStore.updateUrl((queryString: string) => {
-            setSearchParams(queryString); 
+            }
+        };
+        queryStore.query.setPage(1);
+        queryStore.query.setFilters({
+            ...queryStore.query.filters,
+            ...newFilter,
         });
-
-        callbackOnFilter(queryStore.getQueryParams());
-    },[callbackOnFilter, queryStore, setSearchParams]);
-
+        queryStore.query.updateUrl((queryString: string) => {
+            setSearchParams(queryString);
+        });
+    }, [queryStore, setSearchParams]);
 
     return (
         <MultiDropdown
-        options={getOptionsFromcategories(categoryStore.items)}
-        value={[]}
-        onChange={handleChange}
-        getTitle={getTitle}
-        className={styles['container__filter']}
-        onChoice={handleChoise}
-    />
+            options={getOptionsFromcategories(categoryStore.items)}
+            value={[]}
+            onChange={handleChange}
+            getTitle={getTitle}
+            className={styles['container__filter']}
+            onChoice={handleChoise}
+        />
     )
 }
 );
