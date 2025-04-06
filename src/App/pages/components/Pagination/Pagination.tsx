@@ -4,20 +4,13 @@ import arrowForwardIcon from 'assets/images/arrow-rightSingle.svg'
 import QueryStore from '../../../../store/QueryStore/QueryStore';
 import { useSearchParams } from 'react-router';
 import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
+import {getNumberCountArr} from '../../../../utils/helpers';
 
 interface PaginationProps {
     pageCount: number;
     actualPage: number;
     onClick:  (params: ParamsFromQuery) => void;
     queryStore: QueryStore
-}
-
-const getNumberCountArr = (pageCount: number): number[] => {
-    const result = [];
-    for (let i = 1; i <= pageCount; i += 1) {
-        result.push(i);
-    }
-    return result
 }
 
 const Pagination = ({ pageCount, actualPage, onClick, queryStore }: PaginationProps) => {
