@@ -6,7 +6,7 @@ import QueryStore from '../../../../../store/QueryStore/QueryStore';
 import { useSearchParams } from 'react-router';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import CategoryStore from  '../../../../../store/CategoryStore/CategoryStore';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 
 interface SearchProductsProps {
@@ -38,7 +38,7 @@ const SearchByFilter = observer(({callbackOnFilter, queryStore}: SearchProductsP
         return ''
     }
 
-    const handleChoise = (categoryId: number) => { 
+    const handleChoise = useCallback((categoryId: number) => { 
         const newFilter = {
             productCategory: {
                 id: {
@@ -56,7 +56,7 @@ const SearchByFilter = observer(({callbackOnFilter, queryStore}: SearchProductsP
         });
 
         callbackOnFilter(queryStore.getQueryParams());
-    };
+    },[callbackOnFilter, queryStore, setSearchParams]);
 
 
     return (
