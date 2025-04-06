@@ -71,7 +71,7 @@ const SearchProducts = observer((
         await callbackOnFilter(queryStore.getQueryParams())
     };
 
-    const handleChoise = async (categoryId: number) => { 
+    const handleChoise = (categoryId: number) => { 
         const newFilter = {
             productCategory: {
                 id: {
@@ -88,7 +88,7 @@ const SearchProducts = observer((
             setSearchParams(queryString); 
         });
 
-        await callbackOnFilter(queryStore.getQueryParams());
+        callbackOnFilter(queryStore.getQueryParams());
     };
 
 

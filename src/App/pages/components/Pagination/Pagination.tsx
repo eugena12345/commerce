@@ -22,7 +22,7 @@ const Pagination = ({ pageCount, actualPage, onClick, queryStore }: PaginationPr
         queryStore.updateUrl((queryString: string) => {
           setSearchParams(queryString); 
         });
-        await onClick(queryStore.getQueryParams());
+        onClick(queryStore.getQueryParams());
 
     
     };
