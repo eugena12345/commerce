@@ -16,16 +16,30 @@ const SearchByFilter = observer(() => {
     const filterValueStore = useLocalStore(() => new FiterValueStore({ valueDefault: [] }))
 
     useEffect(() => {
-        categoryStore.getCategories();
-        const parsedParams = qs.parse(searchParams.toString(), { decode: true });
-        if (parsedParams.filters?.productCategory) {
-            filterValueStore.setValue(parsedParams.filters.productCategory.id.$in)
+
+        const loadCategory = async () => {
+            await categoryStore.getCategories();
+            const categories = categoryStore.items;
+            const parsedParams = qs.parse(searchParams.toString(), { decode: true });
+            if (parsedParams.filterByCategoryId) {
+                const categoryIdColl = parsedParams.filterByCategoryId.split(',')
+                const option = categoryIdColl.map((id: string) => {
+                    const category = categories.find((item) => item.id === Number(id));
+                    if (category) {
+                        return { key: id, value: category.title };
+                    }
+                    return null;
+                })
+                    .filter(Boolean);
+                filterValueStore.setValue(option);
+            }
         }
+        loadCategory();
     }, [categoryStore, filterValueStore, searchParams]);
 
     const getOptionsFromcategories = (categories: ProductCategory[]) => {
         return categories.map((item: ProductCategory) => {
-            return { key: item.id, value: item.title }
+            return { key: item.id.toString(), value: item.title }
         })
     }
 
@@ -44,12 +58,7 @@ const SearchByFilter = observer(() => {
 
     }, [filterValueStore, searchParams, setSearchParams]);
 
-    const getTitle = useCallback((): string => { //value: Option[]
-        if (filterValueStore.value.length === 0) {
-            return "Select options";
-        }
-        return filterValueStore.value.map((option) => option.value).join(", ");
-    }, [filterValueStore.value]);
+    const getTitle = useCallback((elements: Option[]) => elements.map((el: Option) => el.value).join(', '), []);
 
     return (
         <MultiDropdown

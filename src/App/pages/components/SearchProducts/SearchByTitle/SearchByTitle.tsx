@@ -12,8 +12,8 @@ const SearchByTitle = observer(() => {
     const valueStore = useLocalStore(() => new SearchValueStore({ valueDefault: '' }))
     useEffect(() => {
         const parsedParams = qs.parse(searchParams.toString(), { decode: true });
-        if (parsedParams.filters?.title) {
-            valueStore.setValue(parsedParams.filters.title.$containsi)
+        if (parsedParams.filterByTitle) {
+            valueStore.setValue(parsedParams.filterByTitle as string)
         }
     }, [searchParams, valueStore]);
 
