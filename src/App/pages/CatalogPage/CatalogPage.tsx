@@ -4,7 +4,7 @@ import ProductsInfo from "../components/ProductsInfo";
 import SearchProducts from "../components/SearchProducts";
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.scss';
-import { useNavigate, useSearchParams } from "react-router";
+import { useNavigate } from "react-router";
 import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
@@ -14,20 +14,12 @@ import rootStore from "./../../../store/RootStore/instance";
 const CatalogPage = observer(() => {
 
     const catalogStore = useLocalStore(() => new CatalogStore());
-    const [searchParams, setSearchParams] = useSearchParams();
      useEffect(() => {
         catalogStore.getProducts(rootStore.query.getQueryParams2())
      }, [catalogStore]);
 
     const navigate = useNavigate();
     const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
-
-    const resetFilter = (): void => {
-        searchParams.set('filterByCategoryId', '');
-        searchParams.set('filterByTitle', '');
-        searchParams.set('page', '1')
-        setSearchParams(searchParams);
-    }
 
     return (
         <div className={styles.container}>
@@ -38,7 +30,6 @@ const CatalogPage = observer(() => {
                         totalItems={catalogStore.metaInfo.pagination.total}
                     />
                 }
-                <Button onClick={resetFilter} >Reset filter</Button>
 
                 <div className={styles[`container__products`]}>
                     {catalogStore.items.length > 0 &&
