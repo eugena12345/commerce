@@ -13,6 +13,13 @@ export type ParamsFromQuery = {
     sort?: {},
 }
 
+export type ParamsFromQuery2 = {
+    page?: number | string,
+    filterByCategoryId?: string,
+    filterByTitle?: string,
+    sort?: {},
+}
+
 export type ParamsForApi = {
     populate: string[],
     pagination: {
@@ -23,7 +30,7 @@ export type ParamsForApi = {
     filters?: {
         productCategory?: {
             id: {
-                $eq: number,
+                $in: string[]
             }
         },
         title?: {

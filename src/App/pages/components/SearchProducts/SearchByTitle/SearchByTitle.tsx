@@ -5,12 +5,10 @@ import { useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { observer, useLocalStore } from "mobx-react-lite";
-import { useStoreContext } from "./../../../../../store/RootStore/context/rootStoreContext";
 import SearchValueStore from './../../../../../store/SearchValueStore/SearchValueStore';
 
 const SearchByTitle = observer(() => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const queryStore = useStoreContext();
     const valueStore = useLocalStore(() => new SearchValueStore({ valueDefault: '' }))
     useEffect(() => {
         const parsedParams = qs.parse(searchParams.toString(), { decode: true });
@@ -24,20 +22,10 @@ const SearchByTitle = observer(() => {
     };
 
     const handleSearch = useCallback(() => {
-        const newFilter = {
-            title: {
-                $containsi: valueStore.value,
-            },
-        };
-        queryStore.query.setPage(1);
-        queryStore.query.setFilters({
-            ...queryStore.query.filters,
-            ...newFilter,
-        });
-        queryStore.query.updateUrl((queryString: string) => {
-            setSearchParams(queryString);
-        });
-    }, [queryStore.query, setSearchParams, valueStore.value]
+        searchParams.set('page', '1');
+        searchParams.set('filterByTitle', `${valueStore.value}`);
+        setSearchParams(searchParams);
+    }, [searchParams, setSearchParams, valueStore.value]  
     )
 
     return (

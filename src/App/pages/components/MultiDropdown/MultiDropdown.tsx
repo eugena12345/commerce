@@ -27,7 +27,6 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const filteredOptions = options.filter((option) =>
     option.value.toLowerCase().includes(inputValue.toLowerCase())
   );
-  console.log('value',value)
 
   const openOptions = (event: React.MouseEvent<HTMLInputElement>) => {
     if (disabled === true) {

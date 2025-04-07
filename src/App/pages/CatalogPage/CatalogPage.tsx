@@ -9,30 +9,24 @@ import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
 import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
-import qs from "qs";
-import { useStoreContext } from "./../../../store/RootStore/context/rootStoreContext";
+import rootStore from "./../../../store/RootStore/instance";
 
 const CatalogPage = observer(() => {
 
     const catalogStore = useLocalStore(() => new CatalogStore());
     const [searchParams, setSearchParams] = useSearchParams();
-    const rootStore = useStoreContext();
-
-    useEffect(() => {
-        const parsedParams = qs.parse(searchParams.toString(), { decode: true });
-        if (parsedParams.page) rootStore.query.setPage(Number(parsedParams.page));
-        if (parsedParams.filters) rootStore.query.setFilters(parsedParams.filters as Record<string, any>);//TODO записать правильную типизацию
-    }, [catalogStore, rootStore, searchParams]);
+     useEffect(() => {
+        catalogStore.getProducts(rootStore.query.getQueryParams2())
+     }, [catalogStore]);
 
     const navigate = useNavigate();
     const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
 
     const resetFilter = (): void => {
-        rootStore.query.setPage(1);
-        rootStore.query.setFilters({});
-        rootStore.query.updateUrl((queryString: string) => {
-            setSearchParams(queryString);
-        });
+        searchParams.set('filterByCategoryId', '');
+        searchParams.set('filterByTitle', '');
+        searchParams.set('page', '1')
+        setSearchParams(searchParams);
     }
 
     return (

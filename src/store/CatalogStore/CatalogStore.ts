@@ -1,9 +1,9 @@
-import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction } from "mobx";
+import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction, toJS } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
-import { MetaInfo, ParamsFromQuery } from './types';
-import { createParamsForApi } from '../../utils/api';
+import { MetaInfo, ParamsFromQuery2 } from './types';
+import { createParamsForApi2 } from '../../utils/api';
 import rootStore from "../RootStore/instance";
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
@@ -46,16 +46,16 @@ export default class CatalogStore { //TODO разобраться implements imp
     }
 
     getProducts = async (
-        params: ParamsFromQuery
+        params: ParamsFromQuery2
+        //params: ParamsFromQuery
     ): Promise<void> => {
         //this._meta = Meta.loading;
         this._items = [];
         this._metaInfo = initialMeta;
-
-        const queryString = qs.stringify(createParamsForApi(params));
+        const queryStringForTest = qs.stringify(createParamsForApi2(params));
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: `${queryString}`,
+            endpoint: `${queryStringForTest}`,
             //headers: Record<string, string>,
             // data: ReqT,
         });
@@ -79,20 +79,28 @@ export default class CatalogStore { //TODO разобраться implements imp
     destroy(): void {
         this.reset();
         this._qpReaction();
-        this._qpReaction2()
+        this._qpReaction1();
+        this._qpReaction2();
     }
 
     private readonly _qpReaction: IReactionDisposer = reaction(
-        () => rootStore.query.getParam('filters'),
-        ( ) => {
-            this.getProducts(rootStore.query.getQueryParams())
+        () => rootStore.query.getParam('filterByCategoryId'),
+        () => {
+            this.getProducts(rootStore.query.getQueryParams2())
+        }
+    );
+
+    private readonly _qpReaction1: IReactionDisposer = reaction(
+        () => rootStore.query.getParam('filterByTitle'),
+        () => {
+            this.getProducts(rootStore.query.getQueryParams2())
         }
     );
 
     private readonly _qpReaction2: IReactionDisposer = reaction(
         () => rootStore.query.getParam('page'),
-        ( ) => {
-            this.getProducts(rootStore.query.getQueryParams())
+        () => {
+            this.getProducts(rootStore.query.getQueryParams2())
         }
     );
 
