@@ -35,7 +35,7 @@ export default class QueryParamsStore {
     }
   }
 
-  getQueryParams2 = () => {
+  getQueryParams = () => {
     return this._params;
   }
 }

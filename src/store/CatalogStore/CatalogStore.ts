@@ -86,21 +86,21 @@ export default class CatalogStore { //TODO разобраться implements imp
     private readonly _qpReaction: IReactionDisposer = reaction(
         () => rootStore.query.getParam('filterByCategoryId'),
         () => {
-            this.getProducts(rootStore.query.getQueryParams2())
+            this.getProducts(rootStore.query.getQueryParams())
         }
     );
 
     private readonly _qpReaction1: IReactionDisposer = reaction(
         () => rootStore.query.getParam('filterByTitle'),
         () => {
-            this.getProducts(rootStore.query.getQueryParams2())
+            this.getProducts(rootStore.query.getQueryParams())
         }
     );
 
     private readonly _qpReaction2: IReactionDisposer = reaction(
         () => rootStore.query.getParam('page'),
         () => {
-            this.getProducts(rootStore.query.getQueryParams2())
+            this.getProducts(rootStore.query.getQueryParams())
         }
     );
 

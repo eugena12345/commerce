@@ -15,7 +15,7 @@ const CatalogPage = observer(() => {
 
     const catalogStore = useLocalStore(() => new CatalogStore());
      useEffect(() => {
-        catalogStore.getProducts(rootStore.query.getQueryParams2())
+        catalogStore.getProducts(rootStore.query.getQueryParams())
      }, [catalogStore]);
 
     const navigate = useNavigate();
