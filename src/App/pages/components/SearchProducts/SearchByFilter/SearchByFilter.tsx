@@ -48,7 +48,7 @@ const SearchByFilter = observer(() => {
     //     return ''
     // }
 
-    const handleChoise = useCallback((categoryId: number) => {
+    const handleChoice = useCallback((categoryId: number) => {
         const newFilter = {
             productCategory: {
                 id: {
@@ -113,7 +113,7 @@ const SearchByFilter = observer(() => {
             onChange={handleOnChange}
             getTitle={getTitle}
             className={styles['container__filter']}
-        //onChoice={handleChoise}
+        //onChoice={handleChoice}
         />
     )
 }
