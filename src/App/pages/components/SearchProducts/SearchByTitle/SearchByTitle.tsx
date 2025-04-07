@@ -5,14 +5,13 @@ import { useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { observer, useLocalStore } from "mobx-react-lite";
-import { useStoreContext } from "App/App";
+import { useStoreContext } from "./../../../../../store/RootStore/context/rootStoreContext";
 import SearchValueStore from './../../../../../store/SearchValueStore/SearchValueStore';
 
 const SearchByTitle = observer(() => {
     const [searchParams, setSearchParams] = useSearchParams();
     const queryStore = useStoreContext();
     const valueStore = useLocalStore(() => new SearchValueStore({ valueDefault: '' }))
-
     useEffect(() => {
         const parsedParams = qs.parse(searchParams.toString(), { decode: true });
         if (parsedParams.filters?.title) {
@@ -43,7 +42,12 @@ const SearchByTitle = observer(() => {
 
     return (
         <div className={styles['container__search']}>
-            <Input placeholder="Search product" onChange={handleInputChange} value={valueStore.value} className={styles['container__search--grow']} />
+            <Input 
+            placeholder="Search product" 
+            onChange={handleInputChange} 
+            value={valueStore.value} 
+            className={styles['container__search--grow']} 
+            />
             <Button onClick={handleSearch}>Find now</Button>
         </div>
     )

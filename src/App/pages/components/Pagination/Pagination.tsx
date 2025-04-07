@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router';
 //import { ParamsFromQuery } from '../../../../store/CatalogStore/types';
 import { getNumberCountArr } from '../../../../utils/helpers';
 import { useCallback } from 'react';
-import { useStoreContext } from 'App/App';
+import { useStoreContext } from './../../../../store/RootStore/context/rootStoreContext';
 
 interface PaginationProps {
     pageCount: number;

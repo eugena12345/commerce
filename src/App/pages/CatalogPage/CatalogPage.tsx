@@ -11,7 +11,7 @@ import { observer, useLocalStore } from "mobx-react-lite";
 import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
 import qs from "qs";
 import { ParamsFromQuery } from '../../../store/CatalogStore/types';
-import { useStoreContext } from "App/App";
+import { useStoreContext } from "./../../../store/RootStore/context/rootStoreContext";
 
 const CatalogPage = observer(() => {
 

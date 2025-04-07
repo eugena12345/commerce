@@ -2,12 +2,8 @@ import { Outlet } from 'react-router';
 import Header from '../components/Header'
 import styles from './App.module.scss';
 import { useQueryParamsStoreInit } from '../store/RootStore/hooks/useQueryParamsStoreInit';
-import React, { useContext } from 'react';
-import RootStore from '../store/RootStore/RootStore';
 import rootStore from '../store/RootStore/instance';
-
-const RootStoreContext = React.createContext<RootStore>(rootStore);
-export const useStoreContext = () => useContext(RootStoreContext);
+import {RootStoreContext} from '../store/RootStore/context/rootStoreContext';
 
 function App() {
   useQueryParamsStoreInit();

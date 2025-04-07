@@ -16,17 +16,18 @@ export type MultiDropdownProps = {
   disabled?: boolean;
   getTitle: (value: Option[]) => string;
   //my add V
-  onChoice: (categoryId: number) => void;
+  //onChoice: (categoryId: number) => void;
 };
 
 const MultiDropdown: React.FC<MultiDropdownProps> = ({ 
-  className, options, value, onChange, disabled, getTitle, onChoice 
+  className, options, value, onChange, disabled, getTitle, //onChoice 
 }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [inputValue, setInputValue] = React.useState('');
   const filteredOptions = options.filter((option) =>
     option.value.toLowerCase().includes(inputValue.toLowerCase())
   );
+  console.log('value',value)
 
   const openOptions = (event: React.MouseEvent<HTMLInputElement>) => {
     if (disabled === true) {
@@ -81,7 +82,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
       onChange(newValue);
     }
 
-    onChoice(item.key);
+  //  onChoice(item.key);
   }
 
   const handleUpdateInputValue = (stringValue: string): void => {
