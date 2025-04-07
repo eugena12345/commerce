@@ -13,7 +13,7 @@ interface SearchProductsProps {
 const SearchProducts = observer((
     {totalItems}: SearchProductsProps) => {
         const [searchParams, setSearchParams] = useSearchParams();
- const resetFilter = (): void => {
+ const resetFilter = () => {
         searchParams.set('filterByCategoryId', '');
         searchParams.set('filterByTitle', '');
         searchParams.set('page', '1')
