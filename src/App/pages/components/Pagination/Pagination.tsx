@@ -3,7 +3,6 @@ import arrowBackIcon from 'assets/images/arrow-right.svg'
 import arrowForwardIcon from 'assets/images/arrow-rightSingle.svg'
 import { useSearchParams } from 'react-router';
 import { getNumberCountArr } from '../../../../utils/helpers';
-import { useCallback } from 'react';
 
 interface PaginationProps {
     pageCount: number;
@@ -13,11 +12,10 @@ interface PaginationProps {
 const Pagination = ({ pageCount, actualPage }: PaginationProps) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const numberCountArr = getNumberCountArr(pageCount);
-    const handleClick = useCallback(async (newActualPage: number) => {
+    const handleClick = (newActualPage: number) => {
         searchParams.set('page', `${newActualPage}`);
         setSearchParams(searchParams);
-    }, [searchParams, setSearchParams]
-    );
+    };
     
     return (
         <div className={styles.pagination}>
