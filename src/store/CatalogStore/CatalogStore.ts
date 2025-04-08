@@ -2,8 +2,8 @@ import { action, computed, IReactionDisposer, makeObservable, observable, reacti
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
-import { MetaInfo, ParamsFromQuery2 } from './types';
-import { createParamsForApi2 } from '../../utils/api';
+import { MetaInfo, ParamsFromQuery } from './types';
+import { createParamsForApi } from '../../utils/api';
 import rootStore from "../RootStore/instance";
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
@@ -46,18 +46,15 @@ export default class CatalogStore { //TODO разобраться implements imp
     }
 
     getProducts = async (
-        params: ParamsFromQuery2
-        //params: ParamsFromQuery
+        params: ParamsFromQuery
     ): Promise<void> => {
         //this._meta = Meta.loading;
         this._items = [];
         this._metaInfo = initialMeta;
-        const queryStringForTest = qs.stringify(createParamsForApi2(params));
+        const queryStringForTest = qs.stringify(createParamsForApi(params));
 
         const response = await this._apiStore.request<ProductType[]>({
             endpoint: `${queryStringForTest}`,
-            //headers: Record<string, string>,
-            // data: ReqT,
         });
 
         if (response.success) {

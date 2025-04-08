@@ -1,13 +1,13 @@
-import { action, makeObservable, observable, runInAction, toJS } from "mobx";
+import { action, makeObservable, observable, runInAction } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import { MetaInfo } from '../CatalogStore/types';
-import CatalogStore from './../CatalogStore/CatalogStore';
+import CatalogStore, {pageSize} from './../CatalogStore/CatalogStore';
 
 const initialMeta = {
     pagination: {
         page: 1,
         pageCount: 1,
-        pageSize: 6,//!!!!!!!!!!!!
+        pageSize: pageSize,
         total: 0
     }
 }

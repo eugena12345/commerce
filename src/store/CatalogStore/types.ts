@@ -9,12 +9,6 @@ export type MetaInfo = {
 
 export type ParamsFromQuery = {
     page?: number | string,
-    filters?: {},
-    sort?: {},
-}
-
-export type ParamsFromQuery2 = {
-    page?: number | string,
     filterByCategoryId?: string,
     filterByTitle?: string,
     sort?: {},
