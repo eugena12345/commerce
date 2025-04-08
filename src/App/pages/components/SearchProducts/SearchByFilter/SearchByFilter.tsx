@@ -37,7 +37,7 @@ const SearchByFilter = observer(() => {
         loadCategory();
     }, [categoryStore, filterValueStore, searchParams]);
 
-    const getOptionsFromcategories = (categories: ProductCategory[]) => {
+    const getOptionsFromCategories = (categories: ProductCategory[]) => {
         return categories.map((item: ProductCategory) => {
             return { key: item.id.toString(), value: item.title }
         })
@@ -62,7 +62,7 @@ const SearchByFilter = observer(() => {
 
     return (
         <MultiDropdown
-            options={getOptionsFromcategories(categoryStore.items)}
+            options={getOptionsFromCategories(categoryStore.items)}
             value={filterValueStore.value}
             onChange={handleOnChange}
             getTitle={getTitle}
