@@ -19,27 +19,28 @@ const Pagination = ({ pageCount, actualPage }: PaginationProps) => {
     
     return (
         <div className={styles.pagination}>
-            <div className={styles['pagination__arrow']}
+            <button className={styles['pagination__arrow']}
                 onClick={() => handleClick(actualPage > 1 ? actualPage - 1 : 1)}
+                disabled={actualPage === 1}
             // todo: add disabled
             >
                 <img src={arrowBackIcon} alt='back' />
-            </div>
+            </button>
             {numberCountArr.map((item) => {
 
-                return (<div className={`${styles.pagination__pagenumber} ${item === actualPage ? styles['pagination__pagenumber--active'] : ''
+                return (<button className={`${styles.pagination__pagenumber} ${item === actualPage ? styles['pagination__pagenumber--active'] : ''
                     }`}
                     key={item}
                     onClick={() => handleClick(item)}
-                >{item}</div>)
+                >{item}</button>)
             }
             )}
-            <div className={styles['pagination__arrow']}
+            <button className={styles['pagination__arrow']}
                 onClick={() => handleClick(actualPage < pageCount ? actualPage + 1 : pageCount)}
-
+                disabled={actualPage === pageCount}
             >
                 <img src={arrowForwardIcon} alt='forward' />
-            </div>
+            </button>
         </div>
     )
 }
