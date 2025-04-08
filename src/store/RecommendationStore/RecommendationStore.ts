@@ -1,54 +1,54 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable, runInAction, toJS } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
-import ApiStore from "../ApiStore/ApiStore";
-import { MetaInfo} from '../CatalogStore/types';
-
-const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-const STRAPI_URL = `${STRAPI_BASE_URL}/api/product-categories/`;
+import { MetaInfo } from '../CatalogStore/types';
+import CatalogStore from './../CatalogStore/CatalogStore';
 
 const initialMeta = {
     pagination: {
         page: 1,
-        pageCount: 1,   
-        pageSize: 1,
+        pageCount: 1,
+        pageSize: 6,//!!!!!!!!!!!!
         total: 0
-    } 
+    }
 }
 
-export default class RecommendationStore  { //implements implements ApiStore
-    private readonly _apiStore = new ApiStore(STRAPI_URL);
-    items: ProductType[] = [];
-    metaInfo: MetaInfo = initialMeta;
+export default class RecommendationStore { //implements implements ApiStore
+    private readonly _catalogStore = new CatalogStore(); //
+    _items: ProductType[] = []; //private
+    _metaInfo: MetaInfo = initialMeta; //private
+
 
     constructor() {
         makeObservable(this, {
-            items: observable,
+            _items: observable,
             getCategoryItems: action,
         })
     }
 
     async getCategoryItems(
-        categoryId: string
+        productCategoryId: string
     ): Promise<void> {
+
         //this._meta = Meta.loading;
-        this.items = [];
+        this._items = [];
+        this._metaInfo = initialMeta;
+        const paramsWithCategoryId = {
+            filterByCategoryId: productCategoryId,
+            filterByTitle: "",
+            page: "1",
+        };
 
-        const response = await this._apiStore.request<ProductType[]>({
-            endpoint: `${categoryId}`,
-        });
-
-        if (response.success) {
+        await this._catalogStore.getProducts(paramsWithCategoryId);
+        runInAction(() => {
             // this._meta = Meta.success;
-            this.items = [...response.data];
-            this.metaInfo = response.metaInfo;
-            return;
-        }
-
-        //this._meta = Meta.error;
+            this._items = this._catalogStore.items.splice(0, 3)
+        });
     }
 
+
+
     reset(): void {
-        this.items = [];
+        this._items = [];
         //this._meta = Meta.initial;
     }
 

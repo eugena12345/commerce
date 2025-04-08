@@ -6,37 +6,41 @@ import Button from 'components/Button/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import RecommendationStore from '../../../../store/RecommendationStore/RecommendationStore';
 import { useEffect } from 'react';
-import CategoryStore from '../../../../store/CategoryStore/CategoryStore';
 
 type RecommendationProps = {
     item: ProductType;
 }
 
 const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
-
-    const categoryStore = useLocalStore(() => new CategoryStore());
-
     const recommendationStore = useLocalStore(() => new RecommendationStore());
-    const categoryDocumentId: string = item.productCategory.documentId;
-
     useEffect(() => {
-        categoryStore.getCategories();
-        recommendationStore.getCategoryItems(categoryDocumentId);
-    }, [categoryDocumentId, categoryStore, recommendationStore]) 
+        const productCategoryId = item.productCategory.id.toString();
+        recommendationStore.getCategoryItems(productCategoryId);
+        console.log('recommendationStore', recommendationStore._items)
+    }, [item.productCategory.id, recommendationStore]);
 
     return (
         <>
             <Text className={styles.relatedTitle} view='p-20' color='primary' weight='bold'>Related Items</Text>
             <div className={styles.relatedItems}>
-                {item &&
+                {recommendationStore._items.length > 0 &&
                     <>
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
-                        <InfoCard image={item.images[0].url} title={item.title} subtitle={item.description} contentSlot={item.price} actionSlot={<Button>Add to Cart</Button>} />
+                        {
+                            recommendationStore._items.map((recommendatedProduct) => {
+                                return (
+                                    <InfoCard
+                                        image={recommendatedProduct.images[0].url}
+                                        title={recommendatedProduct.title}
+                                        subtitle={recommendatedProduct.description}
+                                        contentSlot={recommendatedProduct.price}
+                                        actionSlot={<Button>Add to Cart</Button>} />
+
+                                )
+                            })
+                        }
                     </>
                 }
             </div>
-
         </>
     )
 }
