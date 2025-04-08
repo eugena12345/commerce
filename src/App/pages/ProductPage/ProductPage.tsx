@@ -7,7 +7,7 @@ import Button from 'components/Button/Button';
 import { useNavigate, useParams } from 'react-router';
 import arrowRight from 'assets/images/arrow-right.svg'
 import { routes } from 'config/routes.config';
-import Recomendation from 'App/pages/components/Recomendation/Recomendation';
+import Recommendation from 'App/pages/components/Recommendation/Recommendation';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import ItemsStore from '../../../store/ItemsStore/ItemsStore';
 
@@ -50,7 +50,7 @@ const ProductPage = observer(() => {
                 }
             </div>
             {productsStore.itemInfo &&
-                <Recomendation item={productsStore.itemInfo} />
+                <Recommendation item={productsStore.itemInfo} />
             }
         </div>
     )

@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
-import ApiStore from "./../ApiStore/ApiStore";
+import ApiStore from "../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
@@ -15,7 +15,7 @@ const initialMeta = {
     } 
 }
 
-export default class RecomendationStore  { //implements implements ApiStore
+export default class RecommendationStore  { //implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     items: ProductType[] = [];
     metaInfo: MetaInfo = initialMeta;

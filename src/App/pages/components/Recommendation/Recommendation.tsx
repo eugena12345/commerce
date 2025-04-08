@@ -1,28 +1,28 @@
-import styles from './Recomendation.module.scss';
+import styles from './Recommendation.module.scss';
 import Text from 'components/Text/Text';
 import InfoCard from 'App/pages/components/InfoCard/InfoCard';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import Button from 'components/Button/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import RecomendationStore from './../../../../store/RecomendationStore/RecomendationStore';
+import RecommendationStore from '../../../../store/RecommendationStore/RecommendationStore';
 import { useEffect } from 'react';
-import CategoryStore from './../../../../store/CategoryStore/CategoryStore';
+import CategoryStore from '../../../../store/CategoryStore/CategoryStore';
 
-type RecomendationProps = {
+type RecommendationProps = {
     item: ProductType;
 }
 
-const Recomendation: React.FC<RecomendationProps> = observer(({ item }) => {
+const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
 
     const categoryStore = useLocalStore(() => new CategoryStore());
 
-    const recomendationStore = useLocalStore(() => new RecomendationStore());
+    const recommendationStore = useLocalStore(() => new RecommendationStore());
     const categoryDocumentId: string = item.productCategory.documentId;
 
     useEffect(() => {
         categoryStore.getCategories();
-        recomendationStore.getCategoryItems(categoryDocumentId);
-    }, [categoryDocumentId, categoryStore, recomendationStore]) 
+        recommendationStore.getCategoryItems(categoryDocumentId);
+    }, [categoryDocumentId, categoryStore, recommendationStore]) 
 
     return (
         <>
@@ -42,4 +42,4 @@ const Recomendation: React.FC<RecomendationProps> = observer(({ item }) => {
 }
 );
 
-export default Recomendation;
+export default Recommendation;
