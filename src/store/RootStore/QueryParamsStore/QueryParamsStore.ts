@@ -6,12 +6,6 @@ type PrivateFields = '_params';
 export default class QueryParamsStore {
   private _params: qs.ParsedQs = {};
   private _search: string = '';
-  page: string = '1';
-  //TODO sort: string = "createdAt:desc";
-  filters: Record<string, any> = {};
-  filterByCategoryId: string = '';
-  filterByTitle: string ='';
-
 
   constructor() {
     makeObservable<QueryParamsStore, PrivateFields>(this, {
