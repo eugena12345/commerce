@@ -21,7 +21,7 @@ const initialMeta = {
 
 type PrivateFields = '_items' | '_metaInfo';
 
-export default class CatalogStore { //TODO разобраться implements implements ApiStore
+export default class CatalogStore {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     private _items: ProductType[] = [];
     private _metaInfo: MetaInfo = initialMeta;

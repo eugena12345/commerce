@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
@@ -15,22 +15,35 @@ const initialMeta = {
     } 
 }
 
-export default class CategoryStore  { //implements implements ApiStore
+type PrivateFields = '_items' | '_metaInfo';
+
+export default class CategoryStore  {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
-    items: ProductType[] = [];
-    metaInfo: MetaInfo = initialMeta;
+    private _items: ProductType[] = [];
+    private _metaInfo: MetaInfo = initialMeta;
 
     constructor() {
-        makeObservable(this, {
-            items: observable,
+        makeObservable<CategoryStore, PrivateFields>(this, {
+            _items: observable,
+            _metaInfo: observable,
+            items: computed,
+            metaInfo: computed,
             getCategories: action,
         })
+    }
+
+    get items() {
+        return this._items;
+    }
+
+    get metaInfo() {
+        return this._metaInfo;
     }
 
     async getCategories(
     ): Promise<void> {
         //this._meta = Meta.loading;
-        this.items = [];
+        this._items = [];
 
         const response = await this._apiStore.request<ProductType[]>({
             endpoint: ``, 
@@ -38,8 +51,8 @@ export default class CategoryStore  { //implements implements ApiStore
 
         if (response.success) {
             // this._meta = Meta.success;
-            this.items = [...response.data];
-            this.metaInfo = response.metaInfo;
+            this._items = [...response.data];
+            this._metaInfo = response.metaInfo;
             return;
         }
 
@@ -47,7 +60,7 @@ export default class CategoryStore  { //implements implements ApiStore
     }
 
     reset(): void {
-        this.items = [];
+        this._items = [];
         //this._meta = Meta.initial;
     }
 

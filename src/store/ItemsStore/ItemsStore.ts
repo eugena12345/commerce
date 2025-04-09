@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
@@ -10,31 +10,37 @@ const params = {
 };
 const queryString = qs.stringify(params);
 
+type PrivateFields = '_itemInfo';
+
 
 export default class ItemsStore  { //implements implements ApiStore
     private readonly _apiStore = new ApiStore(STRAPI_URL);
-    itemInfo: null | ProductType = null;
+    private _itemInfo: null | ProductType = null;
     constructor() {
-        makeObservable(this, {
-            itemInfo: observable,
+        makeObservable <ItemsStore, PrivateFields>(this, {
+            _itemInfo: observable,
+            itemInfo: computed,
             getItemInfo: action,
         })
+    }
+    
+    get itemInfo () {
+        return this._itemInfo;
     }
 
     async getItemInfo(
         documentId: string
     ): Promise<void> {
         //this._meta = Meta.loading;
-        this.itemInfo = null;
+        this._itemInfo = null;
 
         const response = await this._apiStore.request({
             endpoint: `${documentId}?${queryString}`,
         });
 
-
         if (response.success) {
             // this._meta = Meta.success;
-            this.itemInfo = response.data as ProductType;
+            this._itemInfo = response.data as ProductType;
             return;
         }
 
@@ -42,7 +48,7 @@ export default class ItemsStore  { //implements implements ApiStore
     }
 
     reset(): void {
-        this.itemInfo = null;
+        this._itemInfo = null;
         //this._meta = Meta.initial;
     }
 

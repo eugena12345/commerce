@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, runInAction } from "mobx";
+import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import { MetaInfo } from '../CatalogStore/types';
 import CatalogStore, {pageSize} from './../CatalogStore/CatalogStore';
@@ -12,17 +12,31 @@ const initialMeta = {
     }
 }
 
-export default class RecommendationStore { //implements implements ApiStore
-    private readonly _catalogStore = new CatalogStore(); //
-    _items: ProductType[] = []; //private
-    _metaInfo: MetaInfo = initialMeta; //private
+type PrivateFields = '_items' | '_metaInfo';
+
+
+export default class RecommendationStore {
+    private readonly _catalogStore = new CatalogStore();
+    private _items: ProductType[] = [];
+    private _metaInfo: MetaInfo = initialMeta;
 
 
     constructor() {
-        makeObservable(this, {
+        makeObservable<RecommendationStore, PrivateFields>(this, {
             _items: observable,
+            _metaInfo: observable,
+            items: computed,
+            metaInfo: computed,
             getCategoryItems: action,
         })
+    }
+
+    get items () {
+        return this._items;
+    }
+
+    get metaInfo () {
+        return this._metaInfo;
     }
 
     async getCategoryItems(
