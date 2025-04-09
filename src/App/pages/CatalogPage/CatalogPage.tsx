@@ -4,8 +4,6 @@ import ProductsInfo from "../components/ProductsInfo";
 import SearchProducts from "../components/SearchProducts";
 import Button from "components/Button/Button";
 import styles from './CatalogPage.module.scss';
-import { useNavigate } from "react-router";
-import { routes } from "config/routes.config";
 import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
 import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
@@ -17,9 +15,6 @@ const CatalogPage = observer(() => {
      useEffect(() => {
         catalogStore.getProducts(rootStore.query.getQueryParams())
      }, [catalogStore]);
-
-    const navigate = useNavigate();
-    const navigaveToProductPage = (documentId: string) => navigate(routes.product.create(documentId))
 
     return (
         <div className={styles.container}>
@@ -42,7 +37,7 @@ const CatalogPage = observer(() => {
                                     contentSlot={item.price}
                                     actionSlot={<Button>Add to Cart</Button>}
                                     key={item.id}
-                                    onClick={() => navigaveToProductPage(item.documentId)}
+                                    itemDocumentId={item.documentId}
                                 />
                             )
                         })

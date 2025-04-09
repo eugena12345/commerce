@@ -16,24 +16,26 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
     useEffect(() => {
         const productCategoryId = item.productCategory.id.toString();
         recommendationStore.getCategoryItems(productCategoryId);
-        console.log('recommendationStore', recommendationStore._items)
+        console.log('recommendationStore', recommendationStore.items)
     }, [item.productCategory.id, recommendationStore]);
 
     return (
         <>
             <Text className={styles.relatedTitle} view='p-20' color='primary' weight='bold'>Related Items</Text>
             <div className={styles.relatedItems}>
-                {recommendationStore._items.length > 0 &&
+                {recommendationStore.items.length > 0 &&
                     <>
                         {
-                            recommendationStore._items.map((recommendatedProduct) => {
+                            recommendationStore.items.map((recommendatedProduct) => {
                                 return (
                                     <InfoCard
                                         image={recommendatedProduct.images[0].url}
                                         title={recommendatedProduct.title}
                                         subtitle={recommendatedProduct.description}
                                         contentSlot={recommendatedProduct.price}
-                                        actionSlot={<Button>Add to Cart</Button>} />
+                                        actionSlot={<Button>Add to Cart</Button>} 
+                                        itemDocumentId={recommendatedProduct.documentId}
+                                        />
 
                                 )
                             })
