@@ -1,6 +1,7 @@
 .pagination {
     display: flex;
     flex-direction: row;
+    align-items: stretch;
 
     &__pagenumber {
         width: 38px;
@@ -10,6 +11,10 @@
         align-items: center;
         font-size: 18px;
 
+        &--active {
+            background-color: var(--color-brand);
+        }
+
         &:hover {
             background-color: var(--color-brand);
             cursor: pointer;
@@ -18,7 +23,6 @@
 
     &__arrow {
         width: 35px;
-        height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -27,6 +31,14 @@
             background-color: var(--color-brand);
             cursor: pointer;
         }
-    }
 
+        &:disabled {
+            filter: grayscale(1) opacity(0.3);
+
+            &:hover {
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
+    }
 }

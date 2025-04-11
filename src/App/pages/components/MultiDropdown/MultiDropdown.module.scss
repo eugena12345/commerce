@@ -4,8 +4,9 @@
   box-shadow: 0px 4px 10px 0 rgba(0, 0, 0, 0.18);
   font-size: var(--spaceM);
   font-weight: normal;
-  position: fixed;
+  position: absolute;
   width: 300px;
+  z-index: 10;
 
   &__option {
     padding: var(--spaceS) var(--spaceXS);

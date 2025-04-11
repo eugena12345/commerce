@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import styles from './Card.module.scss';
 import Text from 'components/Text/Text';
+import { useNavigate } from 'react-router';
+import { routes } from "config/routes.config";
 
 export type CardProps = {
     className?: string,
@@ -11,12 +13,15 @@ export type CardProps = {
     contentSlot?: React.ReactNode;
     onClick?: React.MouseEventHandler;
     actionSlot?: React.ReactNode;
+    itemDocumentId: string;
 };
 
-const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, subtitle, contentSlot, onClick, actionSlot,  }) => {
-    const actualClassName = `${styles.card} ${className? className : ''}`
+const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, subtitle, contentSlot, onClick, actionSlot, itemDocumentId }) => {
+    const actualClassName = `${styles.card} ${className? className : ''}`;
+    const navigate = useNavigate();
+
     return (
-        <div className={actualClassName} onClick={onClick}>
+        <div className={actualClassName} onClick={onClick? onClick : () => navigate(routes.product.create(itemDocumentId))}> 
             <img src={image} alt='картинка' className={styles['card__image']} />
             <div className={styles['card__info']}>
                 <div className={styles['card__description']}>
