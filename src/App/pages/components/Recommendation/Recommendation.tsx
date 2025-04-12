@@ -1,11 +1,12 @@
 import styles from './Recommendation.module.scss';
-import Text from 'components/Text/Text';
-import InfoCard from 'App/pages/components/InfoCard/InfoCard';
-import { ProductType } from 'App/pages/CatalogPage/type';
-import Button from 'components/Button/Button';
+import Text from 'components/Text';
+import InfoCard from '../InfoCard/InfoCard'
+import { ProductType } from '../../CatalogPage/type'
+import Button from 'components/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import RecommendationStore from '../../../../store/RecommendationStore/RecommendationStore';
+import RecommendationStore from 'store/RecommendationStore';
 import { useEffect } from 'react';
+import React from 'react';
 
 type RecommendationProps = {
     item: ProductType;

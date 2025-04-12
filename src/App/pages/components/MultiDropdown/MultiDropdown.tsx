@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
-import Input from '../Input/Input';
+import Input from 'pages/components/Input'
 import ArrowDownIcon from 'components/icons/ArrowDownIcon';
 import styles from './MultiDropdown.module.scss';
 
@@ -85,6 +85,12 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const handleUpdateInputValue = (stringValue: string): void => {
     setInputValue(stringValue);
   }
+
+  // styles:
+  // options
+  // optionsOption
+  // optionsOptionSelected
+  
   return (
     <>
       <Input className={className} onChange={handleUpdateInputValue} afterSlot={<ArrowDownIcon />} disabled={disabled} onClick={openOptions} {...args}
@@ -93,8 +99,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
         {isOptionsOpen && !disabled &&
           filteredOptions.map((item) => {
             const className = value.some((selectedItem) => selectedItem.key.toString() === item.key) ?
-              styles['options__option--selected']
-              : styles['options__option'];
+              styles.optionsOptionSelected
+              : styles.optionsOption;
             return <div key={item.key} onClick={() => handleClick(item)} className={className}>{item.value}</div>
           })
         }

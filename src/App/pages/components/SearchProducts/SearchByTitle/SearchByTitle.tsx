@@ -1,11 +1,12 @@
-import Input from "App/pages/components/Input/Input";
+import Input from 'pages/components/Input';
 import Button from "components/Button/Button";
 import styles from './SearchByTitle.module.scss';
 import { useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { observer, useLocalStore } from "mobx-react-lite";
-import SearchValueStore from './../../../../../store/SearchValueStore/SearchValueStore';
+import SearchValueStore from 'store/SearchValueStore';
+import React from 'react';
 
 const SearchByTitle = observer(() => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -29,12 +30,12 @@ const SearchByTitle = observer(() => {
     )
 
     return (
-        <div className={styles['container__search']}>
+        <div className={styles.containerSearch}>
             <Input 
             placeholder="Search product" 
             onChange={handleInputChange} 
             value={valueStore.value} 
-            className={styles['container__search--grow']} 
+            className={styles.containerSearchGrow}
             />
             <Button onClick={handleSearch}>Find now</Button>
         </div>

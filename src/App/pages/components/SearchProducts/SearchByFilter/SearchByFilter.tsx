@@ -1,13 +1,13 @@
-import { ProductCategory } from 'App/pages/CatalogPage/type';
-import MultiDropdown from "App/pages/components/MultiDropdown/MultiDropdown";
+import { ProductCategory } from 'pages/CatalogPage/type';
+import MultiDropdown, { Option } from 'pages/components/MultiDropdown';
 import styles from './SearchByFilter.module.scss';
 import { useSearchParams } from 'react-router';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import CategoryStore from '../../../../../store/CategoryStore/CategoryStore';
+import CategoryStore from 'store/CategoryStore';
 import { useCallback, useEffect } from 'react';
-import { Option } from 'App/pages/components/MultiDropdown/MultiDropdown';
-import FiterValueStore from './../../../../../store/FilterValueStore/FilterValueStore';
+import FiterValueStore from 'store/FilterValueStore';
 import qs from 'qs';
+import React from 'react';
 
 const SearchByFilter = observer(() => {
 
@@ -66,7 +66,7 @@ const SearchByFilter = observer(() => {
             value={filterValueStore.value}
             onChange={handleOnChange}
             getTitle={getTitle}
-            className={styles['container__filter']}
+            className={styles.containerFilter}
         />
     )
 }

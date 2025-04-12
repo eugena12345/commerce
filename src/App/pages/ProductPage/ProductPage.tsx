@@ -1,15 +1,14 @@
 import styles from './ProductPage.module.scss';
-import Text from 'components/Text/Text';
+import Text from 'components/Text';
 import { useEffect } from 'react';
-import Button from 'components/Button/Button';
-// todo: add image galery
-// todo: import arrowBack from 'assets/images/ArrowBack.svg';
+import Button from 'components/Button';
 import { useNavigate, useParams } from 'react-router';
-import arrowRight from 'assets/images/arrow-right.svg'
+import arrowRight from 'assets/images/arrow-right.svg';
 import { routes } from 'config/routes.config';
-import Recommendation from 'App/pages/components/Recommendation/Recommendation';
+import Recommendation from 'pages/components/Recommendation';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import ItemsStore from '../../../store/ItemsStore/ItemsStore';
+import ItemsStore from 'store/ItemsStore';
+import React from 'react';
 
 const ProductPage = observer(() => {
     const { id } = useParams();
@@ -23,7 +22,7 @@ const ProductPage = observer(() => {
     const navigate = useNavigate();
     return (
         <div className={styles.productpage}>
-            <div className={styles['productpage__back']} onClick={() => navigate(routes.main.create())}>
+            <div className={styles.productpageBack} onClick={() => navigate(routes.main.create())}>
                 <img src={arrowRight} alt='' />
                 <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
 
@@ -36,8 +35,7 @@ const ProductPage = observer(() => {
                         <div className={styles.arrow}>
                             <img src={arrowBack} alt="" />
                         </div> */}
-                        <div className={styles['card__description']}>
-
+                        <div className={styles.cardDescription}>
                             <Text view='title' color='primary'>{productsStore.itemInfo.title}</Text>
                             <Text view='p-16' color='secondary'>{productsStore.itemInfo.description}</Text>
                             <Text view='title' color='primary'>${productsStore.itemInfo.price}</Text>

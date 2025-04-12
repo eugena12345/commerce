@@ -19,7 +19,6 @@ const Button: React.FC<ButtonProps> = (props) => {
     <button
       onClick={props.onClick}
       onMouseOver={props.onMouseOver}
-      data-testid={props['data-testid']}
       disabled={(props.loading || props.disabled)}
       className={btnClass}
       onFocus={props.onFocus}

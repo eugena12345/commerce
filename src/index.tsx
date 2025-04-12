@@ -3,8 +3,9 @@ import { routesConfig } from "./config/routes";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import './config/configureMobX';
-// добавляю
-//import 'regenerator-runtime';
+import 'regenerator-runtime';
+import 'whatwg-fetch';
+import React from 'react';
 
 
 const router = createBrowserRouter(routesConfig);
@@ -15,7 +16,6 @@ const root = ReactDOM.createRoot(
 
 root.render(<RouterProvider router={router} />);
 
-// добавляю
-// if(module.hot) {
-//   module.hot.accept();
-// }
+if(module.hot) {
+  module.hot.accept();
+}

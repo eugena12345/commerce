@@ -16,24 +16,33 @@ export type CardProps = {
     itemDocumentId: string;
 };
 
+// styles:
+// card
+// cardBuyInfo
+// cardCaption
+// cardDescription
+// cardImage
+// cardInfo
+// cardPrice
+// cardTitle
+
 const InfoCard: React.FC<CardProps> = ({ className, image, captionSlot, title, subtitle, contentSlot, onClick, actionSlot, itemDocumentId }) => {
     const actualClassName = `${styles.card} ${className? className : ''}`;
     const navigate = useNavigate();
-
     return (
         <div className={actualClassName} onClick={onClick? onClick : () => navigate(routes.product.create(itemDocumentId))}> 
-            <img src={image} alt='картинка' className={styles['card__image']} />
-            <div className={styles['card__info']}>
-                <div className={styles['card__description']}>
-                    {captionSlot && <p className={styles['card__caption']}>{captionSlot}</p>}
-                    <div className={styles['card__title']}>
+            <img src={image} alt='картинка' className={styles.cardImage} />
+            <div className={styles.cardInfo}>
+                <div className={styles.cardDescription}>
+                    {captionSlot && <p className={styles.cardCaption}>{captionSlot}</p>}
+                    <div className={styles.cardTitle}>
                     <Text className="pb-8" view={'p-20'} weight='medium' maxLines={2} color='primary'>{title}</Text>
                     </div>
                     <Text className="pb-8" view={'p-16'} weight='normal' maxLines={3} color='secondary'>{subtitle}</Text>
                 </div>
 
-                <div className={styles['card__buy-info']}>
-                    <div className={styles['card__price']}>
+                <div className={styles.cardBuyInfo}>
+                    <div className={styles.cardPrice}>
                         ${contentSlot}
                     </div>
                     <div>{actionSlot}</div>

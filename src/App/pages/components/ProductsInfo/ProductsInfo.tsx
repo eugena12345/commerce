@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import styles from './ProductsInfo.module.scss';
 import Text from "components/Text/Text";
+import React from 'react';
 
 const ProductsInfo = () => {
     return (
