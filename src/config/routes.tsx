@@ -1,8 +1,9 @@
 import { Navigate, RouteObject } from "react-router";
 import App from "../App";
-import CatalogPage from "App/pages/CatalogPage/CatalogPage";
-import ProductPage from "App/pages/ProductPage/ProductPage";
+import CatalogPage from 'pages/CatalogPage'
+import ProductPage from 'pages/ProductPage'
 import {routes} from './routes.config';
+import React from "react";
 
 export const routesConfig: RouteObject[] = [
   {

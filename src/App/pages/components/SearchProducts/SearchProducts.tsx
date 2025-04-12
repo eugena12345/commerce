@@ -5,6 +5,7 @@ import SearchByTitle from './SearchByTitle/SearchByTitle';
 import SearchByFilter from './SearchByFilter/SearchByFilter';
 import { useSearchParams } from 'react-router';
 import Button from 'components/Button/Button';
+import React from 'react';
 
 interface SearchProductsProps {
     totalItems: number;
@@ -24,8 +25,8 @@ const SearchProducts = observer((
         <div className={styles.container}>
             <SearchByTitle/>
             <SearchByFilter/>
-            <div className={styles.container__resultOrReset}>
-                <div className={styles['container__result']}>
+            <div className={styles.containerResultOrReset}>
+                <div className={styles.containerResult}> 
                 <Text tag='h2' color='primary'>Total products</Text>
                 <Text view='p-20' color='accent' weight='bold'>{totalItems}</Text>
                 </div>

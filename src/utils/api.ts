@@ -1,5 +1,5 @@
-import { ParamsFromQuery, ParamsForApi } from '../store/CatalogStore/types';
-import { pageSize } from '../store/CatalogStore//CatalogStore';
+import { ParamsFromQuery, ParamsForApi } from 'store/CatalogStore/types';
+import { pageSize } from 'store/CatalogStore/CatalogStore';
 
 export const createParamsForApi = (params: ParamsFromQuery): ParamsForApi => {
     const paramsForApi: ParamsForApi = {

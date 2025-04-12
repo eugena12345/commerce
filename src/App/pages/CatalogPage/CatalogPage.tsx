@@ -1,13 +1,19 @@
 import { useEffect } from "react";
-import InfoCard from "../components/InfoCard";
-import ProductsInfo from "../components/ProductsInfo";
-import SearchProducts from "../components/SearchProducts";
-import Button from "components/Button/Button";
+import InfoCard from 'pages/components/InfoCard';
+import ProductsInfo from 'pages/components/ProductsInfo';
+import SearchProducts from 'pages/components/SearchProducts'
+import Button from 'components/Button';
 import styles from './CatalogPage.module.scss';
-import Pagination from "App/pages/components/Pagination/Pagination";
+import Pagination from 'pages/components/Pagination';
 import { observer, useLocalStore } from "mobx-react-lite";
-import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
-import rootStore from "./../../../store/RootStore/instance";
+import CatalogStore from 'store/CatalogStore'
+import rootStore from 'store/RootStore/instance';
+import React from "react";
+
+// наименование стелей в styles
+// container
+// containerMaxWidth
+// containerProducts
 
 const CatalogPage = observer(() => {
 
@@ -18,7 +24,7 @@ const CatalogPage = observer(() => {
 
     return (
         <div className={styles.container}>
-            <div className={styles[`container--maxWidth`]}>
+            <div className={styles.containerMaxWidth}>
                 <ProductsInfo />
                 {catalogStore.items.length > 0 &&
                     <SearchProducts
@@ -26,7 +32,7 @@ const CatalogPage = observer(() => {
                     />
                 }
 
-                <div className={styles[`container__products`]}>
+                <div className={styles.containerProducts}>
                     {catalogStore.items.length > 0 &&
                         catalogStore.items.map((item) => {
                             return (

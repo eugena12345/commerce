@@ -2,8 +2,10 @@ import styles from './Header.module.scss';
 import logo from 'assets/images/Frame.svg';
 import lalasiaLogo from 'assets/images/Lalasia.svg';
 import bag from 'assets/images/bag-2.svg';
-import userSvg from 'assets/images/user.svg';
-import HeaderNav from 'components/HeaderNav/HeaderNav';
+import userSvg from 'assets/images/user.svg'
+import HeaderNav from 'components/HeaderNav';
+import React from 'react';
+
 
 const Header = () => {
     return (
