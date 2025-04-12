@@ -1,50 +1,13 @@
-// было
-// {
-//   "compilerOptions": {
-//     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-//     "target": "ES2020",
-//     "useDefineForClassFields": true,
-//     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-//     "module": "ESNext",
-//     "skipLibCheck": true,
-
-
-//     "moduleResolution": "bundler",
-//     "allowImportingTsExtensions": true,
-//     "isolatedModules": true,
-//     "moduleDetection": "force",
-//     "noEmit": true,
-//     "jsx": "react-jsx",
-
-
-//     "strict": true,
-//     "noUnusedLocals": true,
-//     "noUnusedParameters": true,
-//     "noFallthroughCasesInSwitch": true,
-//     "noUncheckedSideEffectImports": true,
-//     "baseUrl": "src",
-//     "paths": {
-//       "components": ["components/*"],
-//       "config": ["config/*"],
-//       "styles": ["styles/*"],
-//       "utils": ["utils/*"],
-//       "App": ["App/*"],
-//       "assets": ["assets/*"]
-//     }
-//   },
-//   "include": ["src", "src/**/*", "global.d.ts"]
-// }
-
-
-
-
-// стало
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -60,32 +23,43 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "src",
     "paths": {
-"components/*": ["components/*"],
-      "config/*": ["config/*"],
-      "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"],
-      "models/*": ["models/*"],
-      "store/*": ["store/*"],
-      "pages/*": ["App/pages/*"],
-      "assets/*": ["assets/*"]
-
-
-      // "components/*": ["src/components/*"],
-      // "config/*": ["src/config/*"],
-      // "styles/*": ["src/styles/*"],
-      // "utils/*": ["src/utils/*"],
-      // "models/*": ["src/models/*"],
-      // "store/*": ["/src/store"],
-      // "pages/*": ["/src/App/pages"],
-      // // "App/*": ["src/App/*"],
-      // "assets/*": ["src/assets/*"],
-
+      "components/*": [
+        "components/*"
+      ],
+      "config/*": [
+        "config/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ],
+      "utils/*": [
+        "utils/*"
+      ],
+      "models/*": [
+        "models/*"
+      ],
+      "store/*": [
+        "store/*"
+      ],
+      "pages/*": [
+        "App/pages/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ]
     },
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "src/**/*", "global.d.ts", "declaration.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "src/**/*",
+    "global.d.ts",
+    "declaration.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
