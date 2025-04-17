@@ -1,4 +1,4 @@
-import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction, toJS } from "mobx";
+import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction } from "mobx";
 import qs from 'qs';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
@@ -19,20 +19,29 @@ const initialMeta = {
     }
 }
 
-type PrivateFields = '_items' | '_metaInfo';
+export enum Meta {
+    initial = 'initial',
+    loading = 'loading',
+    error = 'error', 
+    success = 'success'
+  }
+
+type PrivateFields = '_items' | '_metaInfo' | '_metaLoading';
 
 export default class CatalogStore {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     private _items: ProductType[] = [];
     private _metaInfo: MetaInfo = initialMeta;
-
+    private _metaLoading: Meta = Meta.initial;
 
     constructor() {
         makeObservable<CatalogStore, PrivateFields>(this, {
             _items: observable,
             _metaInfo: observable,
+            _metaLoading: observable,
             items: computed,
             metaInfo: computed,
+            metaLoading: computed,
             getProducts: action,
         })
     }
@@ -45,10 +54,14 @@ export default class CatalogStore {
         return this._metaInfo;
     }
 
+    get metaLoading() {
+        return this._metaLoading;
+    }
+
     getProducts = async (
         params: ParamsFromQuery
     ): Promise<void> => {
-        //this._meta = Meta.loading;
+        this._metaLoading = Meta.loading;
         this._items = [];
         this._metaInfo = initialMeta;
         const queryStringForTest = qs.stringify(createParamsForApi(params));
@@ -59,18 +72,18 @@ export default class CatalogStore {
 
         if (response.success) {
             runInAction(() => {
-                // this._meta = Meta.success;
+                this._metaLoading = Meta.success;
                 this._items = response.data;
                 this._metaInfo = response.metaInfo;
             });
             return;
         }
-        //this._meta = Meta.error;
+        this._metaLoading = Meta.error;
     }
 
     reset(): void {
         this._items = [];
-        //this._meta = Meta.initial;
+        this._metaLoading = Meta.initial;
     }
 
     destroy(): void {

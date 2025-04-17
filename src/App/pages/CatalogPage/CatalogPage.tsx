@@ -8,22 +8,31 @@ import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
 import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
 import rootStore from "./../../../store/RootStore/instance";
+import Loader from "components/Loader";
+import Text from "components/Text";
+import { Meta } from "./../../../store/CatalogStore/CatalogStore";
 
 const CatalogPage = observer(() => {
 
     const catalogStore = useLocalStore(() => new CatalogStore());
-     useEffect(() => {
+    useEffect(() => {
         catalogStore.getProducts(rootStore.query.getQueryParams())
-     }, [catalogStore]);
+    }, [catalogStore]);
 
     return (
         <div className={styles.container}>
             <div className={styles[`container--maxWidth`]}>
                 <ProductsInfo />
-                {catalogStore.items.length > 0 &&
-                    <SearchProducts
-                        totalItems={catalogStore.metaInfo.pagination.total}
-                    />
+
+                <SearchProducts
+                    totalItems={catalogStore.metaInfo.pagination.total}
+                    metaLoading={catalogStore.metaLoading}
+                />
+                {(catalogStore.metaLoading === Meta.success && catalogStore.items.length === 0) &&
+                    <Text view='p-20' color='secondary'>No products found matching the filters you specified. Please change your query or reset your filters.</Text>}
+
+                {catalogStore.metaLoading === Meta.loading &&
+                    <Loader />
                 }
 
                 <div className={styles[`container__products`]}>
