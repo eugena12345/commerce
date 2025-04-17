@@ -17,6 +17,12 @@ $gap-button-group: 24px;
         }
     }
 
+    &__loader {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
     .card {
         display: flex;
         flex-direction: row;

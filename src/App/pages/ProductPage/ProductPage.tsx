@@ -10,6 +10,8 @@ import { routes } from 'config/routes.config';
 import Recommendation from 'App/pages/components/Recommendation/Recommendation';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import ItemsStore from '../../../store/ItemsStore/ItemsStore';
+import { Meta } from '../../../store/CatalogStore/CatalogStore';
+import Loader from 'components/Loader';
 
 const ProductPage = observer(() => {
     const { id } = useParams();
@@ -28,6 +30,11 @@ const ProductPage = observer(() => {
                 <Text className={styles.relatedTitle} view='p-20' color='primary'>Back</Text>
 
             </div>
+            {productsStore.metaLoading === Meta.loading &&
+                <div className={styles['productpage__loader']}>
+                    <Loader />
+                </div>
+            }
             <div className={styles.card}>
                 {productsStore.itemInfo &&
                     <>
@@ -37,7 +44,6 @@ const ProductPage = observer(() => {
                             <img src={arrowBack} alt="" />
                         </div> */}
                         <div className={styles['card__description']}>
-
                             <Text view='title' color='primary'>{productsStore.itemInfo.title}</Text>
                             <Text view='p-16' color='secondary'>{productsStore.itemInfo.description}</Text>
                             <Text view='title' color='primary'>${productsStore.itemInfo.price}</Text>
