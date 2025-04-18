@@ -9,8 +9,8 @@ import arrowRight from 'assets/images/arrow-right.svg'
 import { routes } from 'config/routes.config';
 import Recommendation from 'App/pages/components/Recommendation/Recommendation';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import ItemsStore from '../../../store/ItemsStore/ItemsStore';
-import { Meta } from '../../../store/CatalogStore/CatalogStore';
+import ItemsStore from 'store/ItemsStore';
+import { Meta } from 'store/CatalogStore/CatalogStore';
 import Loader from 'components/Loader';
 
 const ProductPage = observer(() => {

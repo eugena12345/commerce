@@ -5,8 +5,7 @@ import SearchByTitle from './SearchByTitle/SearchByTitle';
 import SearchByFilter from './SearchByFilter/SearchByFilter';
 import { useSearchParams } from 'react-router';
 import Button from 'components/Button/Button';
-import { Meta } from "./../../../../store/CatalogStore/CatalogStore";
-
+import { Meta } from 'store/CatalogStore/CatalogStore';
 
 interface SearchProductsProps {
     totalItems: number;

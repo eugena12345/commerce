@@ -6,11 +6,11 @@ import Button from "components/Button/Button";
 import styles from './CatalogPage.module.scss';
 import Pagination from "App/pages/components/Pagination/Pagination";
 import { observer, useLocalStore } from "mobx-react-lite";
-import CatalogStore from "./../../../store/CatalogStore/CatalogStore"; //  TODO добавить алиас
-import rootStore from "./../../../store/RootStore/instance";
+import CatalogStore from 'store/CatalogStore'
+import rootStore from 'store/RootStore/instance';
 import Loader from "components/Loader";
 import Text from "components/Text";
-import { Meta } from "./../../../store/CatalogStore/CatalogStore";
+import { Meta } from 'store/CatalogStore/CatalogStore';
 
 const CatalogPage = observer(() => {
 

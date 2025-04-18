@@ -4,7 +4,7 @@ import InfoCard from 'App/pages/components/InfoCard/InfoCard';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import Button from 'components/Button/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import RecommendationStore from '../../../../store/RecommendationStore/RecommendationStore';
+import RecommendationStore from 'store/RecommendationStore';
 import { useEffect } from 'react';
 
 type RecommendationProps = {

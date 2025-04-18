@@ -5,7 +5,7 @@ import { useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router";
 import qs from "qs";
 import { observer, useLocalStore } from "mobx-react-lite";
-import SearchValueStore from './../../../../../store/SearchValueStore/SearchValueStore';
+import SearchValueStore from 'store/SearchValueStore';
 
 const SearchByTitle = observer(() => {
     const [searchParams, setSearchParams] = useSearchParams();

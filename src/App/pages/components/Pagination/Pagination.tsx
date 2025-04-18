@@ -2,7 +2,7 @@ import styles from './Pagination.module.scss';
 import arrowBackIcon from 'assets/images/arrow-right.svg'
 import arrowForwardIcon from 'assets/images/arrow-rightSingle.svg'
 import { useSearchParams } from 'react-router';
-import { getNumberCountArr } from '../../../../utils/helpers';
+import { getNumberCountArr } from 'utils/helpers';
 
 interface PaginationProps {
     pageCount: number;
