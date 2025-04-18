@@ -7,8 +7,8 @@ const HeaderNav = () => {
         <nav className={styles.headerNav}>
         <ul>
             <li><Link to={routes.main.create()}>Products</Link></li>
-            <li><Link to={routes.main.create()}>Categories</Link></li>
-            <li><Link to={routes.main.create()}>About us</Link></li>
+            <li><Link to={routes.categories.create()}>Categories</Link></li>
+            <li><Link to={routes.about.create()}>About us</Link></li>
         </ul>
     </nav>
 

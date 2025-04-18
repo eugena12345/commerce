@@ -2,6 +2,8 @@ import { action, computed, makeObservable, observable } from "mobx";
 import { ProductType } from 'App/pages/CatalogPage/type';
 import ApiStore from "./../ApiStore/ApiStore";
 import { MetaInfo} from '../CatalogStore/types';
+import { createParamsForCategoriesApi } from "utils/api";
+import qs from "qs";
 
 const STRAPI_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
 const STRAPI_URL = `${STRAPI_BASE_URL}/api/product-categories?`;
@@ -19,7 +21,7 @@ type PrivateFields = '_items' | '_metaInfo';
 
 export default class CategoryStore  {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
-    private _items: ProductType[] = [];
+    private _items: ProductType[] = []; ////сделать правильный тип для категории
     private _metaInfo: MetaInfo = initialMeta;
 
     constructor() {
@@ -44,13 +46,16 @@ export default class CategoryStore  {
     ): Promise<void> {
         //this._meta = Meta.loading;
         this._items = [];
+               const queryString = qs.stringify(createParamsForCategoriesApi());
+       
 
         const response = await this._apiStore.request<ProductType[]>({
-            endpoint: ``, 
+            endpoint: `${queryString}`, 
         });
 
         if (response.success) {
             // this._meta = Meta.success;
+            console.log(response.data);
             this._items = [...response.data];
             this._metaInfo = response.metaInfo;
             return;
