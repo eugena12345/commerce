@@ -6,6 +6,7 @@ import Button from 'components/Button/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
 import RecommendationStore from 'store/RecommendationStore';
 import { useEffect } from 'react';
+import { addToCart } from 'utils/helpers';
 
 type RecommendationProps = {
     item: ProductType;
@@ -33,10 +34,10 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
                                         title={recommendatedProduct.title}
                                         subtitle={recommendatedProduct.description}
                                         contentSlot={recommendatedProduct.price}
-                                        actionSlot={<Button>Add to Cart</Button>} 
+                                        actionSlot={<Button>Add to Cart</Button>}
                                         itemDocumentId={recommendatedProduct.documentId}
-                                        />
-
+                                        onClick={(e) => addToCart(e, recommendatedProduct)}
+                                    />
                                 )
                             })
                         }

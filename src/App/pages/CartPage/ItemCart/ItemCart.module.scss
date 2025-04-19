@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid #518581;
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+
+    &__title {
+        width: 50%;
+        cursor: pointer;
+    }
+
+    &__quantity {
+        width: 20%;
+    }
+
+    &__price {
+        width: 10%;
+    }
+
+    &__total {
+        width: 15%;
+    }
+
+    button {
+        width: 5%;
+        border-radius: 10%;
+        padding: 3px;
+        background-color: #d3e4e3;
+    }
+
+    .minus,
+    .plus {
+        padding: 3px;
+        background-color: #518581;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin: 3px 7px;
+    }
+
+}

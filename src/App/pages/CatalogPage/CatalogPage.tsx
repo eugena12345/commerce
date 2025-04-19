@@ -11,6 +11,7 @@ import rootStore from 'store/RootStore/instance';
 import Loader from "components/Loader";
 import Text from "components/Text";
 import { Meta } from 'store/CatalogStore/CatalogStore';
+import { addToCart } from "utils/helpers";
 
 const CatalogPage = observer(() => {
 
@@ -44,7 +45,7 @@ const CatalogPage = observer(() => {
                                     title={item.title}
                                     subtitle={item.description}
                                     contentSlot={item.price}
-                                    actionSlot={<Button>Add to Cart</Button>}
+                                    actionSlot={<Button onClick={(e) => addToCart(e, item)}>Add to Cart</Button>}
                                     key={item.id}
                                     itemDocumentId={item.documentId}
                                 />

@@ -12,6 +12,8 @@ import { observer, useLocalStore } from 'mobx-react-lite';
 import ItemsStore from 'store/ItemsStore';
 import { Meta } from 'store/CatalogStore/CatalogStore';
 import Loader from 'components/Loader';
+import { ProductType } from 'App/pages/CatalogPage/type';
+import { addToCart } from 'utils/helpers';
 
 const ProductPage = observer(() => {
     const { id } = useParams();
@@ -34,6 +36,10 @@ const ProductPage = observer(() => {
     }
 
     const navigate = useNavigate();
+    const buyNow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, item: ProductType) => {
+        addToCart(e, item);
+        navigate(routes.cart.create());
+    }
     return (
         <div className={styles.productpage}>
             <div className={styles['productpage--maxWidth']}>
@@ -68,8 +74,8 @@ const ProductPage = observer(() => {
                                 <Text view='p-16' color='secondary'>{productsStore.itemInfo.description}</Text>
                                 <Text view='title' color='primary'>${productsStore.itemInfo.price}</Text>
                                 <div className={styles.buttongroup}>
-                                    <Button>Buy Now</Button>
-                                    <Button>Add to Cart</Button>
+                                    <Button onClick={(e) => buyNow(e, productsStore.itemInfo)}>Buy Now</Button>
+                                    <Button onClick={(e) => addToCart(e, productsStore.itemInfo)}>Add to Cart</Button>
                                 </div>
                             </div>
                         </>

@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid #518581;
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+
+    &__title {
+        width: 50%;
+    }
+
+    &__quantity {
+        width: 20%;
+    }
+
+    &__price {
+        width: 10%;
+    }
+
+    &__total {
+        width: 15%;
+    }
+
+    button {
+        width: 5%;
+
+        padding: 3px;
+        background-color: #518581;
+        color: white;
+    }
+}
