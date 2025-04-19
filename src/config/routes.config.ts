@@ -28,5 +28,9 @@ export const routes = {
     mask: "/cart",
     create: () => `/cart`,
   },
+  login: {
+    mask: "/login",
+    create: () => `/login`,
+  },
 
 }

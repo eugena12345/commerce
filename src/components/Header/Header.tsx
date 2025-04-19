@@ -14,6 +14,15 @@ const Header = observer(() => {
     const goToCart = () => {
         navigate(routes.cart.create());
     }
+
+    const user = localStorage.getItem('userEmail');
+    const logout = () => {
+        localStorage.removeItem('userEmail')
+        navigate(routes.login.create());
+
+    };
+
+    const goToLogin = () => navigate(routes.login.create())
     return (
         <div className={styles.container}>
             <div className={styles.containerMaxWidth}>
@@ -30,8 +39,10 @@ const Header = observer(() => {
                         {cartStore.totalItems > 0 &&
                             <div className={styles.inBag}>{cartStore.totalItems}</div>}
                     </div>
-
-                    <img src={userSvg} alt='userSvg' className={styles.userInfo} />
+                    {user ?
+                        <div onClick={logout}>{user}</div>
+                        : <img src={userSvg} alt='userSvg' className={styles.userInfo} onClick={goToLogin} />
+                    }
                 </div>
 
             </div>

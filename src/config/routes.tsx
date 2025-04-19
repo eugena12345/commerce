@@ -6,6 +6,7 @@ import { routes } from './routes.config';
 import CategoryPage from "App/pages/CategoryPage/CategoryPage";
 import AboutPage from "App/pages/AboutPage/AboutPage";
 import CartPage from "App/pages/CartPage/CartPage";
+import LoginPage from "App/pages/LoginPage";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: routes.cart.mask,
         element: <CartPage />
+      },
+      {
+        path: routes.login.mask,
+        element: <LoginPage />
       }
     ]
   },
