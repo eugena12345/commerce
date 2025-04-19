@@ -1,3 +1,8 @@
+.container {
+  position: relative;
+  
+}
+
 .options {
   background-color: white;
   margin-top: var(--spaceXXS);
@@ -7,6 +12,8 @@
   position: absolute;
   width: 300px;
   z-index: 10;
+  top: 50px;
+  left: 0;
 
   &__option {
     padding: var(--spaceS) var(--spaceXS);
@@ -28,3 +35,4 @@
 
   
 }
+

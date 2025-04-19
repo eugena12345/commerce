@@ -86,7 +86,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     setInputValue(stringValue);
   }
   return (
-    <>
+    <div className={styles.container}>
       <Input className={className} onChange={handleUpdateInputValue} afterSlot={<ArrowDownIcon />} disabled={disabled} onClick={openOptions} {...args}
       />
       <div ref={dropdownRef} className={styles.options}>
@@ -99,7 +99,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
           })
         }
       </div>
-    </>
+    </div>
   )
 };
 
