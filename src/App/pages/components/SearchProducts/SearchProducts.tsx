@@ -6,6 +6,7 @@ import SearchByFilter from './SearchByFilter/SearchByFilter';
 import { useSearchParams } from 'react-router';
 import Button from 'components/Button/Button';
 import { Meta } from 'store/CatalogStore/CatalogStore';
+import Sort from './Sort';
 
 interface SearchProductsProps {
     totalItems: number;
@@ -18,14 +19,18 @@ const SearchProducts = observer((
     const resetFilter = () => {
         searchParams.set('filterByCategoryId', '');
         searchParams.set('filterByTitle', '');
-        searchParams.set('page', '1')
+        searchParams.set('sort', '');
+        searchParams.set('page', '1');
         setSearchParams(searchParams);
     }
 
     return (
         <div className={styles.container}>
             <SearchByTitle />
+            <div className={styles.filterandsort}>
             <SearchByFilter />
+            <Sort/>
+            </div>
             <div className={styles.container__resultOrReset}>
                 <div className={styles['container__result']}>
                     {metaLoading === Meta.success && totalItems >= 0 &&

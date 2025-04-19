@@ -91,6 +91,8 @@ export default class CatalogStore {
         this._qpReaction();
         this._qpReaction1();
         this._qpReaction2();
+        this._qpReaction3();
+
     }
 
     private readonly _qpReaction: IReactionDisposer = reaction(
@@ -113,5 +115,13 @@ export default class CatalogStore {
             this.getProducts(rootStore.query.getQueryParams())
         }
     );
+
+    private readonly _qpReaction3: IReactionDisposer = reaction(
+        () => rootStore.query.getParam('sort'),
+        () => {
+            this.getProducts(rootStore.query.getQueryParams())
+        }
+    );
+
 
 }

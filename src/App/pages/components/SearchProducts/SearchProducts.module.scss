@@ -17,9 +17,15 @@
         }
     }
 
+    .filterandsort {
+        display: flex;
+        flex-direction: row;
+    }
+
     &__filter {
         width: 300px;
     }
+
 
     &__result {
         display: flex;

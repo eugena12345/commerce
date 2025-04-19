@@ -44,7 +44,7 @@ const CatalogPage = observer(() => {
                                     captionSlot={item.productCategory.title}
                                     title={item.title}
                                     subtitle={item.description}
-                                    contentSlot={item.price}
+                                    contentSlot={`${item.price} ☆ ${item.rating}`}
                                     actionSlot={<Button onClick={(e) => addToCart(e, item)}>Add to Cart</Button>}
                                     key={item.id}
                                     itemDocumentId={item.documentId}

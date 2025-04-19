@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    &__margin {
+        margin: 5px 50px;
+    }
+}
