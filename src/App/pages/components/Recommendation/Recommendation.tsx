@@ -17,7 +17,6 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
     useEffect(() => {
         const productCategoryId = item.productCategory.id.toString();
         recommendationStore.getCategoryItems(productCategoryId);
-        console.log('recommendationStore', recommendationStore.items)
     }, [item.productCategory.id, recommendationStore]);
 
     return (

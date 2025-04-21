@@ -16,7 +16,8 @@ const CartPage = observer(() => {
     useEffect(() => {
         if (!user) {
             navigate(routes.login.create());
-        }
+        };
+   //     cartStore.getItemsFromStorage();
     }, [navigate, user])
 
 

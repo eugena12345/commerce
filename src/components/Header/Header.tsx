@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { routes } from 'config/routes.config';
 import cartStore from 'store/CartStore';
 import { observer } from 'mobx-react-lite';
+import { useEffect } from 'react';
 
 const Header = observer(() => {
     const navigate = useNavigate();
@@ -21,6 +22,9 @@ const Header = observer(() => {
         navigate(routes.login.create());
 
     };
+    useEffect(() => {
+        cartStore.getItemsFromStorage();
+    }, [])
 
     const goToLogin = () => navigate(routes.login.create())
     return (

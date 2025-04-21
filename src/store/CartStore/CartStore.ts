@@ -19,7 +19,8 @@ class CartStore {
             _items: observable,
             items: computed,
             addProduct: action,
-            removeProduct: action
+            removeProduct: action,
+            getItemsFromStorage: action
         })
     };
 
@@ -35,6 +36,17 @@ class CartStore {
         return this._items.reduce((acc, item) => { return (acc + (item.quantity)) }, 0)
     }
 
+    setItems() {
+        sessionStorage.setItem('cart', JSON.stringify(this._items));
+    }
+
+    getItemsFromStorage() {
+        const itemsInCartString = sessionStorage.getItem('cart');
+        if (itemsInCartString) {
+            this._items = JSON.parse(itemsInCartString);
+        }
+    }
+
     addProduct(product: CartItem) {
         const exsistingProduct = this._items.find((item) => item.id === product.id);
         if (exsistingProduct) {
@@ -42,6 +54,7 @@ class CartStore {
         } else {
             this._items.push(product);
         }
+        this.setItems();
     }
 
     subtractUnit(id: number) {
@@ -50,11 +63,12 @@ class CartStore {
         if (exsistingProduct?.quantity === 0) {
             this.removeProduct(id);
         }
-
+        this.setItems();
     }
 
     removeProduct(id: number) {
-        this._items = this.items.filter((item) => item.id !== id)
+        this._items = this.items.filter((item) => item.id !== id);
+        this.setItems();
     }
 
 }
