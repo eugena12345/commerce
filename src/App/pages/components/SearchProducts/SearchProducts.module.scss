@@ -21,12 +21,12 @@
     .filterandsort {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
     }
 
-    &__filter {
-        width: 300px;
-    }
+    // &__filter {
+    //     width: 300px;
+    // }
 
 
     &__result {
@@ -50,10 +50,25 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 800px) {
     .container {
-        &__filter {
-            width: 200px;
+
+    .filterandsort {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+}
+}
+
+@media (max-width: 470px) {
+    .container {
+      
+        &__resultOrReset {
+            margin-bottom: 10px;
+            justify-content: center;
         }
+
     }
 }

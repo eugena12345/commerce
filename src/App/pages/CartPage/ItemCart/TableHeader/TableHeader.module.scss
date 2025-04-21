@@ -43,18 +43,20 @@
         margin: 5px;
         width: 100%;
         padding: 5px;
-        font-size: 10px;
-        box-sizing: border-box;
+        font-size: 12px;
 
-       &__title {
-            width: 80px;
+
+        &__title {
+            width: 50px;
             flex-grow: 1;
             cursor: pointer;
         }
 
         &__quantity {
-            width: 50px;
-        }
+            width: 37px;
+            flex-grow: 1;
+
+       }
 
         &__price {
             width: 30px;
@@ -65,7 +67,7 @@
         }
 
         button {
-            width: 40px;
+            width: 37px;
             border-radius: 10%;
             padding: 3px;
             background-color: #d3e4e3;
