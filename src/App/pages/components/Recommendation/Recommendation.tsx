@@ -33,9 +33,8 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
                                         title={recommendatedProduct.title}
                                         subtitle={recommendatedProduct.description}
                                         contentSlot={recommendatedProduct.price}
-                                        actionSlot={<Button>Add to Cart</Button>}
+                                        actionSlot={<Button onClick={(e) => addToCart(e, recommendatedProduct)}>Add to Cart</Button>}
                                         itemDocumentId={recommendatedProduct.documentId}
-                                        onClick={(e) => addToCart(e, recommendatedProduct)}
                                     />
                                 )
                             })
