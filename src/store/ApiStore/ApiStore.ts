@@ -15,13 +15,13 @@ export default class ApiStore implements IApiStore {
     this.baseUrl = baseUrl;
   }
 
-  private _getRequestData<ReqT>(params: RequestParams<ReqT>): string {
+  private _getRequestData(params: RequestParams): string { // _getRequestData<ReqT>//RequestParams<ReqT>
     const endpoint: string = `${this.baseUrl}${params.endpoint}`;
     return endpoint;
   }
 
-  async request<SuccessT, ErrorT = any, ReqT = {}>(
-    params: RequestParams<ReqT>
+  async request<SuccessT, ErrorT = any, >(//ReqT = {}
+    params: RequestParams //<ReqT>
   ): Promise<ApiResponse<SuccessT, ErrorT>> {
 
     try {

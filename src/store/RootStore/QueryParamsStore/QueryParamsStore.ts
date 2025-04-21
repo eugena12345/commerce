@@ -16,7 +16,7 @@ export default class QueryParamsStore {
 
   getParam(
     key: string
-  ): undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[] {
+  ): undefined | string | (string | qs.ParsedQs)[] | qs.ParsedQs { //undefined | string | string[] | qs.ParsedQs | qs.ParsedQs[]
     return this._params[key];
   }
 

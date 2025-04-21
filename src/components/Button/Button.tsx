@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import Loader from 'components/Loader';
 import styles from './Button.module.scss';
-import classNames from 'classnames-ts';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
@@ -10,10 +9,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const btnClass = classNames(styles.original, props.className, {
-    'loading': props.loading,
-    'disabled': props.disabled
-  });
+  console.log('type of btn class', typeof styles.original)
 
   return (
     <button
@@ -21,7 +17,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       onMouseOver={props.onMouseOver}
       data-testid={props['data-testid']}
       disabled={(props.loading || props.disabled)}
-      className={btnClass}
+      className={styles.original}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
       onMouseOut={props.onMouseOut}

@@ -36,7 +36,7 @@ const ProductPage = observer(() => {
     }
 
     const navigate = useNavigate();
-    const buyNow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, item: ProductType) => {
+    const buyNow = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, item: ProductType | null) => {
         addToCart(e, item);
         navigate(routes.cart.create());
     }
@@ -55,16 +55,16 @@ const ProductPage = observer(() => {
                     </div>
                 }
                 <div className={styles.card}>
-                    {productsStore.itemInfo &&
+                    {productsStore.itemInfo !== null &&
                         <>
                             <div className={styles.productphoto}>
-                                <div className={styles.arrow} onClick={() => getPrevImg(imgNumber, productsStore.itemInfo.images.length)}>
+                                <div className={styles.arrow} onClick={() => getPrevImg(imgNumber, productsStore.itemInfo!.images.length)}>
                                     <img src={arrowBack} alt="" />
                                 </div>
 
                                 <img src={productsStore.itemInfo.images[imgNumber].url} alt="картинка" />
 
-                                <div className={styles.arrowForw} onClick={() => getNextImg(imgNumber, productsStore.itemInfo.images.length)}>
+                                <div className={styles.arrowForw} onClick={() => getNextImg(imgNumber, productsStore.itemInfo!.images.length)}>
                                     <img src={arrowForward} alt="" />
                                 </div>
                             </div>

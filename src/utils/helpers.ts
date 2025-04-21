@@ -10,14 +10,16 @@ export const getNumberCountArr = (pageCount: number): number[] => {
     return result
 }
 
-export const addToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<Element, MouseEvent>, item: ProductType) => {
+export const addToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<Element, MouseEvent>, item: ProductType | null) => {
     e.stopPropagation();
-    const itemInCart = {
-        id: item.id,
-        documentId: item.documentId,
-        title: item.title,
-        price: item.price,
-        quantity: 1
+    if (item) {
+        const itemInCart = {
+            id: item.id,
+            documentId: item.documentId,
+            title: item.title,
+            price: item.price,
+            quantity: 1
+        }
+        cartStore.addProduct(itemInCart);
     }
-    cartStore.addProduct(itemInCart);
 }

@@ -20,17 +20,19 @@ const SearchByFilter = observer(() => {
         const loadCategory = async () => {
             await categoryStore.getCategories();
             const categories = categoryStore.items;
-            const parsedParams = qs.parse(searchParams.toString(), { decode: true });
+            const parsedParams = qs.parse(searchParams.toString()); //, { decode: true }
             if (parsedParams.filterByCategoryId) {
-                const categoryIdColl = parsedParams.filterByCategoryId.split(',')
-                const option = categoryIdColl.map((id: string) => {
+                console.log('parsedParams.filterByCategoryId' , typeof parsedParams.filterByCategoryId)
+                const categoryIdString = parsedParams.filterByCategoryId as string;
+                const categoryIdColl = categoryIdString.split(',');
+                const option: Option[] = categoryIdColl.map((id: string) => {
                     const category = categories.find((item) => item.id === Number(id));
                     if (category) {
                         return { key: id, value: category.title };
                     }
                     return null;
                 })
-                    .filter(Boolean);
+                    .filter((element) => element !== null);
                 filterValueStore.setValue(option);
             }
         }
