@@ -75,3 +75,15 @@ $spaceXXS: 4px;
         color: #000000;
     }
 }
+
+@media (max-width: 730px) {
+    .card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: 100%;
+    }
+}

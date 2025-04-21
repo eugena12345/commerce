@@ -75,8 +75,34 @@ $white: rgb(255, 255, 255);
       }
     }
 
+    .minTextSize {
+      p {
+        word-break: break-all;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      overflow-wrap: break-word;
+
+      }
+    }
+
     .userInfoContainer {
       gap: 24px;
     }
+  }
+}
+
+@media (max-width: 730px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 340px) {
+  .minTextSize {
+    font-size: 10px;
+
+
   }
 }

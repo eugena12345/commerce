@@ -6,6 +6,8 @@
     margin: 5px;
     width: 100%;
     padding: 5px;
+    box-sizing: border-box;
+
 
     &__title {
         width: 50%;
@@ -42,4 +44,50 @@
         margin: 3px 7px;
     }
 
+}
+
+@media (max-width: 750px) {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-radius: 5px;
+        border: 1px solid #518581;
+        margin: 5px;
+        width: 100%;
+        padding: 5px;
+        font-size: 12px;
+
+
+        &__title {
+            width: 80px;
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        &__quantity {
+            width: 37px;
+            // display: flex;
+            // flex-wrap: wrap;
+            // align-items: center;
+            // justify-content: center;
+        }
+
+        &__price {
+            width: 30px;
+        }
+
+        &__total {
+            width: 40px;
+        }
+
+        button {
+            width: 37px;
+            border-radius: 10%;
+            padding: 3px;
+            background-color: #d3e4e3;
+        }
+
+    }
 }

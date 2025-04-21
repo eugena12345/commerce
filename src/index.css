@@ -38,7 +38,7 @@ body {
   justify-content: center ; */
   /* place-items: center; */
   width: 100vw;
-  min-width: 320px;
+  min-width: 200px;
   min-height: 100vh;
   background-color: #FAFAFA;
 }

@@ -10,3 +10,10 @@
         margin: 5px 50px;
     }
 }
+
+@media (max-width: 310px) {
+    .container {
+        margin-left: 5px;
+
+    }
+}

@@ -9,6 +9,7 @@
     &__search {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         margin-bottom: var(--spaceXL);
 
         &--grow {
@@ -20,6 +21,7 @@
     .filterandsort {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     &__filter {
@@ -38,11 +40,20 @@
         margin-top: 48px;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         gap: var(--spaceXL);
         justify-content: space-between;
         padding-left: 20px;
         padding-right: 20px;
 
+    }
+}
+
+@media (max-width: 350px) {
+    .container {
+        &__filter {
+            width: 200px;
+        }
     }
 }

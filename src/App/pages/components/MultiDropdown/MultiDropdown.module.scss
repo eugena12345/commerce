@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  
+  width: 300px;
 }
 
 .options {
@@ -26,13 +26,22 @@
     &--selected {
       padding: var(--spaceS) var(--spaceXS);
       color: var(--color-brand);
-  
+
       &:hover {
         color: var(--color-brand);
       }
     }
   }
 
-  
+
 }
 
+@media (max-width: 350px) {
+  .container {
+    width: 200px;
+  }
+
+  .options {
+    width: 200px;
+  }
+}

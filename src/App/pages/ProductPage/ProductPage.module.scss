@@ -95,3 +95,26 @@ $gap-button-group: 24px;
     flex-direction: row;
     gap: $gap-button-group;
 }
+
+@media (max-width: 750px) {
+    .productpage {
+        margin: 150px 20px 32px 20px;
+
+        .card {
+            flex-direction: column;
+            .productphoto {
+                width: 50vw;
+                height: 50vw;
+                >img {
+                    width: 50vw;
+                    height: 50vw
+                }
+    
+            }
+            &__description {
+                margin-left: 5px;
+
+            }
+        }
+    }
+}

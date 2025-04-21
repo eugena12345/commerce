@@ -44,7 +44,7 @@ const Header = observer(() => {
                             <div className={styles.inBag}>{cartStore.totalItems}</div>}
                     </div>
                     {user ?
-                        <div onClick={logout}>{user}</div>
+                        <div className={styles.minTextSize} onClick={logout}><p>Logout</p></div> //{user}
                         : <img src={userSvg} alt='userSvg' className={styles.userInfo} onClick={goToLogin} />
                     }
                 </div>

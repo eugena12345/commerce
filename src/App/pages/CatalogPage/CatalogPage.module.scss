@@ -31,3 +31,11 @@
         align-items: stretch;
     }
 }
+
+@media (max-width: 730px) {
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+}

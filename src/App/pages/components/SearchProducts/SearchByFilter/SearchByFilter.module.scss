@@ -26,3 +26,11 @@
         gap: var(--spaceXL);
     }
 }
+
+@media (max-width: 350px) {
+    .container {
+        &__filter {
+            width: 200px;
+        }
+    }
+}
