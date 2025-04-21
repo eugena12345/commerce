@@ -15,6 +15,9 @@ const Header = observer(() => {
     const goToCart = () => {
         navigate(routes.cart.create());
     }
+    const goToCatalog = () => {
+        navigate(routes.main.create());
+    }
 
     const user = localStorage.getItem('userEmail');
     const logout = () => {
@@ -30,7 +33,7 @@ const Header = observer(() => {
     return (
         <div className={styles.container}>
             <div className={styles.containerMaxWidth}>
-                <div className={styles.logoContainer}>
+                <div className={styles.logoContainer} onClick={goToCatalog}>
                     <img src={logo} alt='logo' className={styles.logo} />
                     <img src={lalasiaLogo} alt='Lalasia' className={styles.logoLala} />
                 </div>
