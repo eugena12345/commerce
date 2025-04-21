@@ -78,10 +78,10 @@ $white: rgb(255, 255, 255);
     .minTextSize {
       p {
         word-break: break-all;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      overflow-wrap: break-word;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        overflow-wrap: break-word;
 
       }
     }

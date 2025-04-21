@@ -17,7 +17,6 @@ const CartPage = observer(() => {
         if (!user) {
             navigate(routes.login.create());
         };
-   //     cartStore.getItemsFromStorage();
     }, [navigate, user])
 
 
@@ -38,7 +37,6 @@ const CartPage = observer(() => {
                 </div>
 
                 : null}
-            {/* navigate(routes.login.create()) */}
         </div>
     )
 });

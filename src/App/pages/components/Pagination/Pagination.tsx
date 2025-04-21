@@ -22,7 +22,6 @@ const Pagination = ({ pageCount, actualPage }: PaginationProps) => {
             <button className={styles['pagination__arrow']}
                 onClick={() => handleClick(actualPage > 1 ? actualPage - 1 : 1)}
                 disabled={actualPage === 1}
-            // todo: add disabled
             >
                 <img src={arrowBackIcon} alt='back' />
             </button>

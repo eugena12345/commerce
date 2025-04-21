@@ -43,7 +43,7 @@ export default class RecommendationStore {
         productCategoryId: string
     ): Promise<void> {
 
-        //this._meta = Meta.loading;
+        //Todo this._meta = Meta.loading;
         this._items = [];
         this._metaInfo = initialMeta;
         const paramsWithCategoryId = {
@@ -54,7 +54,7 @@ export default class RecommendationStore {
 
         await this._catalogStore.getProducts(paramsWithCategoryId);
         runInAction(() => {
-            // this._meta = Meta.success;
+            //Todo this._meta = Meta.success;
             this._items = this._catalogStore.items.splice(0, 3)
         });
     }
@@ -63,7 +63,7 @@ export default class RecommendationStore {
 
     reset(): void {
         this._items = [];
-        //this._meta = Meta.initial;
+        //Todo this._meta = Meta.initial;
     }
 
     destroy(): void {

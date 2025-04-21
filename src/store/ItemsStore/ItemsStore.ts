@@ -14,7 +14,7 @@ const queryString = qs.stringify(params);
 type PrivateFields = '_itemInfo' | '_metaLoading';
 
 
-export default class ItemsStore  { //implements implements ApiStore
+export default class ItemsStore  {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
     private _itemInfo: null | ProductType = null;
     private _metaLoading: Meta = Meta.initial;
