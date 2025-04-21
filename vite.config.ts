@@ -19,7 +19,7 @@ const parseTsConfigPaths = (paths: Record<string, string[]>): Record<string, str
 };
 
 export default defineConfig({
-  base: '/', 
+  base: '/commerce/', 
   plugins: [react()],
   resolve: {
     alias: parseTsConfigPaths(tsconfig.compilerOptions.paths),
