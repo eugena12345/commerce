@@ -1,36 +1,36 @@
 export const routes = {
   main: {
-    mask: "/commerce/",
-    create: () => "/commerce",
+    mask: "/",
+    create: () => "/",
   },
   products: {
-    mask: "/commerce/products",
-    create: () => "/commerce/products",
+    mask: "/products",
+    create: () => "/products",
   },
   productsWithCategory: {
-    mask: "/commerce/products",
-    create: (id: number) => `/commerce/products/?filterByCategoryId=${id}`,
+    mask: "/products",
+    create: (id: number) => `/products/?filterByCategoryId=${id}`,
   },
 
   product: {
-    mask: "/commerce/products/:id",
-    create: (id: string) => `/commerce/products/${id}`,
+    mask: "/products/:id",
+    create: (id: string) => `/products/${id}`,
   },
   categories: {
-    mask: "/commerce/categories",
-    create: () => `/commerce/categories`,
+    mask: "/categories",
+    create: () => `/categories`,
   },
   about: {
-    mask: "/commerce/about",
-    create: () => `/commerce/about`,
+    mask: "/about",
+    create: () => `/about`,
   },
   cart: {
-    mask: "/commerce/cart",
-    create: () => `/commerce/cart`,
+    mask: "/cart",
+    create: () => `/cart`,
   },
   login: {
-    mask: "/commerce/login",
-    create: () => `/commerce/login`,
+    mask: "/login",
+    create: () => `/login`,
   },
 
 }
