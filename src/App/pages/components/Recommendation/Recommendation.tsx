@@ -4,8 +4,9 @@ import InfoCard from 'App/pages/components/InfoCard/InfoCard';
 import { ProductType } from 'App/pages/CatalogPage/type';
 import Button from 'components/Button/Button';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import RecommendationStore from '../../../../store/RecommendationStore/RecommendationStore';
+import RecommendationStore from 'store/RecommendationStore';
 import { useEffect } from 'react';
+import { addToCart } from 'utils/helpers';
 
 type RecommendationProps = {
     item: ProductType;
@@ -16,7 +17,6 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
     useEffect(() => {
         const productCategoryId = item.productCategory.id.toString();
         recommendationStore.getCategoryItems(productCategoryId);
-        console.log('recommendationStore', recommendationStore.items)
     }, [item.productCategory.id, recommendationStore]);
 
     return (
@@ -33,10 +33,9 @@ const Recommendation: React.FC<RecommendationProps> = observer(({ item }) => {
                                         title={recommendatedProduct.title}
                                         subtitle={recommendatedProduct.description}
                                         contentSlot={recommendatedProduct.price}
-                                        actionSlot={<Button>Add to Cart</Button>} 
+                                        actionSlot={<Button onClick={(e) => addToCart(e, recommendatedProduct)}>Add to Cart</Button>}
                                         itemDocumentId={recommendatedProduct.documentId}
-                                        />
-
+                                    />
                                 )
                             })
                         }

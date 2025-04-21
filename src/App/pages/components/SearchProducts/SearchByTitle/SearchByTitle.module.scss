@@ -1,8 +1,4 @@
 .container {
-    background-color: #FAFAFA;
-    width: 100%;
-    margin-top: 50px;
-
     &__search {
         display: flex;
         flex-direction: row;
@@ -10,19 +6,18 @@
 
         &--grow {
             flex-grow: 1;
+            flex-shrink: 1;
             margin-right: var(--spaceXL);
         }
     }
+}
 
-    &__filter {
-        width: 300px;
-    }
-
-    &__result {
-        margin-top: 48px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--spaceXL);
+@media (max-width: 310px) {
+    .container {
+        &__search {
+            &--grow {
+                margin-right: 2px;
+            }
+        }
     }
 }

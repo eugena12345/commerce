@@ -42,3 +42,20 @@
         }
     }
 }
+
+@media (max-width: 310px) {
+    .pagination {
+        &__pagenumber {
+            width: 20px;
+            height: 20px;
+            font-size: 16px;
+        }
+
+        &__arrow {
+            width: 20px;
+            height: 20px;
+
+        }
+    }
+
+}

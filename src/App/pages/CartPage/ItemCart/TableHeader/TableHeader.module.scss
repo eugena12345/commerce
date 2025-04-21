@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: 1px solid #518581;
+    margin: 5px;
+    width: 100%;
+    padding: 5px;
+
+    &__title {
+        width: 50%;
+    }
+
+    &__quantity {
+        width: 20%;
+    }
+
+    &__price {
+        width: 10%;
+    }
+
+    &__total {
+        width: 15%;
+    }
+
+    button {
+        width: 5%;
+
+        padding: 3px;
+        background-color: #518581;
+        color: white;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-radius: 5px;
+        border: 1px solid #518581;
+        margin: 5px;
+        width: 100%;
+        padding: 5px;
+        font-size: 10px;
+        box-sizing: border-box;
+
+       &__title {
+            width: 80px;
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        &__quantity {
+            width: 50px;
+        }
+
+        &__price {
+            width: 30px;
+        }
+
+        &__total {
+            width: 40px;
+        }
+
+        button {
+            width: 40px;
+            border-radius: 10%;
+            padding: 3px;
+            background-color: #d3e4e3;
+        }
+
+    }
+}

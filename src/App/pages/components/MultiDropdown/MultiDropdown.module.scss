@@ -1,3 +1,8 @@
+.container {
+  position: relative;
+  width: 300px;
+}
+
 .options {
   background-color: white;
   margin-top: var(--spaceXXS);
@@ -7,6 +12,8 @@
   position: absolute;
   width: 300px;
   z-index: 10;
+  top: 50px;
+  left: 0;
 
   &__option {
     padding: var(--spaceS) var(--spaceXS);
@@ -19,12 +26,22 @@
     &--selected {
       padding: var(--spaceS) var(--spaceXS);
       color: var(--color-brand);
-  
+
       &:hover {
         color: var(--color-brand);
       }
     }
   }
 
-  
+
+}
+
+@media (max-width: 350px) {
+  .container {
+    width: 200px;
+  }
+
+  .options {
+    width: 200px;
+  }
 }

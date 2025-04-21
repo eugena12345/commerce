@@ -36,5 +36,16 @@ export const createParamsForApi = (params: ParamsFromQuery): ParamsForApi => {
             }
         }
     };
+
+    if (params.sort && params.sort !== '') {
+        paramsForApi.sort = params.sort;
+    }
     return paramsForApi;
 };
+
+export const createParamsForCategoriesApi = () => {
+    const paramsForApi = {
+        populate: ['image']
+    };
+    return paramsForApi;
+}

@@ -11,7 +11,7 @@ export type ParamsFromQuery = {
     page?: number | string,
     filterByCategoryId?: string,
     filterByTitle?: string,
-    sort?: {},
+    sort?: string,
 }
 
 export type ParamsForApi = {
@@ -32,5 +32,5 @@ export type ParamsForApi = {
         },
 
     }
-    sort?: {},
+    sort?: string,
 }

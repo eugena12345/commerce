@@ -28,7 +28,8 @@
       "styles": ["styles/*"],
       "utils": ["utils/*"],
       "App": ["App/*"],
-      "assets": ["assets/*"]
+      "assets": ["assets/*"],
+      "store": ["store/*"]
     }
   },
   "include": ["src", "src/**/*", "global.d.ts"]

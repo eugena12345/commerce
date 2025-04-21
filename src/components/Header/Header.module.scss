@@ -13,6 +13,7 @@ $white: rgb(255, 255, 255);
   padding-left: 100px;
   padding-right: 100px;
   box-sizing: border-box;
+  z-index: 2;
 
 
   .containerMaxWidth {
@@ -51,10 +52,57 @@ $white: rgb(255, 255, 255);
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+
+      .bag {
+        position: relative;
+        cursor: pointer;
+
+        .inBag {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          background-color: red;
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+          color: white;
+          font-size: 11px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .minTextSize {
+      p {
+        word-break: break-all;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        overflow-wrap: break-word;
+
+      }
     }
 
     .userInfoContainer {
       gap: 24px;
     }
+  }
+}
+
+@media (max-width: 730px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 340px) {
+  .minTextSize {
+    font-size: 10px;
+
+
   }
 }

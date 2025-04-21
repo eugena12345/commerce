@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    &__margin {
+        margin: 5px 50px;
+    }
+}
+
+@media (max-width: 310px) {
+    .container {
+        margin-left: 5px;
+
+    }
+}

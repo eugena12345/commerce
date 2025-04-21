@@ -1,4 +1,4 @@
-div {
+.spin {
     color: var(--color-brand);
 }
 
@@ -6,13 +6,16 @@ div {
     color: white;
 }
 
-// TODO
-// для лоадера пригодится
-// @keyframes logo-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: logo-spin infinite 5s linear;
+}

@@ -1,7 +1,9 @@
 .container {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+
     padding-top: 100px;
     margin-top: 90px;
     background-color: #FAFAFA;
@@ -12,7 +14,7 @@
     &--maxWidth {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         width: 100%;
         max-width: 1440px;
@@ -24,8 +26,16 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 100%;
         align-items: stretch;
     }
+}
+
+@media (max-width: 730px) {
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
 }

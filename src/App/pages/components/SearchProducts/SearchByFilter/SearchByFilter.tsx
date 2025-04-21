@@ -3,10 +3,10 @@ import MultiDropdown from "App/pages/components/MultiDropdown/MultiDropdown";
 import styles from './SearchByFilter.module.scss';
 import { useSearchParams } from 'react-router';
 import { observer, useLocalStore } from 'mobx-react-lite';
-import CategoryStore from '../../../../../store/CategoryStore/CategoryStore';
+import CategoryStore from 'store/CategoryStore';
 import { useCallback, useEffect } from 'react';
 import { Option } from 'App/pages/components/MultiDropdown/MultiDropdown';
-import FiterValueStore from './../../../../../store/FilterValueStore/FilterValueStore';
+import FiterValueStore from 'store/FilterValueStore';
 import qs from 'qs';
 
 const SearchByFilter = observer(() => {
