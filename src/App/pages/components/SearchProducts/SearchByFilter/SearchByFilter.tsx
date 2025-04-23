@@ -22,7 +22,7 @@ const SearchByFilter = observer(() => {
             const categories = categoryStore.items;
             const parsedParams = qs.parse(searchParams.toString()); //, { decode: true }
             if (parsedParams.filterByCategoryId) {
-                console.log('parsedParams.filterByCategoryId' , typeof parsedParams.filterByCategoryId)
+                console.log('parsedParams.filterByCategoryId', typeof parsedParams.filterByCategoryId)
                 const categoryIdString = parsedParams.filterByCategoryId as string;
                 const categoryIdColl = categoryIdString.split(',');
                 const option: Option[] = categoryIdColl.map((id: string) => {
@@ -34,6 +34,8 @@ const SearchByFilter = observer(() => {
                 })
                     .filter((element) => element !== null);
                 filterValueStore.setValue(option);
+            } else {
+                filterValueStore.setValue([]);
             }
         }
         loadCategory();

@@ -14,6 +14,8 @@ const SearchByTitle = observer(() => {
         const parsedParams = qs.parse(searchParams.toString());//, { decode: true }
         if (parsedParams.filterByTitle) {
             valueStore.setValue(parsedParams.filterByTitle as string)
+        } else {
+            valueStore.setValue('');
         }
     }, [searchParams, valueStore]);
 
