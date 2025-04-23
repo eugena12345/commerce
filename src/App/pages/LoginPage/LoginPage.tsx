@@ -11,7 +11,6 @@ const LoginPage = () => {
             password: "",
         },
         onSubmit: (values) => {
-            console.log(JSON.stringify(values, null, 2));
             localStorage.setItem('userEmail', values.email);
             navigate(routes.cart.create());
         },

@@ -39,7 +39,7 @@ type PrivateFields = '_items' | '_metaInfo';
 
 export default class CategoryStore {
     private readonly _apiStore = new ApiStore(STRAPI_URL);
-    private _items: CategoryType[] = []; //Todo сделать правильный тип для категории
+    private _items: CategoryType[] = [];
     private _metaInfo: MetaInfo = initialMeta;
 
     constructor() {
@@ -62,7 +62,6 @@ export default class CategoryStore {
 
     async getCategories(
     ): Promise<void> {
-        // Todo this._meta = Meta.loading;
         this._items = [];
         const queryString = qs.stringify(createParamsForCategoriesApi());
 
@@ -72,18 +71,15 @@ export default class CategoryStore {
         });
 
         if (response.success) {
-            // Todo this._meta = Meta.success;
             this._items = [...response.data];
             this._metaInfo = response.metaInfo;
             return;
         }
 
-        // Todo this._meta = Meta.error;
     }
 
     reset(): void {
         this._items = [];
-        //Todo this._meta = Meta.initial;
     }
 
     destroy(): void {

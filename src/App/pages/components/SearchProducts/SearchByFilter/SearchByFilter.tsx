@@ -20,9 +20,8 @@ const SearchByFilter = observer(() => {
         const loadCategory = async () => {
             await categoryStore.getCategories();
             const categories = categoryStore.items;
-            const parsedParams = qs.parse(searchParams.toString()); //, { decode: true }
+            const parsedParams = qs.parse(searchParams.toString());
             if (parsedParams.filterByCategoryId) {
-                console.log('parsedParams.filterByCategoryId', typeof parsedParams.filterByCategoryId)
                 const categoryIdString = parsedParams.filterByCategoryId as string;
                 const categoryIdColl = categoryIdString.split(',');
                 const option: Option[] = categoryIdColl.map((id: string) => {

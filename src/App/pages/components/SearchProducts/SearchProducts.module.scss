@@ -21,13 +21,7 @@
     .filterandsort {
         display: flex;
         flex-direction: row;
-        // flex-wrap: wrap;
     }
-
-    // &__filter {
-    //     width: 300px;
-    // }
-
 
     &__result {
         display: flex;
@@ -53,18 +47,18 @@
 @media (max-width: 800px) {
     .container {
 
-    .filterandsort {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10px;
-        gap: 10px;
+        .filterandsort {
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
     }
-}
 }
 
 @media (max-width: 470px) {
     .container {
-      
+
         &__resultOrReset {
             margin-bottom: 10px;
             justify-content: center;
