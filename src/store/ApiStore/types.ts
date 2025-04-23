@@ -1,6 +1,6 @@
 import { MetaInfo } from "./../CatalogStore/types";
   
-  export type RequestParams = { //<ReqT>
+  export type RequestParams = {
     endpoint: string; 
   };
   
@@ -37,7 +37,7 @@ import { MetaInfo } from "./../CatalogStore/types";
   export interface IApiStore {
     readonly baseUrl: string;
   
-    request<SuccessT, ErrorT = any>( //, ReqT = {}
+    request<SuccessT, ErrorT = any>( 
       params: RequestParams //<ReqT>
     ): Promise<ApiResponse<SuccessT, ErrorT>>;
   }

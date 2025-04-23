@@ -7,6 +7,7 @@ import TableHeader from 'App/pages/CartPage/ItemCart/TableHeader/TableHeader';
 import { useNavigate } from 'react-router';
 import { routes } from 'config/routes.config';
 import { useEffect } from 'react';
+import Button from 'components/Button';
 
 
 const CartPage = observer(() => {
@@ -18,6 +19,8 @@ const CartPage = observer(() => {
             navigate(routes.login.create());
         };
     }, [navigate, user])
+
+    const goToPaymentPage = () => navigate(routes.payment.create());
 
 
     return (
@@ -32,6 +35,7 @@ const CartPage = observer(() => {
                             <TableHeader />
                             {cartStore.items.map((item) => <ItemCart item={item} />)}
                             <Text tag="h2" color="accent">Total: {cartStore.totalPrice}</Text>
+                            <Button onClick={goToPaymentPage}>Pay</Button>
                         </div>
                     }
                 </div>

@@ -9,7 +9,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  console.log('type of btn class', typeof styles.original)
+  const actualStyle = props.disabled ? styles.disabled : styles.original;
 
   return (
     <button
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       onMouseOver={props.onMouseOver}
       data-testid={props['data-testid']}
       disabled={(props.loading || props.disabled)}
-      className={styles.original}
+      className={actualStyle}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
       onMouseOut={props.onMouseOut}

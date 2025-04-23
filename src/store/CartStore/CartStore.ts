@@ -20,7 +20,8 @@ class CartStore {
             items: computed,
             addProduct: action,
             removeProduct: action,
-            getItemsFromStorage: action
+            getItemsFromStorage: action,
+            removeAllProducts: action
         })
     };
 
@@ -68,6 +69,11 @@ class CartStore {
 
     removeProduct(id: number) {
         this._items = this.items.filter((item) => item.id !== id);
+        this.setItems();
+    }
+
+    removeAllProducts() {
+        this._items = [];
         this.setItems();
     }
 
