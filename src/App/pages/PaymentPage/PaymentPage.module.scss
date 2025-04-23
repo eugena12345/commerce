@@ -1,0 +1,97 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 350px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--color-brand), #7792e3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    position: relative;
+    margin-top: 90px;
+    gap: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card-logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-type {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-number input,
+.card-expiry input,
+.card-cvc input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+.card-number input::placeholder,
+.card-expiry input::placeholder,
+.card-cvc input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-expiry,
+.card-cvc {
+    width: 48%;
+}
+
+label {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+@media (max-width:400px) {
+    .card {
+
+        width: 200px;
+        height: 150px;
+        padding: 20px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, var(--color-brand), #7792e3);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: white;
+        position: relative;
+        margin-top: 90px;
+        gap: 5px;
+    }
+} 

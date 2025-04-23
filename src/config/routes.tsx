@@ -7,6 +7,7 @@ import CategoryPage from "App/pages/CategoryPage/CategoryPage";
 import AboutPage from "App/pages/AboutPage/AboutPage";
 import CartPage from "App/pages/CartPage/CartPage";
 import LoginPage from "App/pages/LoginPage";
+import PaymentPage from "App/pages/PaymentPage";
 
 export const routesConfig: RouteObject[] = [
   {
@@ -40,6 +41,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: routes.login.mask,
         element: <LoginPage />
+      },
+      {
+        path: routes.payment.mask,
+        element: <PaymentPage />
       }
     ]
   },
